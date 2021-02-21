@@ -1,0 +1,114 @@
+{% extends 'home/index.html' %}
+{% load crispy_forms_tags %}
+
+
+  <style type="text/css">
+    /* added here because these format are inside home_authed_css.html, which, is not included if the user is un-authed */
+    .descriptiveList {
+    list-style: none;
+    background: transparent;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px;
+    line-height: 20px;
+    justify-content: center;
+    text-align: center;
+  }
+  .descriptiveList li:hover {
+    color: red;
+      transition: 0.4
+  }
+  </style>
+
+
+  {% block content %}
+  <!-- the actual dynamic area for the website -->
+  <section id="home" style="background: var(--main-bg-color); overflow-x: hidden; padding-top: 4em;min-height: 100vh">
+    <div class="row" style="justify-content: space-around;"> 
+    <!-- AD for teppy.rocks -->
+    <div class="col-md-5">
+      <div class="position-relative p-3 bg-gray" style="min-height: 300px;">
+        <div class="ribbon-wrapper ribbon-lg">
+          <div class="ribbon bg-info" style="text-transform: lowercase;">
+            <i>also check out:</i>
+          </div>
+        </div>
+        <div class="ribbon-wrapper ribbon-xl">
+          <div class="ribbon bg-warning">
+            <i><a href="https://teppy.rocks" target="_blank"><b>teppy.rocks</b></a></i>
+          </div>
+        </div>
+        {% block login_area %}
+          <div class="row" style="justify-content: space-around;">
+            <div  style="background-color: transparent;">
+              <div class="container" style="height: 80px;">
+              </div>
+              <div class="row">
+                <!-- spacer -->
+                <div class="col-md-2 text-center"></div>
+                <div class="col-md-8">
+                  <h4 class="text-center">You have been logged out.</h4>
+                </div>
+                <!-- spacer -->
+                <div class="col-md-2 text-center"></div>
+              </div>
+
+              <div class="border-top pt-3 text-center">
+                <small >
+                  <a href='{% url "login" %}' class="text-warning"> > Log back in. < </a>
+                </small>
+              </div>
+            </div>
+          </div>
+        {% endblock login_area %}
+      </div>
+    </div>
+    
+    <!-- TEPPYS PROFILE -->
+    <div class="col-md-6">
+      <!-- Widget: user widget style 1 -->
+      <div class="card card-widget widget-user border border-primary">
+        <!-- Add the bg color to the header using any of the bg-* classes -->
+        <div class="widget-user-header text-white bg-dark"
+             style="background: url('/media/defaults/background.jpg') center center;">
+          <br>
+          <h3 class="widget-user-username text-right mr-5">Teppy</h3>
+          <br>
+          <h6 class="widget-user-desc text-right mr-3">Website Creator</h6>
+        </div>
+        <div class="widget-user-image">
+          <img class="img-circle profilePic" src="/media/defaults/round.png" alt="User Avatar">
+        </div>
+        <div class="card-footer" style="background: url('/media/defaults/BG.jpeg') center right;">
+          <div class="row">
+              <div class="col-sm-5" style="text-align: center">
+                <b>Expertise:</b> <br />
+              <ul class="descriptiveList">
+                <li><i class="fab fa-python"></i> Python-Django</li>
+                <li><i class="fab fa-html5"></i> HTML</li>
+                <li><i class="fab fa-css3"></i> CSS</li>
+                <li><i class="fab fa-git"></i> Git</li>
+              </ul>
+              </div>
+              <div class="col-sm-7" style="text-align: center">
+                <b>Other:</b> <br />
+              <ul class="descriptiveList">
+                <li>Web-hosting &amp domain names setup</li>
+                <li>FTP (File Transfer Protocol) usage</li>
+              </ul>
+              </div>
+          </div>
+          <!-- /.row -->
+        </div>
+      </div>
+      <!-- /.widget-user -->
+    </div>
+    <!-- /TEPPYS PROFILE -->
+  </section>
+    {% endblock content %}
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+
+{% load static %}
+<!-- 
+  NOTE: This navigation bar is set to "expand at md" screen size. For more info, see: https://getbootstrap.com/docs/5.0/examples/navbars/.
+  Don't know how to use those examples? Right-click on that page and select "View page source" then copy the block of code you feel like using.
+ -->
+
+ <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" aria-label="Fourth navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Logo / Home (Expand at -md)</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample04">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <!-- You can set this as an icon, the user's picture using img-tag (profile.image.url)... go and explore! -->
+          <a class="nav-link active" aria-current="page" href="{% url 'profile' request.user.username %}">{{request.user.profile.display_name}}</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sample Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Sample Disabled</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown04">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form>
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
