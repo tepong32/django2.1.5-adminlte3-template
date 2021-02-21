@@ -3,7 +3,7 @@ A Django website template using AdminLTE3 &amp; Bootstrap theming
 
 NOTES:
 # THIS IS NOT FINISHED YET. #
-## Will have this continuously updated until I'm satisfied that this can be used by django beginners. Please just bear with me as I'm also working on my project website (and other househole-related stuffs) while doing this. ##
+## Will have this continuously updated until I'm satisfied that this can be used by django beginners. Please just bear with me as I'm also working on my project website (and other household-related stuffs) while doing this. ##
 
 I specifically used AdminLTE3 so users can freely use FontAwesome icons without much changes on scripts included on 'home/index.html'.
 Using plain Bootstrap, users (starters) will have to research as to how to add CSS links and scripts first for the icons to work.
