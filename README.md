@@ -17,9 +17,9 @@ Speaking of a "blog" app, I also added ckeditor to the "installed apps" list for
 Also, password-related stuffs were tested and are working as intended. You can modify the templates on "user/templates/password-reset". Just setup the fields needed by the system (email credentials).
 
 
-
 I was able to setup a website on NameCheap.com using everything I included here. I just removed those "apps" that are specific to my needs.
-If you need help setting-up a Django website on NameCheap's shared hosting, this article was what helped me: https://pythonfusion.com/deploy-django-on-shared-hosting/. Just keep in mind that I (we) specifically used Django 2.1 because we need support for PyMySQL. We purchased the cheapest plan: Stellar (https://www.namecheap.com/hosting/shared/) so, we only have access to MySQL Databases. I'm not sure yet if using Django 3.0 can be set to support PyMySQL. If you purchase the Stellar Plus or Stellar Business plans tho, you'll have access to PostgreSQL databases and you can use the latest version of Django.
+If you need help setting-up a Django website on NameCheap's shared hosting, this article was what helped me: https://pythonfusion.com/deploy-django-on-shared-hosting/.
+Just keep in mind that I (we) specifically used Django 2.1 because we need support for PyMySQL. We purchased the cheapest plan: Stellar (https://www.namecheap.com/hosting/shared/) so, we only have access to MySQL Databases. I'm not sure yet if using Django 3.0 can be set to support PyMySQL. If you purchase the Stellar Plus or Stellar Business plans tho, you'll have access to PostgreSQL databases and you can use the latest version of Django.
 
 
  
