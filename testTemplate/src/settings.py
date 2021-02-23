@@ -48,15 +48,13 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
 
     # custom
-    'home',
-    'user',
-
+    'home.apps.HomeConfig',
+    'user.apps.UserConfig',
 
 
     # django-allauth needs this
     'django.contrib.sites',
-
-    # everything all-auth
+    # below are everything all-auth
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
