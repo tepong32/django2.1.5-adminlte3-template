@@ -100,7 +100,7 @@ def user_search_view(request, *args, **kwargs):
 			user = request.user
 			accounts = [] # [(account1, True), (account2, False), ...]
 			for account in search_results:
-				accounts.append((account, True)) # you have no friends yet
+				accounts.append((account, False)) # you have no friends yet
 			context['accounts'] = accounts
 				
 	return render(request, "user/user_search_results.html", context)
