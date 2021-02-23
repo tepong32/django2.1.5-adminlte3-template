@@ -9,11 +9,12 @@
 	@import url('https://fonts.googleapis.com/css?family=Numans');
 
 	html,body{
-	background-image: url('../../../media/defaults/BG.jpeg');
+	background-image: url('../../../media/defaults/blackhole.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: 100%;
 	font-family: 'Numans', sans-serif;
+	background-color: darkgray
 	}
 
 	.container{
@@ -26,7 +27,7 @@
 	margin-top: 3em;
 	margin-bottom: auto;
 	width: 450px;
-	background-color: rgba(0,0,0,0.5) !important;
+	background-color: rgba(0,0,0,0.2) !important;
 	}
 
 	.social_icon span{
@@ -101,7 +102,8 @@
 	}
 </style>
 <div class="container">
-	<div class="d-flex justify-content-center h-100">
+	<div class="row justify-content-around h-100">
+		<!-- 1st -->
 		<div class="card">
 			<div class="card-header">
 				<h3>Sign In</h3>
@@ -146,6 +148,15 @@
 				    </div>
 				  </form>
 			</div>
+		</div>
+
+		<!-- 2nd -->
+		<div class="card p-3 text-primary justify-content-end">
+			Place something else here. <br>
+			Maybe an ad showing-off your other projects? <br>
+			Or maybe your portfolio? <br>
+			<hr>
+			Or remove this div to have a decent-looking login screen.
 		</div>
 	</div>
 </div>

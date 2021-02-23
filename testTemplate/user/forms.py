@@ -33,7 +33,7 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
 	class Meta:
 		model = Profile 	# the model that is going to be affected by this form is the Profile model,
-		fields = ["image", "gender", "location", "quote", "about_me",]
+		fields = ["display_name", "image", "gender", "location", "quote", "about_me",]
 
 		'''
 			I removed these fields because they're also removed/commented-out from the Profile model.

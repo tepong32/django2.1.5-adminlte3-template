@@ -2,32 +2,47 @@
 {% load crispy_forms_tags %}
 
 
-  <style type="text/css">
-    /* added here because these format are inside home_authed_css.html, which, is not included if the user is un-authed */
-    .descriptiveList {
-    list-style: none;
-    background: transparent;
-    font-size: 12px;
-    font-weight: 500;
-    padding: 5px;
-    line-height: 20px;
-    justify-content: center;
-    text-align: center;
-  }
-  .descriptiveList li:hover {
-    color: red;
-      transition: 0.4
-  }
-  </style>
+
 
 
   {% block content %}
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Shadows+Into+Light&family=Poppins:ital,wght@0,300;1,300&display=swap');
+
+      section {
+        background-image: url('../../media/defaults/blackhole.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-top: 4em;
+        min-height: 100vh
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Shadows Into Light';
+        color: gold;
+        text-decoration: underline overline;
+      }
+      .descriptiveList {
+      list-style: none;
+      background: transparent;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px;
+      line-height: 20px;
+      justify-content: center;
+      text-align: center;
+    }
+    .descriptiveList li:hover {
+      color: red;
+      transition: 0.4
+    }
+  </style>
   <!-- the actual dynamic area for the website -->
-  <section id="home" style="background: var(--main-bg-color); overflow-x: hidden; padding-top: 4em;min-height: 100vh">
+  <section id="home">
     <div class="row" style="justify-content: space-around;"> 
     <!-- AD for teppy.rocks -->
     <div class="col-md-5">
-      <div class="position-relative p-3 bg-gray" style="min-height: 300px;">
+      <div class="position-relative p-3" style="min-height: 300px;">
         <div class="ribbon-wrapper ribbon-lg">
           <div class="ribbon bg-info" style="text-transform: lowercase;">
             <i>also check out:</i>
@@ -55,7 +70,7 @@
 
               <div class="border-top pt-3 text-center">
                 <small >
-                  <a href='{% url "login" %}' class="text-warning"> > Log back in. < </a>
+                  <a href='{% url "login" %}' class="text-primary"> Log back in </a>
                 </small>
               </div>
             </div>
@@ -67,10 +82,10 @@
     <!-- TEPPYS PROFILE -->
     <div class="col-md-6">
       <!-- Widget: user widget style 1 -->
-      <div class="card card-widget widget-user border border-primary">
+      <div class="card card-widget widget-user border border-primary elevation-5">
         <!-- Add the bg color to the header using any of the bg-* classes -->
-        <div class="widget-user-header text-white bg-dark"
-             style="background: url('/media/defaults/background.jpg') center center;">
+        <div class="widget-user-header"
+             style="background: url('/media/defaults/code.jpg') center center;">
           <br>
           <h3 class="widget-user-username text-right mr-5">Teppy</h3>
           <br>
@@ -79,7 +94,7 @@
         <div class="widget-user-image">
           <img class="img-circle profilePic" src="/media/defaults/round.png" alt="User Avatar">
         </div>
-        <div class="card-footer" style="background: url('/media/defaults/BG.jpeg') center right;">
+        <div class="card-footer">
           <div class="row">
               <div class="col-sm-5" style="text-align: center">
                 <b>Expertise:</b> <br />
@@ -87,7 +102,7 @@
                 <li><i class="fab fa-python"></i> Python-Django</li>
                 <li><i class="fab fa-html5"></i> HTML</li>
                 <li><i class="fab fa-css3"></i> CSS</li>
-                <li><i class="fab fa-git"></i> Git</li>
+                <li><i class="fab fa-github"></i> Github</li>
               </ul>
               </div>
               <div class="col-sm-7" style="text-align: center">
@@ -105,7 +120,7 @@
     </div>
     <!-- /TEPPYS PROFILE -->
   </section>
-    {% endblock content %}
+{% endblock content %}
 
 
 

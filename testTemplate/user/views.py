@@ -41,7 +41,7 @@ def register(request):
 	else:
 		form = UserRegisterForm()
 	# arguments == "request", the_template, the_context(dictionary))
-	return render(request, 'user/register.html', {'form': form})
+	return render(request, 'auth/register.html', {'form': form})
 
 
 @login_required

@@ -16,13 +16,17 @@
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle elevation-5"
                        src="{{user.profile.image.url}}"
-                       alt="User profile picture">
+                       alt="User profile picture" style="width: 150px; height: 150px">
                 </div>
-
-                <h2 class="profile-username text-center">{{user.username}}
+                {% if user.profile.display_name %}
+                  <h2 class="profile-username text-center">{{user.profile.display_name}}
+                {% else %}
+                  <h2 class="profile-username text-center">{{user.username}}
+                {% endif %}
+                
                 {% if user.username == request.user.username %}
                   <small>
-                    <a class="fa fa-edit text-success" href="{% url 'profile-edit' user.username %}"></a>
+                    <a title="Edit profile" class="fa fa-edit text-success" href="{% url 'profile-edit' user.username %}"></a>
                   </small>
                 {% endif %}
                 </h2>

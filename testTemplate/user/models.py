@@ -8,14 +8,10 @@ from ckeditor.fields import RichTextField
 # remember to register each model to the admin.py file EVERYTIME!
 
 class Profile(models.Model):
-	'''
-		TIP: Activate Wordwrap so you will not have to scroll side-ways.
-		I designed this Profile model to fit the very first website I worked on. I just commented-out those attributes I think is not necessary for a default user profile for a new website. I figured leaving those attributes here will save you time researching and help in giving you ideas on how...(what do you call this..?)...certain attributes can be formatted? UGH! I know you know what I mean! LOL! Apologies for unorganized thought-processing.
-	'''
 
 	# profile-related stuffs 
 	user = models.OneToOneField(User, on_delete=models.CASCADE) # if the user is deleted, the profile will be deleted, too
-	display_name = models.CharField(blank=True, max_length=50, unique=True, verbose_name="Display Name",help_text="Get an alias for anonimity. We'll be using this later. Trust me. ;)") 
+	display_name = models.CharField(blank=True, max_length=50, unique=True, verbose_name="Display Name: ",help_text="Get an alias for anonimity. We'll be using this later. Trust me. ;)") 
 	Male = "Male"
 	Female = "Female"
 	Neutral = "Neutral"
@@ -27,116 +23,19 @@ class Profile(models.Model):
 	gender = models.CharField(
 		max_length=10,
 		choices=gender_choice,
-		default=Neutral, verbose_name="Gender"
+		default=Neutral, verbose_name="Gender: "
 	)
-	location = models.CharField(blank=True, null=True, max_length=255, default="Uh...Earth?", verbose_name="location", help_text="Do you want to fill this out? :D")
+	location = models.CharField(blank=True, null=True, max_length=255, default="Uh...Earth?", verbose_name="Location: ", help_text="Do you want to fill this out? :D")
 
 	# Other information that can be displayed on a user profile page:
-	quote = models.CharField(blank=True, max_length=300, verbose_name="Quote you live by", help_text="'Pampa-Angas'")
+	quote = models.CharField(blank=True, max_length=300, verbose_name="Quote you live by: ", help_text="'Pampa-Angas'")
 	about_me = models.TextField(blank=True, default="...Default About Me text created by the dev... :D", help_text="People here love to read. Tell us something about you.")
 	
 	def dp_directory_path(instance, filename):
-		# file will be uploaded to MEDIA_ROOT/DP_<username>/<filename> ---check settings.py. MEDIA_ROOT=media
+		# file will be uploaded to MEDIA_ROOT/DP/<username>/<filename> ---check settings.py. MEDIA_ROOT=media
 		return 'users/{}/DP/{}'.format(instance.user.username, filename)
-	image = models.ImageField(default='defaults/round.png', blank=True, upload_to=dp_directory_path, verbose_name="Profile Picture", help_text='Tick "clear" if an image already exists.')
+	image = models.ImageField(default='defaults/round.png', blank=True, upload_to=dp_directory_path, verbose_name="Profile Picture: ", help_text='Help us recognize you. ;)')
 
-	# # education / school info
-	# school = models.CharField(blank=True, null=True, max_length=100, default="Secret University", verbose_name="School", help_text="Might help you find co-university people. ;)")
-	# course = models.CharField(blank=True, null=True, max_length=255, default="---", verbose_name="Course", help_text="Leave blank if n/a.")
-	# FRESHMAN = 'Freshman'
-	# SOPHOMORE = 'Sophomore'
-	# JUNIOR = 'Junior'
-	# SENIOR = 'Senior'
-	# GRADUATE = 'Graduate'
-	# YEAR_IN_SCHOOL_CHOICES = [
-	# 	(FRESHMAN, 'Freshman'),
-	# 	(SOPHOMORE, 'Sophomore'),
-	# 	(JUNIOR, 'Junior'),
-	# 	(SENIOR, 'Senior'),
-	# 	(GRADUATE, 'Graduate'),
-	# ]
-	# year_in_school = models.CharField(
-	# 	max_length=10,
-	# 	choices=YEAR_IN_SCHOOL_CHOICES,
-	# 	default=FRESHMAN, verbose_name="Grade/Year Level"
-	# )
-
-	# # socmed
-	# google = models.CharField(max_length=150, blank=True, null=True, verbose_name="Google", help_text="Kindly post full url (e.g.: https://username@email.com. Leave blank if not available.")
-	# linkedin = models.CharField(max_length=150, blank=True, null=True, verbose_name="LinkedIn", help_text="Kindly post full url. (e.g.: https://username@email.com. Leave blank if not available.")
-	# github = models.CharField(max_length=150, blank=True, null=True, verbose_name="GitHub", help_text="Kindly post full url. (e.g.: https://username@email.com. Leave blank if not available.")
-	# facebook = models.CharField(max_length=150, blank=True, null=True, verbose_name="Facebook", help_text="Kindly post full url. (e.g.: https://username@email.com. Leave blank if not available.")
-	# twitter = models.CharField(max_length=150, blank=True, null=True, verbose_name="Twitter", help_text="Kindly post full url. (e.g.: https://username@email.com. Leave blank if not available.")
-	# instagram = models.CharField(max_length=150, blank=True, null=True, verbose_name="Instagram", help_text="Kindly post full url. (e.g.: https://username@email.com. Leave blank if not available.")
-	
-	# # these user_group will work like a status ladder // think of it like symbianize user badges
-	# # or use a "# of thanks/appreciation received for posts" ladder system in the future
-	# Pawn = "Pawn"
-	# Rook = "Rook"
-	# Knight = "Knight"
-	# Bishop = "Bishop"
-	# Queen = "Queen"
-	# King = "King"
-	# user_group_choices = [
-	# 	(Pawn, "Pawn"),
-	# 	(Rook, "Rook"),
-	# 	(Knight, "Knight"),
-	# 	(Bishop, "Bishop"),
-	# 	(Queen, "Queen"), # should this be removed?
-	# 	(King, "King"),
-	# ]
-	# user_group = models.CharField(
-	# 	max_length=10,
-	# 	choices=user_group_choices,
-	# 	default=Pawn,
-	# )
-
-	# profile_snippet = RichTextField(blank=True, null=True, help_text="This is what un-logged-in users see whenever they click on your username. Make your intro count! ;)")
-	
-	# # user_group descriptions
-	# def title(self): 
-	# 	if self.user_group == "Pawn":
-	# 		if self.gender == "Male":
-	# 			self.title = "Average Joe"
-	# 		elif self.gender == "Female":
-	# 			self.title = "Average Jane"
-	# 		elif self.gender == "Unicorn":
-	# 			self.title = "Average Unicorn"
-	# 		return self.title
-
-	# 	if self.user_group == "Rook":
-	# 		if self.gender == "Male":
-	# 			self.title = "Average Joe Pro Plus"
-	# 		elif self.gender == "Female":
-	# 			self.title = "Average Jane Pro Plus"
-	# 		elif self.gender == "Unicorn":
-	# 			self.title = "Average Unicorn Pro Plus"
-	# 		return self.title
-
-	# 	if self.user_group == "Knight":
-	# 		if self.gender == "Unicorn":
-	# 			self.title = "A helpful Unicorn"
-	# 		else:
-	# 			self.title = "We're helping people out."
-	# 		return self.title
-
-	# 	if self.user_group == "Bishop":
-	# 		if self.gender == "Unicorn":
-	# 			self.title = "Powerful Unicorn. Beware."
-	# 		else:
-	# 			self.title = "A little less powerful than devs"
-	# 		return self.title
-
-	# 	if self.user_group == "Queen":
-	# 		if self.gender == "Female":
-	# 			self.title = "A Queen. You know what that means."
-	# 		elif self.gender == "Unicorn":
-	# 			self.title = "Queen Unicorn! MeEe-ee-ee! (what?)"
-	# 		return self.title
-
-	# 	if self.user_group == "King":
-	# 		self.title = "Dev / Admin ;)"
-	# 		return self.title
 
 	def __str__(self):
 		return f"{self.user.username}"
@@ -153,3 +52,84 @@ class Profile(models.Model):
 			img.thumbnail(output_size)
 			img.save(self.image.path)
 
+
+
+# '''
+# 	This is CodingwithMitch's user model modified to match Profile(above) a little bit.
+# 	Doubting if I should use this instead of the above model.
+# 	Referenc: https://github.com/mitchtabian/Codingwithmitch-Chat/blob/custom-user-model/account/models.py
+# '''
+
+# from django.db import models
+# from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+# from django.core.files.storage import FileSystemStorage
+# from django.conf import settings
+# import os
+
+
+# class MyAccountManager(BaseUserManager):
+# 	def create_user(self, email, username, password=None):
+# 		if not email:
+# 			raise ValueError('Users must have an email address')
+# 		if not username:
+# 			raise ValueError('Users must have a username')
+
+# 		user = self.model(
+# 			email=self.normalize_email(email),
+# 			username=username,
+# 		)
+
+# 		user.set_password(password)
+# 		user.save(using=self._db)
+# 		return user
+
+# 	def create_superuser(self, email, username, password):
+# 		user = self.create_user(
+# 			email=self.normalize_email(email),
+# 			password=password,
+# 			username=username,
+# 		)
+# 		user.is_admin = True
+# 		user.is_staff = True
+# 		user.is_superuser = True
+# 		user.save(using=self._db)
+# 		return user
+
+
+# def get_profile_image_filepath(self, filename):
+# 	return 'profile_images/' + str(self.pk) + '/profile_image.png'
+
+# def get_default_profile_image():
+# 	return "codingwithmitch/logo_1080_1080.png"
+
+
+# class Profile(AbstractBaseUser):
+# 	email 					= models.EmailField(verbose_name="email", max_length=60, unique=True)
+# 	username 				= models.CharField(max_length=30, unique=True)
+# 	date_joined				= models.DateTimeField(verbose_name='date joined', auto_now_add=True)
+# 	last_login				= models.DateTimeField(verbose_name='last login', auto_now=True)
+# 	is_admin				= models.BooleanField(default=False)
+# 	is_active				= models.BooleanField(default=True)
+# 	is_staff				= models.BooleanField(default=False)
+# 	is_superuser			= models.BooleanField(default=False)
+# 	image					= models.ImageField(max_length=255, upload_to=get_profile_image_filepath, null=True, blank=True, default=get_default_profile_image)
+# 	hide_email				= models.BooleanField(default=True)
+
+# 	USERNAME_FIELD = 'email'
+# 	REQUIRED_FIELDS = ['username']
+
+# 	objects = MyAccountManager()
+
+# 	def __str__(self):
+# 		return self.username
+
+# 	def get_profile_image_filename(self):
+# 		return str(self.profile_image)[str(self.profile_image).index('profile_images/' + str(self.pk) + "/"):]
+
+# 	# For checking permissions. to keep it simple all admin have ALL permissons
+# 	def has_perm(self, perm, obj=None):
+# 		return self.is_admin
+
+# 	# Does this user have permission to view this app? (ALWAYS YES FOR SIMPLICITY)
+# 	def has_module_perms(self, app_label):
+# 		return True
