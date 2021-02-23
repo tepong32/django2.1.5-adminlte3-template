@@ -7,7 +7,9 @@ from django.core.paginator import Paginator
 # for needing user to be logged-in first before accessing the page requested
 from django.contrib.auth.decorators import login_required
 
-
+'''
+	If you want to have one, this can be a separate view for unauthenticated users. Like a static landing page.
+'''
 # def landing(request):
 # 	user = User
 # 	users = User.objects.all()
