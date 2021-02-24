@@ -9,11 +9,11 @@ from django.contrib.auth.decorators import login_required
 
 
 # def landing(request):
-	'''
-		If you want to have one, this can be a separate view for unauthenticated users. Like a static landing page.
-		You'll just have to change the routing of te urls. Currently, 'localhost:8000/' displays 'home' view (the one below).
-		I know you can figure out what I did on this 'landing' view. :D
-	'''
+'''
+	If you want to have one, this can be a separate view for unauthenticated users. Like a static landing page.
+	You'll just have to change the routing of te urls. Currently, 'localhost:8000/' displays 'home' view (the one below).
+	I know you can figure out what I did on this 'landing' view. :D
+'''
 # 	user = User
 # 	users = User.objects.all()
 # 	# authorPost = Post.objects.all().filter(author__in=users)
