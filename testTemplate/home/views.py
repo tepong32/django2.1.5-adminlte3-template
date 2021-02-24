@@ -45,10 +45,10 @@ def home(request):
 	return render(request, 'home/index.html', context)
 
 
-# def about(request):
-# 	user = User
-# 	context = {}
-# 	return render(request, 'home_unauthed/about.html', context)
+def about(request):
+	user = User
+	context = {}
+	return render(request, 'home/about.html', context)
 
 # def announcement(request):
 # 	user = User
