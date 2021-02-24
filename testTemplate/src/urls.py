@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views     # for auths for logins and logouts
+from home.views import about
 from user.views import (
     register,
     user_search_view
@@ -24,6 +25,7 @@ from user.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
+    path('about/', about, name="about"),
     path('u/', include('user.urls')),
 
     # # django-allauth
