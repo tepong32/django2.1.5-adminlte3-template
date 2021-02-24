@@ -3,25 +3,6 @@
 
 
 {% block content %}
-
-  <style type="text/css">
-    /* added here because these format are inside home_authed_css.html, which, is not included if the user is un-authed */
-    .descriptiveList {
-    list-style: none;
-    background: transparent;
-    font-size: 12px;
-    font-weight: 500;
-    padding: 5px;
-    line-height: 20px;
-    justify-content: center;
-    text-align: center;
-  }
-  .descriptiveList li:hover {
-    color: red;
-      transition: 0.4
-  }
-  </style>
-
 <section id="home" style="min-height: 100vh">
   <div class="row" style="justify-content: space-around;"> 
   <div class="col-md-5">
@@ -60,7 +41,8 @@
         </div>
     </div>
   </div>
-</div>
+  </div>
+</section>
 
 
 {% endblock content %}
