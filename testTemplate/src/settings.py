@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # USE Environment Variables
-SECRET_KEY = 'l!o48sa1oytm+t+z*3g(#05_*wp$lw#^uqq@1)x+)-(^1cu8b9'
+SECRET_KEY = 'l!o48sa1oytm+t+z*3g(#05_*wp$lw#^uqq@1)x+)-(^1cu8b9' # os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -183,7 +183,7 @@ MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'     # for the css of crispy forms
 
 LOGIN_REDIRECT_URL = 'home'     # needed for the login.html success instance
-LOGIN_URL = 'login'             # for the @login_required decorator on users/views.profile
+LOGIN_URL = 'login'             # for the @login_required decorator on user.views.profile
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com' # or only your domain name if you have your own mail server

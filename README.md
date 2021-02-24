@@ -21,11 +21,11 @@ Also, password-related stuffs were tested and are working as intended. You can m
 
 ## Setting-up your production environment
 I was able to setup a website on NameCheap.com using everything I included here. I just removed those "apps" that are specific to my site's needs.
-If you need help setting-up a Django website on NameCheap's shared hosting, this article was what helped me: # https://pythonfusion.com/deploy-django-on-shared-hosting/ #. My website's url: https://one.teppy.rocks.
+If you need help setting-up a Django website on NameCheap's shared hosting, this article was what helped me: https://pythonfusion.com/deploy-django-on-shared-hosting/. My website's url: https://one.teppy.rocks.
 
 ## Running this on Django 3.0 showed no problems at all in the development environment.
 
-Just keep in mind that I (we) specifically used Django 2.1 because we need support for PyMySQL database on NameCheap. We purchased the cheapest plan: Stellar (https://www.namecheap.com/hosting/shared/) so, we only have access to MySQL Databases. I'm not sure yet if using Django 3.0 can be set to support PyMySQL. If you purchase the Stellar Plus or Stellar Business plans tho, you'll have access to PostgreSQL databases and you can use the latest version of Django.
+Just keep in mind that we (me and pythonfusion owner) specifically used Django 2.1 because we need support for PyMySQL database on NameCheap. We purchased the cheapest plan: Stellar (https://www.namecheap.com/hosting/shared/) so, we only have access to MySQL Databases. I'm not sure yet if using Django 3.0 can be set to support PyMySQL. If you purchase the Stellar Plus or Stellar Business plans tho, you'll have access to PostgreSQL databases and you can use the latest version of Django. Setting-up your PostgreSQL database, you will just need to watch tutorials. ;)
 
 Also, I created a step-by-step process of purchasing and setting-up a website on NameCheap. You can check https://teppy.rocks/2021/02/11/setting-up-your-own-website/ and leave a comment to help me improve the article.
 
