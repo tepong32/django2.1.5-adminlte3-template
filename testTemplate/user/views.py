@@ -25,19 +25,17 @@ from django.contrib.auth.models import User
 # 	return render(request, 'user/login.html', context)
 
 def register(request):
-	if request.method == 'POST':
-		'''
+	'''
 			if the page gets a POST request, the POST's data gets instantiated to the UserCreationForm,
 			otherwise, it instantiates a blank form.
 		'''
+	if request.method == 'POST':
 		form = UserRegisterForm(request.POST)
 		if form.is_valid():
 			form.save()		# to make sure that the registering user gets saved to the database
 			username = form.cleaned_data.get("username")
 			messages.success(request, f"Account created for {username}! You can now log in.")
 			return redirect("login")
-
-
 	else:
 		form = UserRegisterForm()
 	# arguments == "request", the_template, the_context(dictionary))
@@ -57,6 +55,7 @@ def profile(request, username=None):
 				# "todos": todos,
 			}
 		)
+		
 	else:
 		return render ("User not found.")
 

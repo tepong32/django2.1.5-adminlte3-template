@@ -5,13 +5,23 @@ from django.urls import reverse
 from ckeditor.fields import RichTextField
 
 
-# remember to register each model to the admin.py file EVERYTIME!
+'''
+	README:
+	This Profile model is an extension of from "django.contrib.auth.models.User". Browse into that directory and change the email attribute of 
+	the AbstractUser class. Add "unique=True" to make sure that no email address can eb used to create multiple accounts.
+	If you want to have more control over your user model, you can follow the model format below:
+	https://github.com/mitchtabian/Codingwithmitch-Chat/blob/uploading-an-image/account/forms.py
+
+	Full tutorial here: https://codingwithmitch.com/courses/real-time-chat-messenger/demo/
+
+	P.S.: I get a couple of ideas on how to implement certain logic there. I just did not implement JSs because I don't understand it well at the time of writing this code.
+'''
 
 class Profile(models.Model):
 
 	# profile-related stuffs 
 	user = models.OneToOneField(User, on_delete=models.CASCADE) # if the user is deleted, the profile will be deleted, too
-	display_name = models.CharField(blank=True, max_length=50, unique=True, verbose_name="Display Name: ",help_text="Get an alias for anonimity. We'll be using this later. Trust me. ;)") 
+	display_name = models.CharField(blank=True, null=True, max_length=50, unique=True, verbose_name="Display Name: ",help_text="Get a cool-sounding alias.") 
 	Male = "Male"
 	Female = "Female"
 	Neutral = "Neutral"
@@ -29,10 +39,10 @@ class Profile(models.Model):
 
 	# Other information that can be displayed on a user profile page:
 	quote = models.CharField(blank=True, max_length=300, verbose_name="Quote you live by: ", help_text="'Pampa-Angas'")
-	about_me = models.TextField(blank=True, default="...Default About Me text created by the dev... :D", help_text="People here love to read. Tell us something about you.")
+	about_me = models.TextField(blank=True, default="...Default About Me text created by the dev... :D", help_text="Tell us something about you.")
 	
 	def dp_directory_path(instance, filename):
-		# file will be uploaded to MEDIA_ROOT/DP/<username>/<filename> ---check settings.py. MEDIA_ROOT=media
+		# file will be uploaded to MEDIA_ROOT/DP/<username>/<filename> ---check settings.py. MEDIA_ROOT=media for the exact folder/location
 		return 'users/{}/DP/{}'.format(instance.user.username, filename)
 	image = models.ImageField(default='defaults/round.png', blank=True, upload_to=dp_directory_path, verbose_name="Profile Picture: ", help_text='Help us recognize you. ;)')
 

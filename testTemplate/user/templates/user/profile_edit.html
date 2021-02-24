@@ -2,7 +2,7 @@
 <!-- notice the extends -->
 {% load crispy_forms_tags %} {% block profile %}
 
-<div class="container col-8 bg-dark" style="padding-top: 5em">
+<div class="container col-8 bg-dark" style="padding-top: 1em">
   <!-- FORM HERE -->
   <form method="POST" enctype="multipart/form-data">
     <!-- enctype="multipart/form-data" IS IMPORTANT for the image to save -->
@@ -12,20 +12,26 @@
     <fieldset class="form-group">
       <legend class="border-bottom mb-1">Edit your Profile Info</legend>
       <small><i>Fields with * are required.</i></small>
+      {% for field in form %}
+          <p>
+          {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+          {% endfor %}
+          </p>
+      {% endfor %}
       {{ form.media }}
       {{ u_form|crispy }} {{ p_form|crispy }}
     </fieldset>
 
     <div class="form-group">
-      <button class="btn btn-info" type="submit">
+      <button class="btn btn-outline-success p-2 mb-2" type="submit">
         Save changes
       </button>
     </div>
   </form>
 </div>
 
-<!-- place a view that shows no-edits privilege if the viewer != the currently logged-in user -->
-
-<!-- this should be inside an update button when user == currently logged in one -->
 
 {% endblock profile %}
+
+
