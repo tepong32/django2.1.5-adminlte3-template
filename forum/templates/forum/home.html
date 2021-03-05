@@ -1,0 +1,173 @@
+{% extends 'home/index.html' %}
+{% load static %}
+{% load crispy_forms_tags %} 
+
+<!-- CREATE logic for authed vs unauthed navbars -->
+{% block content %}
+
+<section class="container" style="min-height: 100vh;">
+      
+
+  <div class="row">
+    <div class="col-4 p-3" style="background-color: white">
+      <h5>What's new: </h5>
+      <small>
+      ({{ page_obj.paginator.count }} total posts) <br>
+      (actually, what can I call this page?)
+      </small>
+    </div>
+
+    <!-- Collapsible Accordion-style Forum Reminders -->
+      <div class="col-md-8">
+        <div class="box box-solid">
+          <!-- /.box-header -->
+          <div class="box-body">
+            <div class="box-group" id="accordion">
+              <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+              <div class="panel box box-primary">
+                <div class="box-header with-border">
+                  <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseReminders">
+                      >> Posting reminders:
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseReminders" class="panel-collapse collapse in">
+                  <div class="box-body text-sm">
+                    <strong class="text-danger">NO SHITPOSTING. </strong>
+                    <p>
+                      This site is not for such. This is supposed to be a forum-like site where you can share meaningful things, stories and ideas to other users. For now, it will be a blog site. You can use Facebook for your rants. Honestly.
+                    </p>
+                    
+                    <strong class="text-danger">BE KIND & RESPONSIBLE. </strong>
+                    <p>
+                      Shout out to people more knowledgeable on the internet than others! Please. Do not use your posts as ways to phish any information about anyone. <u class="text-danger">Do it somewhere else.</u> People here are good people only intending to move away from mainstream social media noises.
+                    </p>
+                    <p>
+                      To everyone, <b class="text-danger"><i>ALWAYS BE VIGILANT.</i></b> On the internet, trust no one. The reason I allowed you to just put dummy information or not put any information on your profiles at all is because I do not want you to be a victim of cyber crimes. Please be careful clicking on links.
+                    </p>
+
+                    <strong class="text-danger">BE DETAILED. </strong>
+                    <p>
+                      I mean...there's no more intimidating thing for readers to actually be hung-up with a good article/blog/story...unless there'll be a season 2. :D I am assuming you love writing and/or reading that's why you're here. I do <small><i>(I think so?)</i></small>. Tell us your stories and don't hang us up! ;)
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-body -->
+      </div> 
+      <!-- /accordion -->
+    </div>
+
+  <div class="row p-2">
+    <div class="col-md-7">
+    <!-- first col == posts -->
+    <div class="">
+      <!-- TOP PAGINATION PART for users' posts area -->
+      {% if is_paginated %}
+        <a class="btn btn-sm btn-outline-dark" href="?page=1"> First </a>
+        {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+            <a class="btn btn-sm btn-dark" href="?page={{ num }}">
+              {{ num }}
+            </a>
+          {% elif num > page_obj.number|add:'-5' and num < page_obj.number|add:'5' %}
+            <a class="btn btn-sm btn-outline-dark" href="?page={{ num }}">
+              {{ num }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      <a
+        class="btn btn-sm btn-outline-dark" href="?page={{ page_obj.paginator.num_pages }}">
+        Last
+      </a>
+      {% endif %}
+    </div>
+    {% for post in posts %}
+    <div class="border p-2 col" style="background-color: black"> 
+      <article class="media content-section ml-2 mt-2 mb-3">
+        <img
+          class="rounded-circle article-img"
+          src="{{ post.author.profile.image.url }}"
+          style="height: 25px; width: 25px">
+        <div class="media-body">
+            <div class="col" style="font-size: 12px">
+              <a class="ml-3 mr-5" href="{% url 'profile' post.author %}" style="font-family: 'Roboto';">
+                <b>{{ post.author }}</b></a>
+              <!-- profile badges (chess pieces reference )//currently not implemented -->
+              <!-- {% if post.author.profile.user_group == "Pawn" %}
+                <i class="fas fa-chess-pawn" style="color: blue"></i>
+              {% elif post.author.profile.user_group == "Rook" %}
+                <i class="fas fa-chess-rook"></i>
+              {% elif post.author.profile.user_group == "Knight" %}
+                <i class="fas fa-chess-knight"></i>
+              {% elif post.author.profile.user_group == "Bishop" %}
+                <i class="fas fa-chess-bishop"></i>
+              {% elif post.author.profile.user_group == "Queen" %}
+                <i class="fas fa-chess-queen"></i>
+              {% elif post.author.profile.user_group == "King" %}
+                <i class="fas fa-chess-king" style="color: orange"></i>
+              {% endif %} -->
+                <small class="text-muted ml-2">
+                on {{ post.date_posted|date:"F d, Y" }}</small>
+              <span class="ml-5" style="font-size: 10px">
+                {% if post.author == user %}
+                <a class="fa fa-edit text-sm ml-2 mr-2" style="color: green" href="{% url 'post-update' post.id %}"></a>
+                <a class="fa fa-trash text-sm ml-2 mr-2" href="{% url 'post-delete' post.id %}" style="color: red"></a>
+                <a class="btn btn-outline-info btn-sm ml-2 mr-2" href="{% url 'user-posts' post.author %}" style="font-size: 10px">
+                  All your posts
+                </a>
+                <!-- this does not trigger anything as the author cannot like its own post -->
+                <i class="text-primary text-sm fas fa-thumbs-up ml-1"> {{post.total_likes}}</i>             
+                {% else %}
+                <a class="btn btn-outline-info btn-sm" href="{% url 'user-posts' post.author %}" style="font-size: 10px">
+                  All posts by {{ post.author }}
+                </a>
+                
+                <i class="text-primary text-sm fas fa-thumbs-up ml-1"> {{post.total_likes}}</i>
+                {% endif %}
+              </span>             
+            </div>
+          <div class="row">
+            <h6 class="col-md-6">
+              <a class="article-title col-4 ml-3 text-teal" href=" {% url 'post-detail' post.id %}">
+                {{ post.title|truncatechars:100 }}</a
+              >
+            </h6>
+              <small class="col-2 fas fa-tag ml-5"> {{post.tag}}</small>
+          </div>
+        </div>
+      </article>
+    </div>
+    {% endfor %}
+    <!-- BOTTOM PAGINATION PART for users' posts area -->
+    <div class="col border p-2">
+    {% if is_paginated %}
+      <a class="btn btn-sm btn-outline-dark" href="?page=1"> First </a>
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-sm btn-dark" href="?page={{ num }}"> {{ num }} </a>
+        {% elif num > page_obj.number|add:'-5' and num < page_obj.number|add:'5' %}
+          <a class="btn btn-sm btn-outline-dark" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+      <a class="btn btn-sm btn-outline-dark" href="?page={{ page_obj.paginator.num_pages }}">
+        Last
+      </a>
+    {% endif %}
+    </div>
+  </div>
+
+  <div class="col-md-5 p-3 border border-success">
+    Public Chatbox to be placed here <br>
+    or something else
+  </div>
+
+
+
+</div> <!-- row -->
+</section>
+
+{% endblock content %}

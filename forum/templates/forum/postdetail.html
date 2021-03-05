@@ -1,0 +1,120 @@
+{% extends 'home/index.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="article-metadata container" style="padding-top: 5em">
+  <div class="row">
+    <h1 class="article-title text-center mr-auto">{{ object.title }}</h1>
+    <div>
+      {% if object.author == user %}
+        <a class="btn btn-outline-primary btn-sm mr-1 fa fa-arrow-circle-left" href="{% url 'forum-home' %}" title="Back to Forum">
+        </a>
+        <a class="btn btn-outline-success btn-sm mr-1 fa fa-edit" href="{% url 'post-update' object.id %}" title="Edit Post">
+        </a>
+        <a class="btn btn-outline-danger btn-sm mr-1 fa fa-trash" href="{% url 'post-delete' object.id %}" title="Delete Post">
+        </a>
+      {% else %}
+        <a class="btn btn-outline-primary btn-sm mr-1 fa fa-arrow-circle-left" href="{% url 'forum-home' %}" title="Back to Forum">
+        </a>
+        <a class="btn btn-outline-info btn-sm mr-1" href="{% url 'user-posts' object.author %}">
+          {{ object.author }}'s posts
+        </a>
+      {% endif %}
+    </div>
+  </div>
+  <a class="col-md-2 mr-2" href="{% url 'profile' object.author %}">
+    <img
+      class="rounded-circle article-img ml-3 mt-2"
+      src="{{ object.author.profile.image.url }}"
+      style="height: 40px; width: 40px;"
+      />
+    {{ object.author }}
+  </a>
+  <!--post.date_posted|date:"F, d, Y" == format without timestamp. -->
+  <small class="text-muted ml-3 mr-3"> on {{ object.date_posted }}</small>
+  {% if object.author == user %}
+    <!-- Number of likes shown in a button form // this does not trigger anything as the author cannot like its own post -->
+    <button class="btn-sm btn-secondary fas fa-thumbs-up"><i class="text text-white text-sm ml-1">{{object.total_likes}}</i></button>
+  {% else %}
+    <!-- Like button -->
+    <form action="{% url 'like_post' object.pk %}" method="POST">
+      {% csrf_token %}
+      {% if post.liked %}
+        <button type="submit" name="post_id" value="{{object.id}}" class="btn-sm btn-secondary fas fa-thumbs-up">
+          <i class="text text-white text-sm ml-1">{{object.total_likes}}</i>
+        </button> 
+      {% else %}
+      <button type="submit" name="post_id" value="{{object.id}}" class="btn-sm btn-primary fas fa-thumbs-up">
+        <i class="text text-white text-sm ml-1">{{object.total_likes}}</i>
+      </button> 
+      {% endif %}
+    </form>
+  {% endif %}
+</div>
+
+<div class="row">
+<div class="col-md-8">
+  <div class="container" style="min-height:100vh;">
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-content text-dark text-justify" style="padding: 2em; background: #fff;">{{ object.content|safe }}</div>
+      </div>
+    </article>
+    <!-- place an if-block here if the post was modified -->
+    <div class="dropdown-divider">
+      <div>
+        <small class="text-muted ml-2"
+          ><i>modified: {{ object.date_modified }}</i></small
+        >
+      </div>
+    </div>
+</div>
+</div>
+
+<div class="col-md-4">
+  <h5>Comments ({{ post.comments.count }}) </h5> 
+    {% for comment in post.comments.all %}
+    <blockquote class="blockquote bg-dark">
+      
+ 
+        <p class="mb-0">{{ comment.content|linebreaks }}</p>
+        <small class="text-muted">{{comment.timestamp}}
+        by: <cite title="Source Title">{{ comment.user }}
+        </cite>
+        </small>
+
+    </blockquote>
+    {% endfor %}
+   
+
+      <button type="button" href="{% url 'add-comment' object.id %}" class="btn btn-default btn-sm ml-4 mr-4" data-toggle="modal" data-target="#comment_modal">
+        <h6>Add a comment modal</h6>
+      </button>
+      <a href="{% url 'add-comment' object.id %}">Add comment self page</a>
+      <div class="modal fade" id="comment_modal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Add a comment</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!-- Widget: Comment Form Modal -->
+          <div class="card card-widget widget-user">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="container">
+              <iframe src="{% url 'add-comment' object.id %}" style='width:100%; height:300;'></iframe>
+            </div>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</div>
+</div>
+
+{% endblock content %}

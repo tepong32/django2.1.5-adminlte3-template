@@ -1,0 +1,32 @@
+<style type="text/css">
+	@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Shadows+Into+Light&family=Poppins:ital,wght@0,300;1,300&display=swap');
+
+	:root {
+		--ReadableOverDark: rgba(255,0,255,0.05);
+	}
+	
+
+	h1,h2,h3,h4, .username {
+		font-family: 'Shadows Into Light', sans-serif;
+		color: var(--headertext);
+		font-weight: 700;
+	}
+	h5,h6 {
+	font-family: 'Shadows Into Light', sans-serif;
+	color: var(--headertext);
+	font-weight: 700;
+	}
+	.wrapper {
+		padding-top: 4em;
+		padding: 1em;
+	}
+	/* might conflict with isolating items from the darkmode effect but this is what makes the toggle work/show */
+	.darkmode-layer, .darkmode-toggle {
+		  z-index: 500;
+		}
+		
+	/* example for isolating classes */
+	.button {
+		  isolation: isolate;
+		}
+</style>
