@@ -31,7 +31,7 @@ from django.contrib.auth.decorators import login_required
 # 		return render(request, 'home/home.html', context)
 
 
-@login_required
+# @login_required
 def home(request):
 	user = User
 	user_list = User.objects.all()

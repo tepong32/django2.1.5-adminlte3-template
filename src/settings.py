@@ -117,8 +117,8 @@ SOCIALACCOUNT_PROVIDERS = {
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         'APP': {
-            'client_id': '960711795493-9vsgskaeg1qk3nc74qp27s9e7uoejitq.apps.googleusercontent.com', #os.environ.get('GAUTH_CLIENTID'), 
-            'secret': '0-tHwlg4jvax1jt7p-JnvBmj', #os.environ.get('GAUTH_SECRET'), 
+            'client_id': os.environ.get('GAUTH_CLIENTID'), # '960711795493-9vsgskaeg1qk3nc74qp27s9e7uoejitq.apps.googleusercontent.com'
+            'secret': os.environ.get('GAUTH_SECRET'),      # '0-tHwlg4jvax1jt7p-JnvBmj'
             'key': ''
         }
     }
@@ -194,7 +194,7 @@ EMAIL_USE_TLS = True
 # TO USE THESE VARIABLES BELOW, USE ENVIRONMENT VARIABLES TO HIDE SENSITIVE INFO
 # CHECK CoreyMs' Django TUTORIAL # 12 -- 14:20
 
-EMAIL_HOST_USER = os.environ.get('WEBSITE_USER') # var for email username
-EMAIL_HOST_PASSWORD = os.environ.get('WEBSITE_PASS') # var for email pw
+EMAIL_HOST_USER = os.environ.get('ADMIN_EMAIL_UN') # var for email username
+EMAIL_HOST_PASSWORD = os.environ.get('ADMIN_EMAIL_PW') # var for email pw
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER # for email-sending pw-reset requests
 

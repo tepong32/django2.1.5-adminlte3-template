@@ -1,16 +1,35 @@
-<div class="container-fluid">
-	<div class="card">
-		<h1>Hello world!</h1>
-		<div class="card-body">
-			This is a fully-functioning template for any website project you might think of. <br>
-			From user registration to sign-ins and sign-outs, <br>
-			Password change and forgot password options, <br>
-			Automated default profile creation upon registration and CRUD features, <br>
-			User search funtinality, <br>
-			etc. <br> <hr>
-			You go ahead and create your additional apps and do the linking and other frontend mods you need. <br>
-			<h5>Have a good time playing around!</h5>
+{% load static %}
+<div class="container row" >
+	<div class="card col-md-7 elevation-5" style="height:500px; display:flex;">
+		<h1>Announcements:</h1>
+		<div class="card-body border border-warning m-1">
+			-Featured items by the owner <br>
+			-Announcements <br>
+			-Link to guides
 		</div>
 	</div>
+	<div class="card col ml-2" style="min-height: 300px">
+	    <embed src="{#% url 'login' %#}" class="col"></embed>
+	    
+	    <div class="card-footer">
+	      <a href="#">See all items</a>
+	    </div>
+		<!-- /.card-footer-->
+    </div>
+    <div class="card col-md-5">
+    	<div class="card-title">
+    		How to order video:
+    	</div>
+    	<div class="card-body">
+    		<iframe width="100%" height="300" src="https://www.youtube.com/embed/obZMr9URmVI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    	</div>
+    </div>
+    <div class="card col ml-2 elevation-5" style="min-height:300px;display:flex;">
+    	<h3>Customer's Testimonials:</h3>
+	    <div>
+	    	(an auto-sliding customer testimonial page, fb-login preferred)
+	    </div>
+    	<!-- /.card-footer-->
+    </div>
 	
 </div>

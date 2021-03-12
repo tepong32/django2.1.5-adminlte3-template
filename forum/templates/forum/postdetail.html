@@ -25,7 +25,7 @@
   </div>
   <a class="col-md-2 mr-2" href="{% url 'profile' object.author %}">
     <img
-      class="rounded-circle article-img ml-3 mt-2"
+      class="rounded-circle article-img ml-3 m-2"
       src="{{ object.author.profile.image.url }}"
       style="height: 40px; width: 40px;"
       />
@@ -35,10 +35,10 @@
   <small class="text-muted ml-3 mr-3"> on {{ object.date_posted }}</small>
   {% if object.author == user %}
     <!-- Number of likes shown in a button form // this does not trigger anything as the author cannot like its own post -->
-    <button class="btn-sm btn-secondary fas fa-thumbs-up"><i class="text text-white text-sm ml-1">{{object.total_likes}}</i></button>
+    <button class="btn-sm btn-secondary fas fa-thumbs-up"><i class="text text-white text-sm ml-1" title="Can't like your own post. ;)" style="float: right">{{object.total_likes}}</i></button>
   {% else %}
     <!-- Like button -->
-    <form action="{% url 'like_post' object.pk %}" method="POST">
+    <form action="{% url 'like_post' object.pk %}" method="POST" style="float: right">
       {% csrf_token %}
       {% if post.liked %}
         <button type="submit" name="post_id" value="{{object.id}}" class="btn-sm btn-secondary fas fa-thumbs-up">
@@ -53,37 +53,30 @@
   {% endif %}
 </div>
 
+<!-- 1st column for post body -->
 <div class="row">
-<div class="col-md-8">
-  <div class="container" style="min-height:100vh;">
-    <article class="media content-section">
-      <div class="media-body">
-        <div class="article-content text-dark text-justify" style="padding: 2em; background: #fff;">{{ object.content|safe }}</div>
-      </div>
-    </article>
-    <!-- place an if-block here if the post was modified -->
-    <div class="dropdown-divider">
-      <div>
-        <small class="text-muted ml-2"
-          ><i>modified: {{ object.date_modified }}</i></small
-        >
-      </div>
-    </div>
-</div>
+<div class="card col-md-8 p-1">
+    <div class="article-content text-dark text-justify" style="padding: 2em; background: #fff;">{{ object.content|safe }}</div>
+    {% if object.date_modified %}
+      <small class="text-muted text-sm ml-auto"
+        ><i>last modified: {{ object.date_modified }}</i>
+      </small>
+    {% endif %}
+
 </div>
 
-<div class="col-md-4">
-  <h5>Comments ({{ post.comments.count }}) </h5> 
+<!-- 2nd column for comments -->
+<div class="card col p-1">
+  <div class="card-title">
+    <h6><i>Comments ({{ post.comments.count }})</i></h6>
+  </div> 
     {% for comment in post.comments.all %}
     <blockquote class="blockquote bg-dark">
-      
- 
         <p class="mb-0">{{ comment.content|linebreaks }}</p>
         <small class="text-muted">{{comment.timestamp}}
         by: <cite title="Source Title">{{ comment.user }}
         </cite>
         </small>
-
     </blockquote>
     {% endfor %}
    

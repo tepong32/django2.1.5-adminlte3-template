@@ -70,3 +70,7 @@ class PostComment(models.Model):
 
 	# def get_absolute_url(self):
 	# 	return reverse('post-detail', kwargs={'pk': self.pk})
+
+class ForumReminder(models.Model):
+	title = models.CharField(max_length=255)
+	body = models.TextField()

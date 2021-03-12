@@ -24,7 +24,7 @@ class ForumIndexView(ListView):
     template_name = 'forum/home.html'
     queryset = Post.objects.all()
     ordering = ['-date_posted']			# filter for newest post first
-    paginate_by = 20					# number of posts to show per page
+    paginate_by = 2					# number of posts to show per page
 
     def get_context_data(self, **kwargs):
         context = super(ForumIndexView, self).get_context_data(**kwargs)
