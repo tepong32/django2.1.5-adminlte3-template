@@ -2,15 +2,47 @@
 <div class="container row" >
 	<div class="card col-md-7 elevation-5" style="height:500px; display:flex;">
 		<h1>Announcements:</h1>
-		<div class="card-body border border-warning m-1">
-			-Featured items by the owner <br>
-			-Announcements <br>
-			-Link to guides
-		</div>
+			<div class="overflow-auto"style="padding: 0.3rem">
+	        {% for a in announcements %}
+	            <div class="border border-dark overflow-auto" style="padding: 10px; margin: 10px">
+	                <strong>{{ a.title }}</strong><br />
+	                {{ a.content|safe }} <br/>
+	                by <b>{{a.author}}</b> | <small>{{a.date_posted}}</small><br/>
+	            </div>
+	        {% endfor %}
+			</div>
 	</div>
+
+
+
 	<div class="card col ml-2" style="min-height: 300px">
 	    <embed src="{#% url 'login' %#}" class="col"></embed>
-	    
+	    <!-- THESE MESSAGES ARE NOT SHOWING-UP -->
+	    {% if messages %}
+	      {% for message in messages %}
+	        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+	      {% endfor %}
+	    {% endif %}
+	    	<div>
+				<h6>Check out our newest members!</h6>
+				<small>
+					<i class="text text-sm" style="font-weight: 10; color: red">(We now have: {{ usercount }} members!)</i><br>
+				</small>
+			{% for u in users %}
+			<div class="row">
+				<div class="col-4">
+					<a href="{% url 'profile' u.username %}">{{u.username}}</a>
+				</div>
+				<div class="col">
+					<small class="text text-muted" style="font-family: 'Arial-Black'; font-size: 10px">registered: {{ user.date_joined|date:"F d, Y" }}</i></small>
+					<br>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+
+
+
 	    <div class="card-footer">
 	      <a href="#">See all items</a>
 	    </div>
@@ -25,11 +57,40 @@
     	</div>
     </div>
     <div class="card col ml-2 elevation-5" style="min-height:300px;display:flex;">
-    	<h3>Customer's Testimonials:</h3>
-	    <div>
-	    	(an auto-sliding customer testimonial page, fb-login preferred)
-	    </div>
-    	<!-- /.card-footer-->
+    	<!-- CAROUSEL -->
+	      <div class="card" style="min-height: 30vh">
+	        <div class="card-header">
+	          <h3 class="card-title"><strong>Quotes</strong></h3> <small class="ml-3">(Just spacers. Duh.)</small>
+	        </div>
+	        <!-- /.card-header -->
+	        <div class="card-body bg-dark">
+	          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+	            <div class="carousel-inner" style="height: 150px">
+	              <div class="carousel-item active">
+	                <img class="d-block w-100" src="https://placehold.it/650x300/000000/ffffff&text=Fall+seven+times;+Stand+up+eight." alt="First slide">
+	              </div>
+
+
+	              <!-- testing if this will work on carousel -->
+	              {% for quote in quotes%}
+	              <div class="carousel-item p-5" style="align-items: center">
+	                <h6>{{quote.title}}</h6>
+	                <small style="float: right">--- {{quote.by}}</small>
+	              </div>
+	              {% endfor %}
+	            </div>
+	            <a class="carousel-control-prev mt-5" href="#carouselExampleIndicators" role="button" data-slide="prev">
+	              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	              <span class="sr-only">Previous</span>
+	            </a>
+	            <a class="carousel-control-next mt-5" href="#carouselExampleIndicators" role="button" data-slide="next">
+	              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	              <span class="sr-only">Next</span>
+	            </a>
+	          </div>
+	        </div>
+	      </div>
+	      <!-- /CAROUSEL -->
     </div>
 	
 </div>

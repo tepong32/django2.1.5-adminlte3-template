@@ -74,34 +74,41 @@
         <div class="media-body">
             <div class="col" style="font-size: 12px">
               <a class="ml-3 mr-5" href="{% url 'profile' post.author %}" style="font-family: 'Roboto';">
-                <b>{{ post.author }}</b></a>
+                {% if post.author.profile.display_name %}
+                  {{post.author.profile.display_name}}
+                {% else %}
+                  {{ post.author }}
+                {% endif %}
+              </a>
                 <small class="text-muted ml-2">
                 on {{ post.date_posted|date:"F d, Y" }}</small>
               <span class="ml-5" style="font-size: 10px">
                 {% if post.author == user %}
-                <a class="fa fa-edit text-sm ml-2 mr-2" style="color: green" href="{% url 'post-update' post.id %}"></a>
-                <a class="fa fa-trash text-sm ml-2 mr-2" href="{% url 'post-delete' post.id %}" style="color: red"></a>
-                <a class="btn btn-outline-info btn-sm ml-2 mr-2" href="{% url 'user-posts' post.author %}" style="font-size: 10px">
-                  All your posts
-                </a>
-                <!-- this does not trigger anything as the author cannot like its own post -->
-                <i class="text-primary text-sm fas fa-thumbs-up ml-1"> {{post.total_likes}}</i>             
+                <div style="float:right">
+                  <a class="fa fa-edit text-sm ml-2 mr-2" style="color: green" href="{% url 'post-update' post.id %}"></a>
+                  <a class="fa fa-trash text-sm ml-2 mr-2" href="{% url 'post-delete' post.id %}" style="color: red"></a>
+                  <a class="btn btn-outline-info btn-sm ml-2 mr-2" href="{% url 'user-posts' post.author %}" style="font-size: 10px">
+                    All your posts
+                  </a>
+                  <!-- this does not trigger anything as the author cannot like its own post -->
+                  <i class="text-primary text-sm far fa-thumbs-up ml-1"> {{post.total_likes}}</i>
+                </div>             
                 {% else %}
-                <a class="btn btn-outline-info btn-sm" href="{% url 'user-posts' post.author %}" style="font-size: 10px">
-                  All posts by {{ post.author }}
-                </a>
-                
-                <i class="text-primary text-sm fas fa-thumbs-up ml-1"> {{post.total_likes}}</i>
+                <div style="float:right">
+                  <a class="btn btn-outline-info btn-sm" href="{% url 'user-posts' post.author %}" style="font-size: 10px">
+                    All posts by {{ post.author }}
+                  </a>
+                  
+                  <i class="text-primary text-sm far fa-thumbs-up ml-1"> {{post.total_likes}}</i>
+                </div>
                 {% endif %}
               </span>             
             </div>
           <div class="row">
-            <h6 class="col-md-6">
+            <h6>
               <a class="article-title col-4 ml-3 text-teal" href=" {% url 'post-detail' post.id %}">
-                {{ post.title|truncatechars:100 }}</a
-              >
+                {{ post.title|truncatechars:100 }}</a>
             </h6>
-              <small class="col-2 fas fa-tag ml-5"> {{post.tag}}</small>
           </div>
         </div>
       </article>

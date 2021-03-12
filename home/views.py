@@ -1,5 +1,5 @@
 from django.shortcuts import render
-# from .models import Announcement, Quote
+from .models import Announcement, Quote
 # from todo.models import ToDoList
 # from forum.models import Post
 from django.contrib.auth.models import User
@@ -35,14 +35,15 @@ from django.contrib.auth.decorators import login_required
 def home(request):
 	user = User
 	user_list = User.objects.all()
-	# announcements = Announcement.objects.all().order_by("-date_posted")
+	announcements = Announcement.objects.all().order_by("-date_posted")
 	#paginator = Paginator(user_list, 10) # not yet implemented
 	context = {
 		# 'todos': ToDoList.objects.filter(author=request.user).order_by("finish_by"),
 		# 'posts': Post.objects.all().order_by("-date_posted"),
 		'users': user_list,
-		# 'announcements': announcements,
-		# 'quotes': Quote.objects.all()
+		'announcements': announcements,
+		'quotes': Quote.objects.all(),
+		"usercount": user.objects.count(),
 	}
 	# template_folder/html_file
 	return render(request, 'home/index.html', context)

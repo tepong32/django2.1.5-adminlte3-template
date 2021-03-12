@@ -95,7 +95,7 @@ def user_search_view(request, *args, **kwargs):
 	if request.method == "GET":
 		search_query = request.GET.get("q")
 		if len(search_query) > 0:
-			search_results = User.objects.filter(email__icontains=search_query).filter(username__icontains=search_query).distinct()
+			search_results = User.objects.filter(username__icontains=search_query).filter(email__icontains=search_query).distinct()
 			user = request.user
 			accounts = [] # [(account1, True), (account2, False), ...]
 			for account in search_results:
