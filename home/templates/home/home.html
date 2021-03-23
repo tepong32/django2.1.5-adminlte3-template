@@ -16,15 +16,14 @@
 
 
 	<div class="card col ml-2" style="min-height: 300px">
-	    <embed src="{#% url 'login' %#}" class="col"></embed>
 	    <!-- THESE MESSAGES ARE NOT SHOWING-UP -->
 	    {% if messages %}
 	      {% for message in messages %}
 	        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
 	      {% endfor %}
 	    {% endif %}
-	    	<div>
-				<h6>Check out our newest members!</h6>
+	    	<div class="text-center">
+				<h5>Check out our newest members!</h5>
 				<small>
 					<i class="text text-sm" style="font-weight: 10; color: red">(We now have: {{ usercount }} members!)</i><br>
 				</small>
@@ -58,23 +57,33 @@
     </div>
     <div class="card col ml-2 elevation-5" style="min-height:300px;display:flex;">
     	<!-- CAROUSEL -->
-	      <div class="card" style="min-height: 30vh">
+	      <div style="height: 100%">
 	        <div class="card-header">
 	          <h3 class="card-title"><strong>Quotes</strong></h3> <small class="ml-3">(Just spacers. Duh.)</small>
 	        </div>
 	        <!-- /.card-header -->
-	        <div class="card-body bg-dark">
+	        <div class="card-body bg-dark" >
+	        	<style type="text/css">
+	        		@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+	        		.carouselQuotes{
+	        			font-family: 'Shadows Into Light', cursive;
+	        		}
+	        	</style>
 	          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-	            <div class="carousel-inner" style="height: 150px">
-	              <div class="carousel-item active">
-	                <img class="d-block w-100" src="https://placehold.it/650x300/000000/ffffff&text=Fall+seven+times;+Stand+up+eight." alt="First slide">
+	            <div class="carousel-inner" style="height: 100%">
+	              <!-- Default/First item on the Quotes carousel // hard-coded quote -->
+	              <div class="carousel-item active p-5 text-center" style="align-items: center">
+	                <div class="card-footer carouselQuotes">
+	                	Fall seven times; Stand-up eight.
+	                </div>
 	              </div>
 
-
-	              <!-- testing if this will work on carousel -->
+	              <!-- actual Quotes created using the admin page -->
 	              {% for quote in quotes%}
-	              <div class="carousel-item p-5" style="align-items: center">
-	                <h6>{{quote.title}}</h6>
+	              <div class="carousel-item p-5 text-center" style="align-items: center">
+	                <div class="card-footer carouselQuotes">
+	                	<h6>{{quote.title}}</h6>
+	                </div>
 	                <small style="float: right">--- {{quote.by}}</small>
 	              </div>
 	              {% endfor %}

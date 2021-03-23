@@ -14,7 +14,7 @@ from ckeditor.fields import RichTextField
 
 	Full tutorial here: https://codingwithmitch.com/courses/real-time-chat-messenger/demo/
 
-	P.S.: I get a couple of ideas on how to implement certain logic there. I just did not implement JSs because I don't understand it well at the time of writing this code.
+	P.S.: I get a couple of ideas on how to implement certain logic there. I just did not implement Javascripts because I don't understand it well at the time of writing this code.
 '''
 
 class Profile(models.Model):
@@ -39,7 +39,7 @@ class Profile(models.Model):
 
 	# Other information that can be displayed on a user profile page:
 	quote = models.CharField(blank=True, max_length=300, verbose_name="Quote you live by: ", help_text="'Pampa-Angas'")
-	about_me = models.TextField(blank=True, default="...Default About Me text created by the dev... :D", help_text="Tell us something about you.")
+	about_me = models.TextField(blank=True, default="...Default About Me text", help_text="Tell us something about you.")
 	
 	def dp_directory_path(instance, filename):
 		# file will be uploaded to MEDIA_ROOT/DP/<username>/<filename> ---check settings.py. MEDIA_ROOT=media for the exact folder/location

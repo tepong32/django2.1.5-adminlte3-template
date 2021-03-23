@@ -18,12 +18,9 @@
                        src="{{user.profile.image.url}}"
                        alt="User profile picture" style="width: 150px; height: 150px">
                 </div>
-                {% if user.profile.display_name %}
-                  <h2 class="profile-username text-center">{{user.profile.display_name}}
-                {% else %}
-                  <h2 class="profile-username text-center">{{user.username}}
-                {% endif %}
                 
+                <h2 class="profile-username text-center">{{user.username}}
+
                 {% if user.username == request.user.username %}
                   <small>
                     <a title="Edit profile" class="fa fa-edit text-success" href="{% url 'profile-edit' user.username %}"></a>

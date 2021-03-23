@@ -2,10 +2,16 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<style type="text/css">
+  @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+  .postTitle{
+    font-family: 'Shadows Into Light', cursive;
+  }
+</style>
 
-<div class="article-metadata container" style="padding-top: 5em">
+<div class="container" style="padding-top: 5em">
   <div class="row">
-    <h1 class="article-title text-center mr-auto">{{ object.title }}</h1>
+    <h1 class="postTitle text-center mr-auto">{{ object.title }}</h1>
     <div>
       {% if object.author == user %}
         <a class="btn btn-outline-primary btn-sm mr-1 fa fa-arrow-circle-left" href="{% url 'forum-home' %}" title="Back to Forum">
