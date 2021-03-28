@@ -19,7 +19,7 @@
 
  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" aria-label="Main Navbar">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">SiteLogo</a>
+    <a class="navbar-brand headerFontLink" href="#">SiteLogo</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -71,10 +71,10 @@
               <div class="btn-group ">
                 <img title="{{request.user.username}}" class="account-image rounded-circle m-auto d-block dropdown-toggle" id="id_profile_links" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{{request.user.profile.image.url}}" alt="profilePic" width="40" height="40">
                 <div class="dropdown-menu" aria-labelledby="id_profile_links">
-                  <a class="dropdown-item" href="{% url 'profile' request.user.username %}">Profile</a>
-                  <a class="dropdown-item" href="{% url 'password-change' %}">Change password</a>
+                  <a class="dropdown-item headerFontLink" href="{% url 'profile' request.user.username %}">Profile</a>
+                  <a class="dropdown-item headerFontLink" href="{% url 'password-change' %}">Change password</a>
                   <hr class="dropdown-divider">
-                  <a class="dropdown-item" href="/logout">Logout</a>
+                  <a class="dropdown-item headerFontLink" href="/logout">Logout</a>
                 </div>
               </div>
             </div>

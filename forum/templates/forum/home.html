@@ -22,49 +22,31 @@
       </small>
     </div>
 
-    <!-- Collapsible Accordion-style Forum Reminders -->
-      <div class="col-md-8">
-        <div class="box box-solid">
-          <!-- /.box-header -->
-          <div class="box-body">
-            <div class="box-group" id="accordion">
-              <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-              <div class="card panel box box-primary m-2 p-3">
-                <div class="box-header with-border">
-                  <h4 class="box-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseReminders">
-                      <i class="fa fa-warning text-warning"></i> Posting reminders:
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapseReminders" class="panel-collapse collapse in text-justify text-sm">
-                  <div class="box-body text-sm">
-                    <strong class="text-danger">NO SHITPOSTING. </strong>
-                    <p>
-                      This site is not for such. This is supposed to be a forum-like site where you can share meaningful things, stories and ideas to other users. For now, it will be a blog site. You can use Facebook for your rants. Honestly.
-                    </p>
-                    
-                    <strong class="text-danger">BE KIND & RESPONSIBLE. </strong>
-                    <p>
-                      Shout out to people more knowledgeable on the internet than others! Please. Do not use your posts as ways to phish any information about anyone. <u class="text-danger">Do it somewhere else.</u> People here are good people only intending to move away from mainstream social media noises.
-                    </p>
-                    <p>
-                      To everyone, <b class="text-danger"><i>ALWAYS BE VIGILANT.</i></b> On the internet, trust no one. The reason I allowed you to just put dummy information or not put any information on your profiles at all is because I do not want you to be a victim of cyber crimes. Please be careful clicking on links.
-                    </p>
+      <a class="btn btn-primary headerFont" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Posting Reminders
+      </a>
+    <div class="collapse" id="collapseExample">
+      <div class="card-body text-sm">
+        <strong class="text-danger headerFont">NO SHITPOSTING. </strong>
+        <p>
+          This site is not for such. This is supposed to be a forum-like site where you can share meaningful things, stories and ideas to other users. For now, it will be a blog site. You can use Facebook for your rants. Honestly.
+        </p>
+        
+        <strong class="text-danger headerFont">BE KIND & RESPONSIBLE. </strong>
+        <p>
+          Shout out to people more knowledgeable on the internet than others! Please. Do not use your posts as ways to phish any information about anyone. <u class="text-danger">Do it somewhere else.</u> People here are good people only intending to move away from mainstream social media noises.
+        </p>
+        <p>
+          To everyone, <b class="text-danger headerFont"><i>ALWAYS BE VIGILANT.</i></b> On the internet, trust no one. The reason I allowed you to just put dummy information or not put any information on your profiles at all is because I do not want you to be a victim of cyber crimes. Please be careful clicking on links.
+        </p>
 
-                    <strong class="text-danger">BE DETAILED. </strong>
-                    <p>
-                      I mean...there's no more intimidating thing for readers to actually be hung-up with a good article/blog/story...unless there'll be a season 2. :D I am assuming you love writing and/or reading that's why you're here. I do <small><i>(I think so?)</i></small>. Tell us your stories and don't hang us up! ;)
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /.box-body -->
-      </div> 
-      <!-- /accordion -->
+        <strong class="text-danger headerFont">BE DETAILED. </strong>
+        <p>
+          I mean...there's no more intimidating thing for readers to actually be hung-up with a good article/blog/story...unless there'll be a season 2. :D I am assuming you love writing and/or reading that's why you're here. I do <small><i>(I think so?)</i></small>. Tell us your stories and don't hang us up! ;)
+        </p>
+      </div>
     </div>
+
 
   <div class="row p-2">
     <div class="col-md-7">
@@ -78,12 +60,8 @@
           style="height: 25px; width: 25px">
         <div class="media-body">
             <div class="col" style="font-size: 12px">
-              <a class="ml-3 mr-5" href="{% url 'profile' post.author %}" style="font-family: 'Roboto';">
-                {% if post.author.profile.display_name %}
-                  {{post.author.profile.display_name}}
-                {% else %}
+              <a class="ml-3 mr-5 headerFont" href="{% url 'profile' post.author %}">
                   {{ post.author }}
-                {% endif %}
               </a>
                 <small class="text-muted ml-2">
                 on {{ post.date_posted|date:"F d, Y" }}</small>

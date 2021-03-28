@@ -1,11 +1,11 @@
 {% load static %}
 <div class="container row" >
 	<div class="card col-md-7 elevation-5" style="height:500px; display:flex;">
-		<h2><i>Announcements:</i></h2>
+		<h2 class="headerFont"><i>Announcements:</i></h2>
 		<div class="overflow-auto">
         {% for a in announcements %}
             <div class="announcementBox border border-dark overflow-auto">
-                <h4 class="quoteText text-info">{{ a.title }}</h4>
+                <h4 class="headerFont text-info">{{ a.title }}</h4>
                 {{ a.content|safe }} <br/>
                 by <b>{{a.author}}</b> | <small>{{a.date_posted}}</small><br/>
             </div>
@@ -25,13 +25,13 @@
 			
 		</div>
 		<div class="card-body">
-	      <a href="/forum" title="Browse the Forums"> <h5 class="quoteText text-danger">Latest forum posts:</h5>
+	      <a href="/forum" title="Browse the Forums"> <h5 class="headerFontLink text-danger">Latest forum posts:</h5>
 	      <div class="row p-4">
 	      	{% for post in posts %}
 	      		<div class="col-8">
 	      			<strong><i>{{post.title|truncatechars:50}}</i></strong>
 	      		</div>
-	      		<div class="col quoteText">
+	      		<div class="col headerFontLink">
 	      			{{post.author}}
 	      		</div>
 	      	{% endfor %}
@@ -41,14 +41,14 @@
 
 		<!-- Newest members area -->
 		<div class="card-footer text-center">
-			<h5>Say hello to our newest members!</h5>
+			<h5 class="headerFont">Say hello to our newest members!</h5>
 			<small>
 				Nag-register sila para mag-share! YES! | 
 				<i>Current user count: {{ usercount }}</i><br>
 			</small>
 			{% for u in users %}
 			<div class="row">
-				<div class="col-4 quoteText">
+				<div class="col-4 headerFontLink">
 					<a href="{% url 'profile' u.username %}" title="check {{u.username}}'s profile">{{u.username}}</a>
 				</div>
 				<div class="col">
@@ -60,7 +60,7 @@
 		</div>
     </div>
     <div class="card col-md-5 bg-dark">
-    	<div class="card-title quoteText">
+    	<div class="card-title headerFont">
     		Featured Documentary
     	</div>
     	<div class="card-body">
@@ -71,7 +71,7 @@
     	<!-- CAROUSEL -->
 		<div class="border-top" style="height: 100%">
 			<div class="card-header p-3" style="border:none">
-			  <h4 class="quoteText"><strong>Quotes...because why not?</strong></h4>
+			  <h4 class="headerFont"><strong>Quotes...because why not?</strong></h4>
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body"  >
@@ -80,7 +80,7 @@
 			    <div class="carousel-inner" style="height: 100%">
 			      <!-- Default/First item on the Quotes carousel // hard-coded quote -->
 			      <div class="carousel-item active p-5 text-center" style="align-items: center">
-			        <div class="card-footer quoteText">
+			        <div class="card-footer headerFont">
 			        	Fall seven times; Stand-up eight.
 			        </div>
 			      </div>
@@ -88,7 +88,7 @@
 			      <!-- actual Quotes created using the admin page -->
 			      {% for quote in quotes%}
 			      <div class="carousel-item p-5 text-center" style="align-items: center">
-			        <div class="card-footer quoteText">
+			        <div class="card-footer headerFont">
 			        	<h6>{{quote.title}}</h6>
 			        </div>
 			        <small style="float: right">--- {{quote.by}}</small>

@@ -126,7 +126,7 @@ from .forms import PostCommentModelForm
 from bootstrap_modal_forms.generic import BSModalCreateView
 
 class PostCommentCreateView(BSModalCreateView):
-	model = PostComment
+	# model = PostComment
 	template_name = 'forum/comment_form.html'
 	form_class = PostCommentModelForm
 	success_message = "Comment added"
