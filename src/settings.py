@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # third-party apps
     'adminlte3',
     'adminlte3_theme',
+    'bootstrap_modal_forms',    # for forum topic and comment posting
     'crispy_forms',             # for better form-display formatting
     'ckeditor',
     'ckeditor_uploader',

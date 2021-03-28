@@ -1,13 +1,12 @@
 {% extends 'home/index.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
-<style type="text/css">
-  @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
-  .postTitle{
-    font-family: 'Shadows Into Light', cursive;
-  }
-</style>
+<!-- Bootstrap Modal Forms -->
+<script src="{% static 'assets/js/bootstrap.js' %}"></script>
+<script src="{% static 'assets/js/jquery.js' %}"></script>
+<script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
 
 <div class="container" style="padding-top: 5em">
   <div class="row">
@@ -86,34 +85,35 @@
     </blockquote>
     {% endfor %}
    
-
-      <button type="button" href="{% url 'add-comment' object.id %}" class="btn btn-default btn-sm ml-4 mr-4" data-toggle="modal" data-target="#comment_modal">
-        <h6>Add a comment modal</h6>
+      <!-- Button trigger modal -->
+      <button id="add-comment-btn"type="button" class="btn btn-primary" data-toggle="modal" data-target="#commentModal">
+        Add comment
       </button>
-      <a href="{% url 'add-comment' object.id %}">Add comment self page</a>
-      <div class="modal fade" id="comment_modal">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3>Add a comment</h3>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <!-- Widget: Comment Form Modal -->
-          <div class="card card-widget widget-user">
-            <!-- Add the bg color to the header using any of the bg-* classes -->
-            <div class="container">
-              <iframe src="{% url 'add-comment' object.id %}" style='width:100%; height:300;'></iframe>
-            </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+
           </div>
         </div>
-        <!-- /.modal-content -->
       </div>
-      <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
+
+
+      <a href="{% url 'add-comment' object.pk %}">Add comment self page</a>
 </div>
 </div>
 
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+    $("#add-comment-btn").modalForm({
+        formURL: "{% url 'add-comment' object.id %}";
+        modalID: "#commentModal"
+    });
+
+});
+</script>
 {% endblock content %}
+

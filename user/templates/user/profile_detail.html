@@ -13,6 +13,11 @@
             <!-- Profile Image -->
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
+                {% if messages %}
+                  {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                  {% endfor %}
+                {% endif %}
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle elevation-5"
                        src="{{user.profile.image.url}}"

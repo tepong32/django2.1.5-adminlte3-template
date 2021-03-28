@@ -13,14 +13,15 @@ from .views import (
     PostDeleteView,
     ForumIndexView,
     LikeView,
-    CommentCreateView
+    CommentCreateView,
+    PostCommentCreateView,
     )
 
 
 urlpatterns = [
     path('', ForumIndexView.as_view(), name="forum-home"),             # home for blog app
     path('post/new/', PostCreateView.as_view(), name='post-new'),
-    path('post/detail/<int:pk>/add-comment/', CommentCreateView.as_view(), name='add-comment'),
+    path('post/detail/<int:pk>/add-comment/', PostCommentCreateView.as_view(), name='add-comment'),
     # path('post/quick-create/', PostCreateViewModal.as_view(), name='quickpost'),
     path('post/detail/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
     path('post/detail/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),

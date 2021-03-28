@@ -60,7 +60,7 @@ class Post(models.Model):
 # not being used atm // not working
 class PostComment(models.Model):
 	post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	author = models.ForeignKey(User, on_delete=models.CASCADE)
 	content = models.TextField()
 	timestamp = models.DateTimeField(auto_now_add=True)
 	date_modified = models.DateTimeField(auto_now=True)

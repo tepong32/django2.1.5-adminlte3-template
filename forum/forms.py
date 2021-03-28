@@ -12,8 +12,7 @@ for item in categories:
 
 class PostForm(forms.ModelForm):
     title = forms.CharField(max_length=100)		# i think this can be removed since the same field is in the model?
-
-
+    
     class Meta:
     	model = Post
     	fields = ['title', 'tag', 'category', 'content',]
@@ -28,3 +27,11 @@ class PostCommentForm(forms.ModelForm):
 	class Meta:
 		model = PostComment
 		fields = ('content',)
+
+
+# modal comment 
+from bootstrap_modal_forms.forms import BSModalModelForm
+class PostCommentModelForm(BSModalModelForm):
+    class Meta:
+        model = PostComment
+        fields = ['content']

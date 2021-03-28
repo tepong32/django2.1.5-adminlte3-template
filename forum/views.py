@@ -24,7 +24,7 @@ class ForumIndexView(ListView):
     template_name = 'forum/home.html'
     queryset = Post.objects.all()
     ordering = ['-date_posted']			# filter for newest post first
-    paginate_by = 2					# number of posts to show per page
+    paginate_by = 15					# number of posts to show per page
 
     def get_context_data(self, **kwargs):
         context = super(ForumIndexView, self).get_context_data(**kwargs)
@@ -65,7 +65,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 	form_class = PostForm
 	template_name = 'forum/postcreateform.html'
 	success_message = "Successfully posted!"
-	#success_url = '/home/'		# using this takes the user to a specific page after posting
+	success_url = '/forum'		# using this takes the user to a specific page after posting
 
 	def form_valid(self, form):			# to automatically get the id of the current logged-in user as the author
 		form.instance.author = self.request.user 	# set the author to the current logged-in user
@@ -120,8 +120,26 @@ def LikeView(request, pk):
 	return HttpResponseRedirect(reverse('post-detail', args=[str(pk)]))
 
 
-class CommentCreateView(LoginRequiredMixin, CreateView):		
+
+from django.urls import reverse_lazy
+from .forms import PostCommentModelForm
+from bootstrap_modal_forms.generic import BSModalCreateView
+
+class PostCommentCreateView(BSModalCreateView):
 	model = PostComment
+	template_name = 'forum/comment_form.html'
+	form_class = PostCommentModelForm
+	success_message = "Comment added"
+	success_url = reverse_lazy('forum')
+
+
+
+
+
+
+# not being used ATM
+class CommentCreateView(LoginRequiredMixin, CreateView):		
+	model = Post
 	form_class = PostCommentForm
 	template_name = 'forum/comment_form.html'
 	success_message = "Comment added"

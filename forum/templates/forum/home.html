@@ -14,6 +14,11 @@
       <small>
       ({{ page_obj.paginator.count }} total posts) <br>
       (actually, what can I call this page?)
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
       </small>
     </div>
 
