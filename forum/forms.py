@@ -15,7 +15,7 @@ class PostForm(forms.ModelForm):
     
     class Meta:
     	model = Post
-    	fields = ['title', 'tag', 'category', 'header_image', 'content',]
+    	fields = ['title', 'tag', 'category', 'content',]
     	widgets = {
     		# 'tag'
     		'category' : forms.Select(choices=categories, attrs={'class': 'form-control'})
