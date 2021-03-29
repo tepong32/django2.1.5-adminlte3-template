@@ -15,8 +15,7 @@ class PostForm(forms.ModelForm):
     
     class Meta:
     	model = Post
-    	fields = ['title', 'tag', 'category', 'content',]
-    	# I removed header_image field ATM. Still thinking if it's worth including
+    	fields = ['title', 'tag', 'category', 'header_image', 'content',]
     	widgets = {
     		# 'tag'
     		'category' : forms.Select(choices=categories, attrs={'class': 'form-control'})

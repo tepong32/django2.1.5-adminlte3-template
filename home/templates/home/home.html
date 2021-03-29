@@ -76,13 +76,13 @@
 			  <h4 class="quoteText text-danger"><strong>Quotes...because why not?</strong></h4>
 			</div>
 			<!-- /.card-header -->
-			<div class="card-body"  >
+			<div class="card-body bg-black"  >
 				
 			  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 			    <div class="carousel-inner" style="height: 100%">
 			      <!-- Default/First item on the Quotes carousel // hard-coded quote -->
 			      <div class="carousel-item active p-5 text-center" style="align-items: center">
-			        <div class="card-footer quoteText">
+			        <div class="card-body quoteText">
 			        	Fall seven times; Stand-up eight.
 			        </div>
 			      </div>
@@ -90,7 +90,7 @@
 			      <!-- actual Quotes created using the admin page -->
 			      {% for quote in quotes%}
 			      <div class="carousel-item p-5 text-center" style="align-items: center">
-			        <div class="card-footer quoteText">
+			        <div class="card-body quoteText">
 			        	<h6>{{quote.title}}</h6>
 			        </div>
 			        <small style="float: right">--- {{quote.by}}</small>

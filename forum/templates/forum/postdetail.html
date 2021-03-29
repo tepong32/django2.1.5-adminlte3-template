@@ -10,8 +10,8 @@
 
 <div class="container" style="padding-top: 5em">
   <div class="row">
-    <h1 class="postTitle text-center mr-auto">{{ object.title }}</h1>
-    <div>
+    <h3 class="headerFontLink text-center mr-auto col-md-9">{{ object.title }}</h3>
+    <div class="col-md-3 bg-dark" style="float: right; border-radius: 20px">
       {% if object.author == user %}
         <a class="btn btn-outline-primary btn-sm mr-1 fa fa-arrow-circle-left" href="{% url 'forum-home' %}" title="Back to Forum">
         </a>
@@ -26,36 +26,40 @@
           {{ object.author }}'s posts
         </a>
       {% endif %}
+
+
+      <a class="col-md-2 mr-2" href="{% url 'profile' object.author %}">
+        <img
+          class="rounded-circle article-img ml-3 m-2"
+          src="{{ object.author.profile.image.url }}"
+          style="height: 40px; width: 40px;"
+          title="{{ object.author }}"
+          />
+        
+      </a>
+      <!--post.date_posted|date:"F, d, Y" == format without timestamp. -->
+      
+      {% if object.author == user %}
+        <!-- Number of likes shown in a button form // this does not trigger anything as the author cannot like its own post -->
+        <button class="btn-sm btn-info fas fa-thumbs-up m-2"><i class="text text-white text-sm ml-1" title="Can't like your own post. ;)" style="float: right">{{object.total_likes}}</i></button>
+      {% else %}
+        <!-- Like button -->
+        <form action="{% url 'like_post' object.pk %}" method="POST" style="float: right">
+          {% csrf_token %}
+          {% if post.liked %}
+            <button type="submit" name="post_id" value="{{object.id}}" class="btn-sm btn-secondary fas fa-thumbs-up m-2">
+              <i class="text text-white text-sm ml-1">{{object.total_likes}}</i>
+            </button> 
+          {% else %}
+            <button type="submit" name="post_id" value="{{object.id}}" class="btn-sm btn-primary fas fa-thumbs-up m-2">
+              <i class="text text-white text-sm ml-1">{{object.total_likes}}</i>
+            </button> 
+          {% endif %}
+        </form>
+      {% endif %}
     </div>
   </div>
-  <a class="col-md-2 mr-2" href="{% url 'profile' object.author %}">
-    <img
-      class="rounded-circle article-img ml-3 m-2"
-      src="{{ object.author.profile.image.url }}"
-      style="height: 40px; width: 40px;"
-      />
-    {{ object.author }}
-  </a>
-  <!--post.date_posted|date:"F, d, Y" == format without timestamp. -->
-  <small class="text-muted ml-3 mr-3"> on {{ object.date_posted }}</small>
-  {% if object.author == user %}
-    <!-- Number of likes shown in a button form // this does not trigger anything as the author cannot like its own post -->
-    <button class="btn-sm btn-secondary fas fa-thumbs-up"><i class="text text-white text-sm ml-1" title="Can't like your own post. ;)" style="float: right">{{object.total_likes}}</i></button>
-  {% else %}
-    <!-- Like button -->
-    <form action="{% url 'like_post' object.pk %}" method="POST" style="float: right">
-      {% csrf_token %}
-      {% if post.liked %}
-        <button type="submit" name="post_id" value="{{object.id}}" class="btn-sm btn-secondary fas fa-thumbs-up">
-          <i class="text text-white text-sm ml-1">{{object.total_likes}}</i>
-        </button> 
-      {% else %}
-      <button type="submit" name="post_id" value="{{object.id}}" class="btn-sm btn-primary fas fa-thumbs-up">
-        <i class="text text-white text-sm ml-1">{{object.total_likes}}</i>
-      </button> 
-      {% endif %}
-    </form>
-  {% endif %}
+  
 </div>
 
 <!-- 1st column for post body -->
