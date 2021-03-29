@@ -9,7 +9,7 @@
 </style>
 <div class="row">
   <!-- 1st col -->
-  <div class="card col-md-8 text-sm text-justify p-4 border elevation-3 bg-transparent">
+  <div class="container col-md-8 text-sm text-justify p-4 bg-transparent">
     <i>
       <p>In the light of the COVID-19 global pandemic outbreak in 2020 <i>(lockdown was in March here in the Philippines)</i>, I decided to try to create a website. <i>(I just tried.)</i> This was because I already had my eye on learning programming using Python a year or two prior and I already am quite knowledgeable of its basics <i>(I was trying to create my own Android app a few months before the pandemic broke out, too. I think I failed at it, tho.)</i> I just decided that since there will be quite a boring time spending days at home doing barely <b>"just anything"</b>: </p>
       <p>scrolling through facebook, watching <i>(pirated)</i> movies & anime series,  I'll try to be as productive as I can be. I also came across this quote saying:</p>
@@ -51,19 +51,23 @@
               <div id="collapseOne" class="collapse text-sm text-justify" data-parent="#accordion"> 
                 <div class="card-body">
                   <p>
-                    Perhaps the feature I really worked myself off for was this one. I literally spent days separating what a logged-in user versus an anonymous user can see (and do).
+                    Perhaps the feature I really worked myself off for was this one. I literally spent days separating what a logged-in user versus an anonymous user can see and do...previously. 
                   </p>
                   <p>
-                    <i>(Note + bragging rights: I was a business course student.)</i> <br>
-                    Based on the latest trends in marketing, every successful <i>(online)</i> business today started showing its target market their product's or service's <b><i>"a taste of what it's like".</i></b> </p>
-                    Proof? <br>
-                    <p>Please log-out of facebook or any other social media account you have and try to search for any account you know.<br>
-                    What did you notice? Your account's preview still shows up even if you're not logged-in, right? <br>
-                    Prior to this style of marketing, you'll need to <i>"be a part of the community"</i> first to view a member's profile. <br>
-                    You can also try browsing any item on any online selling platform you know of and you'll be asked to log in or create and account <b>only</b> when you're actually ordering something. </p>
+                    <i>(Note: this will feel liek a blog post. :D )</i> <br>
+                    Based on the latest trends in marketing, every successful <i>(online)</i> business today started showing its target market their product's or service's <b><i>"a taste of what it's like".</i></b> 
+                    Proof? Free 7-day or 30-day trials.<br>
+                  </p>
+                  <p>Please log-out of facebook or any other social media account you have and try to search for any account you know of.<br>
+                    What did you notice? The account's preview still shows up even if you're not logged-in, right? <br>
+                    Maybe try searching for an item from an online shopping website on an incognito tab?
+                  </p>
+                  <p>
+                    Prior to this concept, you'll need to <i>"be a part of the community"</i> first to view a site's pages. <small><i>This tells you how old I am, I guess?</i></small><br>
+                    You can also try browsing any item on any online selling platform you know of and you'll be asked to log in or create and account <b>only</b> when you're actually ordering something.
+                  </p>
                     The marketing game's now changed... <br>
                     And I adapted it here. Custom-coded.<br>
-
                   </p>
                 </div>
               </div>
@@ -79,7 +83,7 @@
               <div id="collapseTwo" class="collapse" data-parent="#accordion">
                 <div class="card-body">
                   <p>
-                    Since I originally intended this site to be a forum, user accounts created are intended to have to display "distinct user info" (I will not call it <b>"personal info"</b> since they can all be dummy information just for users to have something to display). It'll be up to the users to add personal information should they determine that it will help people reach-out to them when needed. 
+                    Since I originally intended this site to be a forum, user accounts created are intended to have to display "distinct user info" <small>(I will not call it <b>"personal info"</b> since they can all be dummy information just for users to have something to display)</small>. It'll be up to the users to add personal information should they determine that it will help people reach-out to them when needed. 
                   </p>
                 </div>
               </div>
@@ -95,9 +99,9 @@
               <div id="collapseThree" class="collapse" data-parent="#accordion">
                 <div class="card-body">
                   <p>
-                    Another reason I stick to the Django framework was because of its built-in security features. <br> <br>
-                    <i>(Disclaimer: No ill intent included.)</i> <br>
-                    Unlike the usual language/framework that can be used to create static websites, since this site features allowing users other than the admin to be writers/bloggers, as well, we need a better way of protecting unsuspecting victims of online frauds using html/SQL injections. I am convinced that Django's security features are what we need to minimize the risks. Going a little technical mentioning it here, you can <a class="text-danger" href="https://docs.djangoproject.com/en/3.1/ref/csrf/" target="_blank">check this out</a> for more information. The first paragraph will give you a summary of what you need to know.
+                    Another reason I stick to the Django framework was because I was convinced of its built-in security features. <br>
+                    <br>
+                    Since this site features allowing users other than the admin to be writers/bloggers, as well, we need a better way of protecting unsuspecting victims of online frauds using HTML/SQL injections. I am convinced that Django's security features are what we need to minimize the risks. Going a little technical mentioning it here, you can <a class="text-danger" href="https://docs.djangoproject.com/en/3.1/ref/csrf/" target="_blank">check this out</a> for more information. The first paragraph will give you a summary of what you need to know.
                   </p>
                 </div>
               </div>
@@ -133,7 +137,7 @@
               <div id="collapseFive" class="collapse" data-parent="#accordion">
                 <div class="card-body">
                   <p>
-                    As mentioned, this site is already like most websites today. With that being said, should there be a number of (anonymous) users already, people will think that maybe they should only see updates on their homepages / newsfeed from people they know or have a connection to. 
+                    Should there be a considerable number of users already, people will think that maybe they should only see updates on their homepages / newsfeed from people they know of or have a connection to. 
                   </p>
                   <p>
                     That is what's next in line.
@@ -163,14 +167,14 @@
               <div class="card-header">
                 <h4 class="card-title w-100">
                   <a class="d-block w-100" data-toggle="collapse" href="#collapseSeven">
-                    Login using other SocMed accounts
+                    Login using Facebook
                   </a>
                 </h4>
               </div>
               <div id="collapseSeven" class="collapse" data-parent="#accordion">
                 <div class="card-body">
                   <p>
-                    I'm having doubts about this feature. I do not want bad actors to be able to phish any information of users here so, as long as you know your login credentials, dummy email addresses and profile information will do. Still, for quick user-registration, it may be implemented. It'll just be the user's discretion what type of login to use.
+                    I'm having doubts about this feature. I do not want bad actors to be able to phish any more information of users than what is already available so, as long as you know your login credentials, dummy email addresses and profile information will do. Still, for quick user-registration, it <b>MAY</b> be implemented. It'll just be the user's discretion what type of login to use.
                   </p>
                 </div>
               </div>
@@ -198,13 +202,35 @@
 
 
   <!-- 2nd col -->
-  <div class="card col text-sm text-justify p-4 border elevation-3 ml-2">
+  <div class="card col text-sm text-justify p-2 border elevation-3 ml-2 mt-3" style="max-height: 1000px">
+
+    <!-- Dev Profile + Cover -->
+    <div class="card card-widget widget-user" >
+      <div>
+          <video autoplay="" muted="" loop="" style="object-fit: cover;position: absolute;width: 100%; height: 100%">
+            <source src="/media/defaults/smile.mp4" type="video/mp4">
+          </video>
+          <br>
+        <h1 class="widget-user-username text-right text-white" style="position: absolute; left: 60%">Teppy</h1>
+        <br>
+        <br>
+        <h6 class="widget-user-desc text-right text-white" style="position: absolute; left: 50%">Website Creator</h6>
+      </div>
+      <div class="widget-user-image">
+        <img class="img-circle" src="/media/defaults/round.png" alt="User Avatar">
+      </div>
+      <div class="card-footer headerFontLink text-danger">
+      </div>
+    </div>
+
+    <!-- Credits -->
     <div class="card-title quoteText text-danger">
       <h3>Credits</h3>
     </div>
-    <div>
-      <p>Many, many thanks to all my online mentors from <b>YouTube</b> <small><i>( links are in no particular order)</i></small> for the knowledge they shared
-        which enabled me to create this <b>fascinating</b> <small><i>(lemme have this!)</i></small> website.
+    <div class="p-2">
+      <p>Many, many thanks to all my online mentors from <b>YouTube</b> for the knowledge they shared
+        which enabled me to create this <b>fascinating</b> <small><i>(lemme have this!)</i></small> website. <br>
+        <small><i>(Links are in no particular order...or actually: alphabetical! Get the joke, 'kay?')</i></small>
       </p>
       <ul class="text-center" style="list-style: none;">
         <li>
@@ -232,13 +258,13 @@
           <a class="headerFontLink text-success" href="https://www.youtube.com/channel/UC4JX40jDee_tINbkjycV4Sg" target="_blank">TechWithTim</a>
         </li>
       </ul>
-      <p>...to all others <i>(2Many2Mention)</i> whom I owe the ideas collaborated here, <br>
+      <p>...to all others <small><i>(2Many2Mention)</i></small> whom I owe the ideas collaborated here, <br>
         ...as well as to those video creators I watched who shared knowledge of how to use the different tools and platforms I needed to bring this project online. <br>
         <br>
         <i>Special mention: <b>StackOverflow</b> guys and gals!</i>
       </p>
 
-      <p class="text-danger">I OWE YOU ALL BIGTIME!
+      <p class="text-danger text-bold">I OWE YOU ALL BIGTIME!
         <span class="fa fa-heart text-red"></span>
       </p>
       <p class="quoteText bg-black p-2 text-sm">"It's never too late to start. Your first blog will suck. Your first video will suck...but you won't get to your 50th without doing your first. So start."</p>
@@ -246,13 +272,15 @@
       well. 
       </p>
       <p>
-        <small>
+        <small class="text-danger">
           <i>
             <b>P.S. All those linked Youtube channels above are fun and enjoyable to watch.</b>
           </i>
         </small>
       </p>
     </div>
-  </div>
-</div>
+
+
+  </div> <!-- 2nd col -->
+</div> <!-- outermost row -->
 {% endblock %}
