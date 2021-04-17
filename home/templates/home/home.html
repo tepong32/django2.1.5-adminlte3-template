@@ -1,6 +1,6 @@
 {% load static %}
 <div class="container row" >
-	<div class="card col-md-7 elevation-5" style="height:500px; display:flex;">
+	<div class="card col-md-8 elevation-5" style="height:500px; display:flex;">
 		<h2 class="headerFontLink mt-1"><i>Announcements:</i></h2>
 		<div class="overflow-auto">
         {% for a in announcements %}
@@ -29,7 +29,7 @@
 	      <div class="row p-4 text-dark headerFontLink">
 	      	{% for post in posts %}
 	      		<div class="col-8">
-	      			<strong><i>{{post.title|truncatechars:50}}</i></strong>
+	      			<strong><i>{{post.title|truncatechars:20}}</i></strong>
 	      		</div>
 	      		<div class="col">
 	      			{{post.author}}
