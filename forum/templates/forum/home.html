@@ -10,10 +10,10 @@
 
   <div class="row">
     <div class="col-8 p-3" style="background-color: white">
-      <h5>What's new: </h5>
+      <h5>All posts </h5>
       <small>
       ({{ page_obj.paginator.count }} total posts) <br>
-      (actually, what can I call this page?)
+      Click on the specific category post to filter.
       {% if messages %}
         {% for message in messages %}
           <div class="alert alert-{{ message.tags }}">{{ message }}</div>
@@ -67,7 +67,7 @@
                   {{ post.author }}
               </a>
                 <small class="text-muted ml-2">
-                on {{ post.date_posted|date:"F d, Y" }}</small>
+                on {{ post.date_posted|date:"F d, Y" }} | <a href="{% url 'category' post.category %}">{{post.category}}</a> </small>
               <span class="ml-5">
                 {% if post.author == user %}
                 <div style="float:right; font-size: 10px">

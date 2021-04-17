@@ -12,6 +12,7 @@ from .views import (
     PostUpdateView,
     PostDeleteView,
     ForumIndexView,
+    CategoryView,   # this is a function-based view
     CategoryCreateView,
     LikeView,
     CommentCreateView,
@@ -30,6 +31,7 @@ urlpatterns = [
     # filters applied to posts
     path('posts/<str:username>/', UserPostFilter.as_view(), name='user-posts'),
     path('post/add-category/', CategoryCreateView.as_view(), name='add-category'),
+    path('post/category/<str:cats>/', CategoryView, name='category'),
     path('post/detail/<int:pk>/like/', LikeView, name='like_post'),
     ]
 

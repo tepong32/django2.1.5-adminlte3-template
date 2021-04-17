@@ -10,7 +10,7 @@
 
 <div class="container" style="padding-top: 3em">
   <div class="row">
-    <h3 class="headerFontLink text-center mr-auto col-md-9">{{ object.title }}</h3>
+    <h3 class="headerFontLink text-center mr-auto col-md-9">{{ object.title }}| <small><a href="{% url 'category' object.category %}">{{object.category}}</a></small></h3> 
     <div class="col-md-3 bg-dark" style="float: right; border-radius: 20px">
       {% if object.author == user %}
         <a class="btn mr-1 btn-sm fa fa-arrow-circle-left" href="{% url 'forum-home' %}" title="Back to Forum">
@@ -47,12 +47,12 @@
         <form action="{% url 'like_post' object.pk %}" method="POST" style="float: right">
           {% csrf_token %}
           {% if post.liked %}
-            <button type="submit" name="post_id" value="{{object.id}}" class="btn-sm btn-secondary fas fa-thumbs-up m-2">
+            <button type="submit" name="post_id" value="{{object.id}}" class="btn btn-outline-primary fas fa-thumbs-up m-2">
               <i class="text text-white text-sm ml-1">{{object.total_likes}}</i>
             </button> 
           {% else %}
-            <button type="submit" name="post_id" value="{{object.id}}" class="btn-sm btn-primary fas fa-thumbs-up m-2">
-              <i class="text text-white text-sm ml-1">{{object.total_likes}}</i>
+            <button type="submit" name="post_id" value="{{object.id}}" class="btn btn-primary fa fa-thumbs-up m-2">
+              <i class="text text-white text-sm ml-1" title="You liked this post.">{{object.total_likes}}</i>
             </button> 
           {% endif %}
         </form>

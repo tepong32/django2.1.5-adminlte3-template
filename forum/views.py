@@ -122,6 +122,13 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
 		form.instance.author = self.request.user 	# set the author to the current logged-in user
 		return super().form_valid(form)
 
+def CategoryView(request, cats):
+	category_posts = Post.objects.filter(category=cats)
+	context = {
+		'cats': cats,
+		'category_posts': category_posts,
+	}
+	return render(request, 'forum/categories.html', context)
 
 
 
