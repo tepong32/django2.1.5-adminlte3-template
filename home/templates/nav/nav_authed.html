@@ -15,20 +15,23 @@
     border: 1px solid darkgray;
     cursor: pointer;
   }
+  .navLogo{
+    height: 50px;
+  }
 </style>
 
  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" aria-label="Main Navbar">
   <div class="container-fluid">
-    <a class="navbar-brand headerFontLink" href="#">SiteLogo</a>
+    <a class="navbar-brand headerFontLink" href="/"><img class="navLogo elevation-3" src="/media/defaults/round.png"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link active headerFontLink" aria-current="page" href="/">Home</a>
-        </li>
+        </li> -->
         <li class="nav-item headerFontLink">
           <a class="nav-link" href="/forum">Forum</a>
         </li>

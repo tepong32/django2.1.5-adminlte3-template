@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post, PostComment
+from .models import Post, PostComment, Category
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.views.generic import (
@@ -39,7 +39,7 @@ class ForumIndexView(ListView):
         return context
 
 
-class UserPostFilter_Authed(LoginRequiredMixin, ListView):
+class UserPostFilter(ListView):
 	model = Post 			
 	template_name = 'forum/userposts.html'
 	context_object_name = 'posts'		# getting the 'posts' key from "context = {'posts': Post.objects.all(),}"
@@ -51,7 +51,7 @@ class UserPostFilter_Authed(LoginRequiredMixin, ListView):
 		return Post.objects.filter(author=user).order_by('-date_posted')
 
 
-class PostDetailView_Authed(LoginRequiredMixin, DetailView): # LoginRequiredMixin for authed users
+class PostDetailView(DetailView): # LoginRequiredMixin for authed users
 	model = Post
 	template_name = 'forum/postdetail.html'
 	posts = Post.objects.all()
@@ -107,7 +107,31 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 			return True
 		return False		
 
+class CategoryCreateView(LoginRequiredMixin, CreateView):
+	'''
+		Take note that this view may only be intended for admins. If the site has many users all of users of the site are able to access
+		this page, category list for posts may become chaotic. Please handle appropriately and have it removed if needed.
+	'''	
+	model = Category
+	fields = '__all__'
+	template_name = 'forum/categorycreateform.html'
+	success_url = '/forum'		
 
+	def form_valid(self, form):			# to automatically get the id of the current logged-in user as the author
+		form.instance.author = self.request.user 	# set the author to the current logged-in user
+		return super().form_valid(form)
+
+
+
+
+
+from django.contrib.auth.decorators import login_required
+
+'''
+	login_required decorator was placed here to avoid showing a 404 page when an unauthed user
+	tries to hit the like button for a post
+'''
+@login_required
 def LikeView(request, pk):
 	post = get_object_or_404(Post, id=request.POST.get('post_id'))
 	liked = False
