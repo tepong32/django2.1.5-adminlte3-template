@@ -3,39 +3,16 @@
   NOTE: This navigation bar is set to "expand at md" screen size. For more info, see: https://getbootstrap.com/docs/5.0/examples/navbars/.
   Don't know how to use those examples? Right-click on that page and select "View page source" then copy the block of code you feel like using.
  -->
-
-<style type="text/css">
-  /* style for the right nav buttons */
-  .btn-group:hover {
-    color: darkgray;
-    cursor: pointer;
-  }
-
-  .btn-group img:hover {
-    border: 1px solid darkgray;
-    cursor: pointer;
-  }
-  .navLogo{
-    height: 50px;
-  }
-  .quoteText{
-    font-family: 'Gloria Hallelujah', cursive;
-    font-weight: 700;
-  }
-</style>
-
+{% include 'nav/_css.html' %}
  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" aria-label="Main Navbar">
   <div class="container-fluid">
-    <a class="navbar-brand headerFontLink" href="/"><img class="navLogo elevation-3" src="/media/defaults/round.png"><span class="quoteText"> teppy<small>.rocks</small></span></a>
+    <a class="navbar-brand headerFontLink" href="/"><img class="navLogo" src="/media/defaults/round.png"><span class="quoteText"> teppy<small>.rocks</small></span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="mainNavbar">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <!-- <li class="nav-item">
-          <a class="nav-link active headerFontLink" aria-current="page" href="/">Home</a>
-        </li> -->
         <li class="nav-item headerFontLink">
           <a class="nav-link" href="/forum">Forum</a>
         </li>
