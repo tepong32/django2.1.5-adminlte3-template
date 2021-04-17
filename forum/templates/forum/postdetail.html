@@ -8,21 +8,21 @@
 <script src="{% static 'assets/js/jquery.js' %}"></script>
 <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
 
-<div class="container" style="padding-top: 5em">
+<div class="container" style="padding-top: 3em">
   <div class="row">
     <h3 class="headerFontLink text-center mr-auto col-md-9">{{ object.title }}</h3>
     <div class="col-md-3 bg-dark" style="float: right; border-radius: 20px">
       {% if object.author == user %}
-        <a class="btn btn-outline-primary btn-sm mr-1 fa fa-arrow-circle-left" href="{% url 'forum-home' %}" title="Back to Forum">
+        <a class="btn mr-1 btn-sm fa fa-arrow-circle-left" href="{% url 'forum-home' %}" title="Back to Forum">
         </a>
-        <a class="btn btn-outline-success btn-sm mr-1 fa fa-edit" href="{% url 'post-update' object.id %}" title="Edit Post">
+        <a class="btn btn-success btn-sm mr-1 fa fa-edit" href="{% url 'post-update' object.id %}" title="Edit Post">
         </a>
-        <a class="btn btn-outline-danger btn-sm mr-1 fa fa-trash" href="{% url 'post-delete' object.id %}" title="Delete Post">
+        <a class="btn btn-danger btn-sm mr-1 fa fa-trash" href="{% url 'post-delete' object.id %}" title="Delete Post">
         </a>
       {% else %}
-        <a class="btn btn-outline-primary btn-sm mr-1 fa fa-arrow-circle-left" href="{% url 'forum-home' %}" title="Back to Forum">
+        <a class="btn mr-1 fa fa-arrow-circle-left" href="{% url 'forum-home' %}" title="Back to Forum">
         </a>
-        <a class="btn btn-outline-info btn-sm mr-1" href="{% url 'user-posts' object.author %}">
+        <a class="btn btn-info btn-sm mr-1" href="{% url 'user-posts' object.author %}">
           {{ object.author }}'s posts
         </a>
       {% endif %}
@@ -79,61 +79,45 @@
   <div class="card-title">
     <h6><i>Comments ({{ post.comments.count }})</i></h6>
   </div> 
+
+    <blockquote class="text-justify">
+      Apologies...commenting is not working properly atm. Will be posting it on the announcements once it's ready. <br>
+      Unlike in WordPress websites, tho, you'll have to register an account to be able to comment on posts.
+    </blockquote>
+
     {% for comment in post.comments.all %}
-    <blockquote class="blockquote bg-dark">
+    <!-- <blockquote class="blockquote bg-dark">
         <p class="mb-0">{{ comment.content|linebreaks }}</p>
         <small class="text-muted">{{comment.timestamp}}
         by: <cite title="Source Title">{{ comment.user }}
         </cite>
         </small>
-    </blockquote>
+    </blockquote> -->
     {% endfor %}
    
       
 
       <!-- Modal -->
-      <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModal" aria-hidden="true">
+      <!-- <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
 
           </div>
         </div>
-      </div>
+      </div> -->
 
 
-
-      <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+      <!-- <div class="modal fade" tabindex="-1" role="dialog" id="modal">
         <div class="modal-dialog" role="document">
           <div class="modal-content"></div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Button trigger modal -->
-      <button id="add-comment" class="btn btn-primary" type="button" name="button">Add comment</button>
+      <!-- <button id="add-comment" class="btn btn-primary" type="button" name="button">Add comment</button>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <a href="{% url 'add-comment' object.pk %}">Add comment self page</a>
+      <a href="{% url 'add-comment' object.pk %}">Add comment self page</a> -->
 </div>
 </div>
 

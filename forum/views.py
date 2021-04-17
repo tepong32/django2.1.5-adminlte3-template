@@ -55,8 +55,9 @@ class PostDetailView(DetailView): # LoginRequiredMixin for authed users
 	model = Post
 	template_name = 'forum/postdetail.html'
 	posts = Post.objects.all()
-	context = {'posts': posts,
-				'comments': PostComment.objects.filter(post=posts),
+	context = {
+		'posts': posts,
+		'comments': PostComment.objects.filter(post=posts),
 	}
 
 
@@ -94,7 +95,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):		
 	model = Post
 	template_name = 'forum/postconfirmdelete.html'
-	success_url = '/home/'
+	success_url = '/forum'
 
 	def form_valid(self, form):
 		form.instance.author = self.request.user

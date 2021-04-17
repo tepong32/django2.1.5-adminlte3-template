@@ -22,7 +22,7 @@
       </small>
     </div>
     <div class="col">
-      <a class="btn btn-outline-info mr-auto text-danger m-2 quoteText" style="float: right;" href="/forum/post/new"> Create Post </a>
+      <a class="btn btn-outline-warning mr-auto text-danger m-2 quoteText" style="float: right;" href="/forum/post/new"> Create Post </a>
       
     </div>
       <a class="btn btn-primary quoteText" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -73,9 +73,9 @@
                 <div style="float:right; font-size: 10px">
                   <a class="fa fa-edit text-sm ml-2 mr-2" style="color: green" href="{% url 'post-update' post.id %}"></a>
                   <a class="fa fa-trash text-sm ml-2 mr-2" href="{% url 'post-delete' post.id %}" style="color: red"></a>
-                  <a class="btn btn-outline-info btn-sm ml-2 mr-2" href="{% url 'user-posts' post.author %}" style="font-size: 10px">
+                  <!-- <a class="btn btn-outline-info btn-sm ml-2 mr-2" href="{% url 'user-posts' post.author %}" style="font-size: 10px">
                     All your posts
-                  </a>
+                  </a> -->
                   <!-- displaying header_image sacrifices the title area -->
                   <!-- {% if post.header_image %}
                     <img src="{{post.header_image.url}}" style="right: 0px;height: 70px; width:120px; position: relative"; >
@@ -86,9 +86,9 @@
                 </div>             
                 {% else %}
                 <div style="float:right">
-                  <a class="btn btn-outline-info btn-sm" href="{% url 'user-posts' post.author %}" style="font-size: 10px">
+                  <!-- <a class="btn btn-outline-info btn-sm" href="{% url 'user-posts' post.author %}" style="font-size: 10px">
                     All posts by {{ post.author }}
-                  </a>
+                  </a> -->
                   <!-- displaying header_image sacrifices the title area -->
                   <!-- {% if post.header_image %}
                     <img src="{{post.header_image.url}}" style="right: 0px;height: 70px; width:120px; position: cover"; >
@@ -133,8 +133,10 @@
 
   <!-- second column for chats or something else -->
   <div class="col-md-4 p-3 border border-success">
-    Public Chatbox to be placed here <br>
-    or something else... Still undecided.
+    Thinking about a Public Chatbox to be placed here ...or something else. <br>
+    Still undecided. <br>
+    Suggestions welcome. <br>
+    Please email me: <b>teppy@teppy.rocks</b>
   </div>
 
 
