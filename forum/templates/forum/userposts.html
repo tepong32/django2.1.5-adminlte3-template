@@ -1,16 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 {% extends 'user/users_base.html' %}
 
 <!-- Users' Profile page -->
@@ -60,7 +47,7 @@
                 </div>
                 <!-- User's post filter -->
                 {% for post in posts %}
-                  <div class="card">
+                  <div class="card p-2 m-1">
                     <div class="row align-items-center">
                         <a class="col-md-8 text-primary" href=" {% url 'post-detail' post.id %}"><h6 class="headerFontLink text-center">{{ post.title }}</h6></a>
                         <small class="col-md-1 ml-auto text-muted">{{ post.date_posted|date:"F d, Y" }}</small>

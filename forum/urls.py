@@ -11,7 +11,7 @@ from .views import (
     PostCreateView,
     PostUpdateView,
     PostDeleteView,
-    ForumIndexView,
+    ForumHomeView,
     CategoryView,   # this is a function-based view
     CategoryCreateView,
     LikeView,
@@ -21,7 +21,7 @@ from .views import (
 
 
 urlpatterns = [
-    path('', ForumIndexView.as_view(), name="forum-home"),             # home for blog app
+    path('', ForumHomeView.as_view(), name="forum-home"),             # home for blog app
     path('post/new/', PostCreateView.as_view(), name='post-new'),
     path('post/detail/<int:pk>/add-comment/', PostCommentCreateView.as_view(), name='add-comment'),
     # path('post/quick-create/', PostCreateViewModal.as_view(), name='quickpost'),

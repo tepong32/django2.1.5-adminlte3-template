@@ -19,7 +19,7 @@ from django.urls import reverse
 
 
 # trying out multiple objects inside one class-based listView template
-class ForumIndexView(ListView):
+class ForumHomeView(ListView):
     context_object_name = 'posts'    
     template_name = 'forum/home.html'
     queryset = Post.objects.all()
@@ -27,7 +27,7 @@ class ForumIndexView(ListView):
     paginate_by = 15					# number of posts to show per page
 
     def get_context_data(self, **kwargs):
-        context = super(ForumIndexView, self).get_context_data(**kwargs)
+        context = super(ForumHomeView, self).get_context_data(**kwargs)
         # context['entertainment'] = ForumPost.objects.filter(tag="Entertainment").order_by('-date_posted')
         # context['help'] = ForumPost.objects.filter(tag="Help!").order_by('-date_posted')
         # context['hobby'] = ForumPost.objects.filter(tag="Hobby").order_by('-date_posted')
@@ -78,7 +78,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	form_class = PostForm	# forumPostForm was the one used in the tutorials
 	template_name = 'forum/postupdateform.html'
 	success_message = "Post updated"
-	success_url = '/forum'
+	# success_url = '/forum'
 
 	def form_valid(self, form):			
 		form.instance.author = self.request.user 	#to automatically get the id of the current logged-in user as the author
