@@ -4,13 +4,38 @@
 
 <!-- CREATE logic for authed vs unauthed navbars -->
 {% block content %}
-<div class="container">
-	Shareables
+<div class="card-body">
+	It never hurts to make reading a habit. <br>
+	Instructions: <br>
+	<ul class="text-sm">
+		<i>
+			<li>
+				Install any e-book reader. Suggestion: <b>ReadEra</b> (no-ads) <a href="https://play.google.com/store/apps/details?id=org.readera&hl=en&fbclid=IwAR0_Z99eerRVTS_ztMN6Ong8Ff347VQP0MEwX-BD-D3Z7tZDqsQkuwO_FN8" target="_blank">playstore link</a>).
+			</li>
+			<li>
+				Just download the file/files to your phone (preferred) or PC. Links are also shareable.
+			</li>
+			<li>
+				Using ReadEra, scan your phone for all e-books downloaded.
+			</li>
+			<li>
+				<strong>READ. Don't just download and delete. Duh.</strong>
+			</li>
+		</i>
+	</ul>
 	<hr>
 	{% for item in shareables %}
-		<h3>{{item.title}} </h3>
-		{{item.content|safe}} <br>
-		<img src="{{item.header_image.url}}"> <br>
+	<div class="card bg-transparent">
+		<div class="card-header bg-dark">
+			<h6 class="quoteText text-center">{{item.title}} </h6>
+		</div>
+		<div class="card-body text-sm">
+			{{item.content|safe}}
+		</div>
+		<div class="card-footer text-sm">			
+			Credits: <i class="quoteText">{{item.orig_sharer}}</i>  <br> <small>(profile links to follow)</small>
+		</div>
+	</div>
 	{% endfor %}
 </div>
 {% endblock content %}

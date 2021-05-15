@@ -1,8 +1,21 @@
 from django.urls import path, include
-from .views import IndexView
+from .views import (
+	IndexView,
+	ShareableCreateView,
+	ShareableUpdateView,
+	ShareableDeleteView,
+	Orig_SharerCreateView,
+	Orig_SharerView
+
+	)
 
 urlpatterns = [
-	path('', IndexView, name="forum-home"),  
+	path('', IndexView, name="shareables-home"),  
+	path('add-shareable', ShareableCreateView.as_view(), name="add-shareable"),  
+	path('detail/<int:pk>/update/', ShareableUpdateView.as_view(), name="update-shareable"),  
+	path('delete-shareable', ShareableDeleteView.as_view(), name="delete-shareable"),  
+	path('add-sharer', Orig_SharerCreateView.as_view(), name="add-sharer"),  
+
 ]
 
 

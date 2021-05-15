@@ -9,11 +9,9 @@
       
 
   <div class="row">
-    <div class="col-8 p-3" style="background-color: white">
-      <h5>All posts </h5>
+    <div class="col-8 p-3" style="background-color: transparent">
+      <h1 class="text-white text-center">SALAMAT SHOPEE!</h1>
       <small>
-      ({{ page_obj.paginator.count }} total posts) <br>
-      Click on the specific category post to filter.
       {% if messages %}
         {% for message in messages %}
           <div class="alert alert-{{ message.tags }}">{{ message }}</div>
@@ -26,7 +24,7 @@
       
     </div>
       <a class="btn btn-primary quoteText" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Posting Reminders
+        Posting Reminders <div><small class="ml-auto">Posts count: {{ page_obj.paginator.count }}</small> </div>
       </a>
     <div class="collapse" id="collapseExample">
       <div class="card-body text-sm">
@@ -105,7 +103,7 @@
             </div>
           <div class="row">
             <h6>
-              <a class="article-title col-4 ml-3 text-teal" href=" {% url 'post-detail' post.id %}">
+              <a class="article-title col-4 ml-3 text-secondary" href=" {% url 'post-detail' post.id %}">
                 {{ post.title|truncatechars:100 }}</a>
             </h6>
           </div>

@@ -11,8 +11,8 @@ class Orig_Sharer(models.Model):
 	# use this as the dropdown option for every Shareable's orig_sharer attribute
 	name = models.CharField(max_length=50)
 	profile_link1 = models.URLField(max_length=150) # at least one link is needed
-	profile_link2 = models.URLField(max_length=150, blank=True, null=True)
-	profile_link3 = models.URLField(max_length=150, blank=True, null=True)
+	profile_link2 = models.URLField(max_length=150, blank=True, null=True, help_text="Not needed if sharer has no other profile links.")
+	profile_link3 = models.URLField(max_length=150, blank=True, null=True, help_text="Not needed if sharer has no other profile links.")
 
 	def __str__(self):
 		return self.name.title() # .title() to capitalize the first letter of every word
