@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'forum.apps.ForumConfig',
     'user.apps.UserConfig',
+    'shareable.apps.ShareableConfig',
 
 
     # django-allauth needs this

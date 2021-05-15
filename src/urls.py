@@ -28,6 +28,8 @@ urlpatterns = [
     path('about/', about, name="about"),
     path('u/', include('user.urls')),
     path('forum/', include('forum.urls')),
+    path('shareable/', include('shareable.urls')),
+
 
     # # django-allauth
     path('accounts/', include('allauth.urls')),
