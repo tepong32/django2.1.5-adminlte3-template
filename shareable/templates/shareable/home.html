@@ -1,0 +1,16 @@
+{% extends 'home/index.html' %}
+{% load static %}
+{% load crispy_forms_tags %} 
+
+<!-- CREATE logic for authed vs unauthed navbars -->
+{% block content %}
+<div class="container">
+	Shareables
+	<hr>
+	{% for item in shareables %}
+		<h3>{{item.title}} </h3>
+		{{item.content|safe}} <br>
+		<img src="{{item.header_image.url}}"> <br>
+	{% endfor %}
+</div>
+{% endblock content %}
