@@ -11,10 +11,10 @@ from .views import (
 
 urlpatterns = [
 	path('', IndexView, name="shareables-home"),  
-	path('add-shareable', ShareableCreateView.as_view(), name="add-shareable"),  
+	path('add-shareable/', ShareableCreateView.as_view(), name="add-shareable"),  
 	path('detail/<int:pk>/update/', ShareableUpdateView.as_view(), name="update-shareable"),  
-	path('delete-shareable', ShareableDeleteView.as_view(), name="delete-shareable"),  
-	path('add-sharer', Orig_SharerCreateView.as_view(), name="add-sharer"),  
+	path('delete-shareable/', ShareableDeleteView.as_view(), name="delete-shareable"),  
+	path('add-sharer/', Orig_SharerCreateView.as_view(), name="add-sharer"),  
 
 ]
 
