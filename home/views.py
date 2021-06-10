@@ -13,7 +13,7 @@ def home(request):
 	user = User
 	user_list = User.objects.all()[:5]
 	announcements = Announcement.objects.all().order_by("-date_posted")
-	posts = Post.objects.all().order_by("-date_posted")[:10]
+	posts = Post.objects.all().order_by("-date_posted")[:5]
 	postCount = Post.objects.all().count()
 	context = {
 		'announcements': announcements,

@@ -5,10 +5,12 @@
 
 	html {
 		box-sizing: border-box;
+		scroll-behavior: smooth;
 	}
 	*, *:before *:after {
 		box-sizing: inherit;
-		padding: 2px;
+		margin: 0;
+		padding: 0;
 		font-family: 'Poppins', sans-serif;
 	}
 	a {
@@ -18,10 +20,15 @@
     .announcementBox{
     	padding: 10px;
     	margin: 10px;
+    	border-radius: 20px;
+    	border-top: solid 2px black;
+    	border-bottom: solid 2px black;
+    	box-shadow: 2px 3px 3px;
+
     }
 
     .card {
-    	border-radius: 15px;
+    	border-radius: 20px;
     }
 	.quoteText{
 		font-family: 'Gloria Hallelujah', cursive;
@@ -30,11 +37,11 @@
 
 	.headerFontLink {
 		font-family: 'Poppins', sans-serif;
-		font-weight: 500;
-		/*opacity: 0.7;*/
+		font-weight: 700;
+		/*color: red;*/
 	}
 
 	.headerFontLink:hover {
-		opacity: 1;
+		opacity: 0.8;
 	}
 </style>

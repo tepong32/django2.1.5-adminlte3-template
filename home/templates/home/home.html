@@ -1,10 +1,11 @@
 {% load static %}
-<div class="container row" >
-	<div class="card col-md-8 elevation-5" style="height:500px; display:flex;">
-		<h2 class="headerFontLink mt-1"><i>Announcements:</i></h2>
-		<div class="overflow-auto">
+<div class="row" >
+	<!-- Announcements -->
+	<div class="container overflow-auto col-md-8" style="max-height:400px;">
+		<h2 class="headerFontLink mt-1 text-danger"><i>Announcements:</i></h2>
+		<div >
         {% for a in announcements %}
-            <div class="announcementBox border border-dark overflow-auto">
+            <div class="announcementBox overflow-auto">
                 <h4 class="quoteText text-danger">{{ a.title }}</h4>
                 {{ a.content|safe }} <br/>
                 by <b>{{a.author}}</b> | <small>{{a.date_posted}}</small><br/>
@@ -13,20 +14,12 @@
 		</div>
 	</div>
 
-	<div class="card col ml-2 p-2 bg-transparent" style="max-height: 500px">	    
-    	<div class="text-center">
-    		{% if messages %}
-		      {% for message in messages %}
-		        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-		      {% endfor %}
-		    {% endif %}
-			
-
-			
-		</div>
+	<!-- Latest Forum Posts -->
+	<div class="card col p-2 bg-transparent elevation-1" style="max-height: 400px">	    
 		<div class="card-body">
 	      <a href="/forum" title="Browse the Forums"> <h5 class="headerFontLink text-danger">Latest forum posts:</h5>
 	      <div class="row p-4 text-dark headerFontLink">
+	      	<!-- Posts Preview -->
 	      	{% for post in posts %}
 	      		<div class="col-8">
 	      			<strong><i>{{post.title|truncatechars:20}}</i></strong>
@@ -46,7 +39,7 @@
 			<h5 class="quoteText text-danger">Say hello to our newest members!</h5>
 			<small>
 				Nag-register sila para mag-share! YES! | 
-				<i>Current user count: {{ usercount }}</i><br>
+				<i>Users count: {{ usercount }}</i><br>
 			</small>
 			{% for u in users %}
 			<div class="row">
@@ -61,14 +54,18 @@
 			{% endfor %}
 		</div>
     </div>
-    <div class="card col-md-5 bg-dark">
-    	<div class="card-title headerFont">
+
+    <!-- Documentary -->
+    <div class="card col-md-6 bg-dark">
+    	<div class="card-title headerFont text-center mt-2">
     		Featured Documentary
     	</div>
     	<div class="card-body">
     		<iframe src="https://www.youtube.com/embed/zpNlG3VtcBM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: center; height: 100%; width: 100%"></iframe>
     	</div>
     </div>
+
+    <!-- Quotes -->
     <div class="card col ml-2 elevation-5" style="min-height:300px;display:flex;">
     	<!-- CAROUSEL -->
 		<div class="border-top" style="height: 100%">
