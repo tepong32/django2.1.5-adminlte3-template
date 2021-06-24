@@ -1,72 +1,103 @@
 {% load static %}
 <div class="row" >
-	<!-- Announcements -->
-	<div class="container overflow-auto col-md-8" style="max-height:400px;">
-		<h2 class="headerFontLink mt-1 text-danger"><i>Announcements:</i></h2>
-		<div >
-        {% for a in announcements %}
-            <div class="announcementBox overflow-auto">
-                <h4 class="quoteText text-danger">{{ a.title }}</h4>
-                {{ a.content|safe }} <br/>
-                by <b>{{a.author}}</b> | <small>{{a.date_posted}}</small><br/>
-            </div>
-        {% endfor %}
+	
+	<div class="container overflow-auto col-lg-7 col-sm-12" style="min-height: 400px; max-height:400px;margin-bottom: 5px; padding: 0;">
+		<div class="col-12 col-sm-6 col-lg-12">
+			<div class="card card-primary card-tabs">
+			  <div class="card-header p-0 pt-1">
+			    <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+			      <li class="nav-item">
+			        <a class="nav-link active headerFontLink" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="false">Announcements:</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link headerFontLink" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">User Blogs:</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link headerFontLink" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Newest Members:</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="true">Settings</a>
+			      </li>
+			    </ul>
+			  </div>
+			  <div class="card-body">
+			    <div class="tab-content" id="custom-tabs-one-tabContent">
+			    	
+			      <!-- Announcements -->
+			      <div class="tab-pane fade active show" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+			        {% for a in announcements %}
+			            <div class="announcementBox overflow-auto">
+			                <h4 class="quoteText text-danger">{{ a.title }}</h4>
+			                {{ a.content|safe }} <br/>
+			                by <b>{{a.author}}</b> | <small>{{a.date_posted}}</small><br/>
+			            </div>
+			        {% endfor %}
+			      </div>
+
+
+			      <!-- Blog Posts -->
+			      <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
+					<a href="/forum" title="Browse the Forums">
+						<h5 class="headerFontLink text-danger">Title?</h5>
+						<div class="row p-4 text-dark headerFontLink">
+							<!-- Posts Preview -->
+							{% for post in posts %}
+								<div class="col-8">
+									<strong><i>{{post.title|truncatechars:20}}</i></strong>
+								</div>
+								<div class="col">
+									<small>{{post.author}}</small>
+								</div>
+							{% endfor %} <br>
+							<hr>
+							<small>Total Post count: ({{postCount}})</small>
+						</div>
+					</a>
+			      </div>
+			      <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+			         <!-- Newest members area -->
+					<div class="card-body text-center">
+						<h5 class="quoteText text-danger">Say hello to our newest members!</h5>
+						<small>
+							Nag-register sila para mag-share! YES! | 
+							<i>Users count: {{ usercount }}</i><br>
+						</small>
+						{% for u in users %}
+						<div class="row">
+							<div class="col-4 headerFontLink">
+								<a href="{% url 'profile' u.username %}" title="check {{u.username}}'s profile">{{u.username}}</a>
+							</div>
+							<div class="col">
+								<small class="text text-muted" style="font-size: 10px">registered: {{ u.date_joined|date:"F d, Y" }}</i></small>
+								<br>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+			      </div>
+			      <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
+			         Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis. 
+			      </div>
+			    </div>
+			  </div>
+			  <!-- /.card -->
+			</div>
 		</div>
 	</div>
 
-	<!-- Latest Forum Posts -->
-	<div class="card col p-2 bg-transparent elevation-1" style="max-height: 400px">	    
-		<div class="card-body">
-	      <a href="/forum" title="Browse the Forums"> <h5 class="headerFontLink text-danger">Latest forum posts:</h5>
-	      <div class="row p-4 text-dark headerFontLink">
-	      	<!-- Posts Preview -->
-	      	{% for post in posts %}
-	      		<div class="col-8">
-	      			<strong><i>{{post.title|truncatechars:20}}</i></strong>
-	      		</div>
-	      		<div class="col">
-	      			<small>{{post.author}}</small>
-	      		</div>
-	      	{% endfor %} <br>
-	      	<hr>
-	      	<small>Total Post count: ({{postCount}})</small>
-	      </div>
-	      </a>
-	    </div>
-
-		<!-- Newest members area -->
-		<div class="card-body text-center">
-			<h5 class="quoteText text-danger">Say hello to our newest members!</h5>
-			<small>
-				Nag-register sila para mag-share! YES! | 
-				<i>Users count: {{ usercount }}</i><br>
-			</small>
-			{% for u in users %}
-			<div class="row">
-				<div class="col-4 headerFontLink">
-					<a href="{% url 'profile' u.username %}" title="check {{u.username}}'s profile">{{u.username}}</a>
-				</div>
-				<div class="col">
-					<small class="text text-muted" style="font-size: 10px">registered: {{ u.date_joined|date:"F d, Y" }}</i></small>
-					<br>
-				</div>
-			</div>
-			{% endfor %}
-		</div>
-    </div>
 
     <!-- Documentary -->
-    <div class="card col-md-6 bg-dark">
+    <section class="card col-lg-5 col-sm-10" name="docs">
     	<div class="card-title headerFont text-center mt-2">
     		Featured Documentary
     	</div>
     	<div class="card-body">
-    		<iframe src="https://www.youtube.com/embed/zpNlG3VtcBM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: center; height: 100%; width: 100%"></iframe>
+    		<iframe src="https://www.youtube.com/embed/zpNlG3VtcBM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: center; height: 100%; width: 100%; border-radius: 12px;"></iframe>
     	</div>
-    </div>
+    </section>
 
     <!-- Quotes -->
-    <div class="card col ml-2 elevation-5" style="min-height:300px;display:flex;">
+    <div class="card elevation-1" style="min-height:300px;">
     	<!-- CAROUSEL -->
 		<div class="border-top" style="height: 100%">
 			<div class="card-header p-3" style="border:none">
@@ -106,7 +137,8 @@
 			</div>
 		</div>
 		<!-- /CAROUSEL -->
-    	
     </div>
+
+
 	
 </div>
