@@ -7,16 +7,16 @@
 			  <div class="card-header p-0 pt-1">
 			    <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
 			      <li class="nav-item">
-			        <a class="nav-link active headerFontLink" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="false">Announcements:</a>
+			        <a class="nav-link active headerFontLink" id="custom-tabs-one-announcements-tab" data-toggle="pill" href="#custom-tabs-one-announcements" role="tab" aria-controls="custom-tabs-one-announcements" aria-selected="false">Announcements:</a>
 			      </li>
 			      <li class="nav-item">
-			        <a class="nav-link headerFontLink" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">User Blogs:</a>
+			        <a class="nav-link headerFontLink" id="custom-tabs-one-blogs-tab" data-toggle="pill" href="#custom-tabs-one-blogs" role="tab" aria-controls="custom-tabs-one-blogs" aria-selected="false">User Blogs <small>(preview)</small></a>
 			      </li>
 			      <li class="nav-item">
-			        <a class="nav-link headerFontLink" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Newest Members:</a>
+			        <a class="nav-link headerFontLink" id="custom-tabs-one-members-tab" data-toggle="pill" href="#custom-tabs-one-members" role="tab" aria-controls="custom-tabs-one-members" aria-selected="false">Newest Members:</a>
 			      </li>
 			      <li class="nav-item">
-			        <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill" href="#custom-tabs-one-settings" role="tab" aria-controls="custom-tabs-one-settings" aria-selected="true">Settings</a>
+			        <a class="nav-link headerFontLink" id="custom-tabs-one-etc-tab" data-toggle="pill" href="#custom-tabs-one-etc" role="tab" aria-controls="custom-tabs-one-etc" aria-selected="true">Free Stuffs! <small>(preview)</small></a>
 			      </li>
 			    </ul>
 			  </div>
@@ -24,26 +24,29 @@
 			    <div class="tab-content" id="custom-tabs-one-tabContent">
 			    	
 			      <!-- Announcements -->
-			      <div class="tab-pane fade active show" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+			      <div class="tab-pane fade active show" id="custom-tabs-one-announcements" role="tabpanel" aria-labelledby="custom-tabs-one-announcements-tab">
 			        {% for a in announcements %}
 			            <div class="announcementBox overflow-auto">
-			                <h4 class="quoteText text-danger">{{ a.title }}</h4>
+			                <h4 class="quoteText text-danger">
+			                	{{ a.title }}
+			                </h4> 
+			                <i><small>{{a.date_posted}}</small></i>
 			                {{ a.content|safe }} <br/>
-			                by <b>{{a.author}}</b> | <small>{{a.date_posted}}</small><br/>
+			                by <b>{{a.author}}</b> <br/>
 			            </div>
 			        {% endfor %}
 			      </div>
 
 
 			      <!-- Blog Posts -->
-			      <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-					<a href="/forum" title="Browse the Forums">
-						<h5 class="headerFontLink text-danger">Title?</h5>
-						<div class="row p-4 text-dark headerFontLink">
+			      <div class="tab-pane fade" id="custom-tabs-one-blogs" role="tabpanel" aria-labelledby="custom-tabs-one-blogs-tab">
+					<a href="/forum" title="Browse the Blogs">
+						<!-- <h5 class="headerFontLink text-danger">Title?</h5> -->
+						<div class="row headerFontLink">
 							<!-- Posts Preview -->
 							{% for post in posts %}
-								<div class="col-8">
-									<strong><i>{{post.title|truncatechars:20}}</i></strong>
+								<div class="col-10">
+									<strong><i>{{post.title|truncatechars:50}}</i></strong>
 								</div>
 								<div class="col">
 									<small>{{post.author}}</small>
@@ -54,10 +57,11 @@
 						</div>
 					</a>
 			      </div>
-			      <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-			         <!-- Newest members area -->
+
+			      <!-- Newest members area -->
+			      <div class="tab-pane fade" id="custom-tabs-one-members" role="tabpanel" aria-labelledby="custom-tabs-one-members-tab">
 					<div class="card-body text-center">
-						<h5 class="quoteText text-danger">Say hello to our newest members!</h5>
+						<h6 class="quoteText text-danger">Say hello to our newest members!</h6>
 						<small>
 							Nag-register sila para mag-share! YES! | 
 							<i>Users count: {{ usercount }}</i><br>
@@ -75,8 +79,20 @@
 						{% endfor %}
 					</div>
 			      </div>
-			      <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
-			         Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis. 
+
+			      <!-- Etc -->
+			      <div class="tab-pane fade" id="custom-tabs-one-etc" role="tabpanel" aria-labelledby="custom-tabs-one-etc-tab">
+			      	<a href="/shareable" title="Check-out these awesome stuffs!">
+			      		<h6 class="quoteText text-primary">Check-out these awesome stuffs! All for free!</h6>
+				        {% for item in free %}
+							<div class="col-10">
+								<strong><i>{{item.title|truncatechars:50}}</i></strong>
+							</div>
+							<!-- <div class="col">
+								<small>{{item.orig_sharer}}</small>
+							</div> -->
+						{% endfor %}
+					</a>
 			      </div>
 			    </div>
 			  </div>

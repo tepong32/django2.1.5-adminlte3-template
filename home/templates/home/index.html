@@ -36,10 +36,8 @@
   <!-- The actual viewing page -->
   <body class="hold-transition sidebar-mini layout-navbar-fixed">
     <!--
-  		NOTE: I prefer the "extends" tag over "include" for more compact coding and logic implementation.
-  		The "include" tags will be used for specific page css and js needs.
-  		Most (if not all) other html pages will start with "extends home/index.html" tag. Logic for separation of authed and unauthed views
-  		will be shown inside specific html pages.
+  		NOTE: I prefer the "include" tag over "extends" for more compact coding and logic implementation.
+      That being said: You'll generally see the page outline inside this index.html.  		
   	-->
 
   {% include 'home/_css.html' %}

@@ -1,24 +1,35 @@
 from django.shortcuts import render
 from .models import Announcement, Quote
-# from todo.models import ToDoList
 from forum.models import Post
+from shareable.models import Shareable
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
+
 # for needing user to be logged-in first before accessing the page requested
 from django.contrib.auth.decorators import login_required
 
 
 # @login_required
 def home(request):
+	'''
+		note how I used two ways to display info to the view:
+		one was thru a variable passing it as the "value" for the dictionary key,
+		the other is thru directly using the imported model as the "value".
+
+		A bit messy but I was experimenting and didn't want to change it for future reference.
+	'''
 	user = User
 	user_list = User.objects.all()[:5]
 	announcements = Announcement.objects.all().order_by("-date_posted")
-	posts = Post.objects.all().order_by("-date_posted")[:5]
+	posts = Post.objects.all().order_by("-date_posted")[:8]
+	free = Shareable.objects.all().order_by("-date_posted")[:8]
 	postCount = Post.objects.all().count()
 	context = {
+
 		'announcements': announcements,
 		'users': user_list,
 		'posts': posts,
+		'free': free,
 		'quotes': Quote.objects.all(),
 		'usercount': user.objects.count(),
 		'postCount': postCount,
