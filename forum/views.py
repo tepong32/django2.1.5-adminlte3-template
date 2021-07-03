@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post, PostComment, Category
+from .models import Post, PostComment, Category, ForumReminder
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.views.generic import (
@@ -24,17 +24,26 @@ class ForumHomeView(ListView):
     template_name = 'forum/home.html'
     queryset = Post.objects.all()
     ordering = ['-date_posted']			# filter for newest post first
-    paginate_by = 15					# number of posts to show per page
+    paginate_by = 10					# number of posts to show per page
 
     def get_context_data(self, **kwargs):
         context = super(ForumHomeView, self).get_context_data(**kwargs)
+        '''
+        	This function was used to override the "context" variable on the class-based view.
+        	Think of this as a way of doing 
+        	context = { 'xxx': xxx.objects.all(),
+        				'yyy': yyy.objects.all()
+        				}
+        	in a function-based view.
+        	See 'home.views.home' for a better reference.
+        '''
         # context['entertainment'] = ForumPost.objects.filter(tag="Entertainment").order_by('-date_posted')
         # context['help'] = ForumPost.objects.filter(tag="Help!").order_by('-date_posted')
         # context['hobby'] = ForumPost.objects.filter(tag="Hobby").order_by('-date_posted')
         # context['jokes'] = ForumPost.objects.filter(tag="Jokes").order_by('-date_posted')
         # context['school'] = ForumPost.objects.filter(tag="School").order_by('-date_posted')
         # context['social'] = ForumPost.objects.filter(tag="Social").order_by('-date_posted')
-        # context['tech'] = ForumPost.objects.filter(tag="Tech").order_by('-date_posted')
+        context['reminders'] = ForumReminder.objects.all()
         # and so on for more models
         return context
 

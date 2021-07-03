@@ -9,21 +9,22 @@
 <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
 
 <div class="container" style="padding-top: 3em">
+  <a class="btn btn-primary mr-1 fa fa-arrow-left" href="{% url 'forum-home' %}" title="Back to Forum">
+  </a>
   <div class="row">
-    <h3 class="headerFontLink text-center mr-auto col-md-9">{{ object.title }}| <small><a href="{% url 'category' object.category %}">{{object.category}}</a></small></h3> 
-    <div class="col-md-3 bg-dark" style="float: right; border-radius: 20px">
+      <h5 class="headerFontLink text-center mr-auto col-12 col-sm-12 elevation-3 p-2">
+        {{ object.title }}
+        <small class="col-4 col-sm-6"><a href="{% url 'category' object.category %}">{{object.category}}</a></small> 
+      </h5>
+    <div class="col-md-4 bg-gray" style="float: right; border-radius: 20px">
       {% if object.author == user %}
-        <a class="btn mr-1 btn-sm fa fa-arrow-circle-left" href="{% url 'forum-home' %}" title="Back to Forum">
-        </a>
         <a class="btn btn-success btn-sm mr-1 fa fa-edit" href="{% url 'post-update' object.id %}" title="Edit Post">
         </a>
         <a class="btn btn-danger btn-sm mr-1 fa fa-trash" href="{% url 'post-delete' object.id %}" title="Delete Post">
         </a>
       {% else %}
-        <a class="btn mr-1 fa fa-arrow-circle-left" href="{% url 'forum-home' %}" title="Back to Forum">
-        </a>
-        <a class="btn btn-info btn-sm mr-1" href="{% url 'user-posts' object.author %}">
-          {{ object.author }}'s posts
+        <a class="mr-1" href="{% url 'user-posts' object.author %}">
+          <u>{{ object.author }}'s posts</u>
         </a>
       {% endif %}
 
@@ -41,22 +42,23 @@
       
       {% if object.author == user %}
         <!-- Number of likes shown in a button form // this does not trigger anything as the author cannot like its own post -->
-        <button class="btn-sm btn-info fas fa-thumbs-up m-2"><i class="text text-white text-sm ml-1" title="Can't like your own post. ;)" style="float: right">{{object.total_likes}}</i></button>
+        <button class="btn-sm btn-disabled fas fa-thumbs-up m-2"><i class="text text-primary text-sm ml-1" title="Can't like your own post. ;)" style="float: right">{{object.total_likes}}</i></button>
       {% else %}
-        <!-- Like button -->
-        <form action="{% url 'like_post' object.pk %}" method="POST" style="float: right">
-          {% csrf_token %}
-          {% if post.liked %}
-            <button type="submit" name="post_id" value="{{object.id}}" class="btn btn-outline-primary fas fa-thumbs-up m-2">
-              <i class="text text-white text-sm ml-1">{{object.total_likes}}</i>
-            </button> 
-          {% else %}
-            <button type="submit" name="post_id" value="{{object.id}}" class="btn btn-primary fa fa-thumbs-up m-2">
-              <i class="text text-white text-sm ml-1" title="You liked this post.">{{object.total_likes}}</i>
-            </button> 
-
-          {% endif %}
-        </form>
+        {% if user.is_authenticated %}
+          <!-- Like button -->
+          <form action="{% url 'like_post' object.pk %}" method="POST" style="float: right">
+            {% csrf_token %}
+            {% if post.liked %}
+              <button type="submit" name="post_id" value="{{object.id}}" class="btn btn-outline-primary fas fa-thumbs-up m-2" >
+                <i class="text text-white text-sm ml-1" >{{object.total_likes}}</i>
+              </button> 
+            {% else %}
+              <button type="submit" name="post_id" value="{{object.id}}" class="btn btn-primary fa fa-thumbs-up m-2">
+                <i class="text text-white text-sm ml-1" >{{object.total_likes}}</i>
+              </button> 
+            {% endif %} <!-- if post.liked -->
+          </form>
+        {% endif %} <!-- if user.is_authenticated -->
       {% endif %}
     </div>
   </div>

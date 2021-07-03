@@ -28,23 +28,10 @@
       </a>
     <div class="collapse" id="collapseExample">
       <div class="card-body text-sm">
-        <strong class="text-danger quoteText">NO SHITPOSTING. </strong>
-        <p>
-          This site is not for such. This is supposed to be a forum-like site where you can share meaningful things, stories and ideas to other users. For now, it will be a blog site. You can use Facebook for your rants. Honestly.
-        </p>
-        
-        <strong class="text-danger quoteText">BE KIND & RESPONSIBLE. </strong>
-        <p>
-          Shout out to people more knowledgeable on the internet than others! Please. Do not use your posts as ways to phish any information about anyone. <u class="text-danger">Do it somewhere else.</u> People here are good people only intending to move away from mainstream social media noises.
-        </p>
-        <p>
-          To everyone, <b class="text-danger quoteText"><i>ALWAYS BE VIGILANT.</i></b> On the internet, trust no one. The reason I allowed you to just put dummy information or not put any information on your profiles at all is because I do not want you to be a victim of cyber crimes. <b>Please be careful on clicking links.</b>
-        </p>
-
-        <strong class="text-danger quoteText">BE DETAILED. </strong>
-        <p>
-          I mean...there's no more intimidating thing for readers to actually be hung-up with a good article/blog/story...unless there'll be a season 2. :D I am assuming you love writing and/or reading that's why you're here. I do <small><i>(I think so?)</i></small>. Tell us your stories and don't hang us up! ;)
-        </p>
+          {% for reminder in reminders %}
+            <strong>{{reminder.title}}</strong>
+            <p>{{reminder.body|safe}}</p>
+          {% endfor %}
       </div>
     </div>
 
