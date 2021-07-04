@@ -33,13 +33,18 @@ class ShareableCreateView(LoginRequiredMixin, CreateView):
 		form.instance.author = self.request.user 	# set the author to the current logged-in user
 		return super().form_valid(form)
 
+class ShareableDetailView(DetailView):
+	model = Shareable
+	context_object_name = 'shareable'
+	template_name = 'shareable/shareable_detail.html'
+
 
 class ShareableUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Shareable 
 	form_class = ShareableForm	# forumPostForm was the one used in the tutorials
 	template_name = 'shareable/update_shareable.html'
 	success_message = "Updated!"
-	# success_url = '/forum'
+	success_url = '/shareable'
 
 	def form_valid(self, form):			
 		form.instance.author = self.request.user 	#to automatically get the id of the current logged-in user as the author

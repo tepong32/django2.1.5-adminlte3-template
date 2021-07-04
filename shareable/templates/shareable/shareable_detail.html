@@ -1,0 +1,12 @@
+{% extends 'home/index.html' %}
+
+{% block content %}
+<div class="content-section" >
+  <div class="card card-header text-center">
+    {{shareable.title.upper}}
+  </div>
+  <div class="card card-body">
+    {{shareable.content|safe}}
+  </div>
+</div>
+{% endblock content %}

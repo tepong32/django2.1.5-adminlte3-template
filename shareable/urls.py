@@ -2,6 +2,7 @@ from django.urls import path, include
 from .views import (
 	IndexView,
 	ShareableCreateView,
+	ShareableDetailView,
 	ShareableUpdateView,
 	ShareableDeleteView,
 	Orig_SharerCreateView,
@@ -12,7 +13,8 @@ from .views import (
 urlpatterns = [
 	path('', IndexView, name="shareables-home"),  
 	path('add-shareable/', ShareableCreateView.as_view(), name="add-shareable"),  
-	path('detail/<int:pk>/update/', ShareableUpdateView.as_view(), name="update-shareable"),  
+	path('<int:pk>/', ShareableDetailView.as_view(), name="shareable-detail"),
+	path('<int:pk>/update/', ShareableUpdateView.as_view(), name="update-shareable"),  
 	path('delete-shareable/', ShareableDeleteView.as_view(), name="delete-shareable"),  
 	path('add-sharer/', Orig_SharerCreateView.as_view(), name="add-sharer"),  
 

@@ -46,7 +46,7 @@
 	{% for item in shareables %}
 	<div class="card bg-transparent">
 		<div class="card-header bg-dark">
-			<h6 class="quoteText text-center">{{item.title}} <small class="text-muted">  -{{item.category}}</small></h6>
+			<h6 class="quoteText text-center"><a href="{% url 'shareable-detail' item.pk %} ">{{item.title}}</a> <small class="text-muted">  -{{item.category}}</small></h6>
 		</div>
 		<div class="card-footer text-sm">			
 			Credits: <i class="quoteText">{{item.orig_sharer}}</i> <br>
