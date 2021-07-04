@@ -19,7 +19,6 @@ def IndexView(request):
 		'shareables': Shareable.objects.all().order_by('-id'),
 		'credits': Orig_Sharer.objects.all()
 	}
-	# template_folder/html_file
 	return render(request, 'shareable/home.html', context)
 
 

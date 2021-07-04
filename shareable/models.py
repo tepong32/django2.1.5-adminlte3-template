@@ -32,7 +32,7 @@ class Shareable(models.Model):
 	content = RichTextUploadingField(blank=True, null=True)#models.TextField(blank=True, null=True)
 	date_posted = models.DateTimeField(auto_now_add=True)
 	author = models.ForeignKey(User, on_delete=models.CASCADE)
-	orig_sharer = models.TextField(max_length=255, default="Item/Information was duly researched by the author.")
+	orig_sharer = models.TextField(max_length=255, default="Item/Information was from Mobilarian Facebook group.")
 
 	# likes = models.ManyToManyField(User, related_name = "posts", blank=True) # "posts" was used in views.py's context_object_name
 	# def total_likes(self):

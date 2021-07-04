@@ -4,36 +4,52 @@
 
 <!-- CREATE logic for authed vs unauthed navbars -->
 {% block content %}
-<div class="card-body">
-	It never hurts to make reading a habit. <br>
-	Instructions: <br>
-	<ul class="text-sm">
-		<i>
-			<li>
-				Install any e-book reader. Suggestion: <b>ReadEra</b> (no-ads) <a href="https://play.google.com/store/apps/details?id=org.readera&hl=en&fbclid=IwAR0_Z99eerRVTS_ztMN6Ong8Ff347VQP0MEwX-BD-D3Z7tZDqsQkuwO_FN8" target="_blank">playstore link</a>).
-			</li>
-			<li>
-				Just download the file/files to your phone (preferred) or PC. Links are also shareable.
-			</li>
-			<li>
-				Using ReadEra, scan your phone for all e-books downloaded.
-			</li>
-			<li>
-				<strong>READ. Don't just download and delete. Duh.</strong>
-			</li>
-		</i>
-	</ul>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-6 col-sm-12">
+		Free stuffs I stumbled upon while browsing <small>(mostly Facebook)</small>: <br>
+		<small>
+		It never hurts to make reading a habit. For E-Books: <br>
+		Instructions: <br>
+		<ul>
+			<i>
+				<li>
+					Install any e-book reader. Suggestion: <b>ReadEra</b> (no-ads) <a href="https://play.google.com/store/apps/details?id=org.readera&hl=en&fbclid=IwAR0_Z99eerRVTS_ztMN6Ong8Ff347VQP0MEwX-BD-D3Z7tZDqsQkuwO_FN8" target="_blank">playstore link</a>.
+				</li>
+				<li>
+					Just download the files to your phone (preferred) or PC. Links are also shareable.
+				</li>
+				<li>
+					Using ReadEra, scan your phone for all e-books downloaded.
+				</li>
+				<li>
+					<strong>READ. Don't just download and delete. Duh.</strong>
+				</li>
+			</i>
+		</ul>
+		</small>
+		</div>
+
+		<!-- orig sharers col -->
+		<div class="col-lg-6 col-sm-12 overflow-auto">
+			<small>
+				Original Sharers' profiles: <br>
+				{% for i in credits %}
+					{{i.name}} - <a href="{{i.profile_link1}}" target="_blank">{{i.profile_link1}}</a> <br>
+				{% endfor %}
+			</small>	
+		</div>
+	</div>
+
 	<hr>
+
 	{% for item in shareables %}
 	<div class="card bg-transparent">
 		<div class="card-header bg-dark">
-			<h6 class="quoteText text-center">{{item.title}} </h6>
-		</div>
-		<div class="card-body text-sm">
-			{{item.content|safe}}
+			<h6 class="quoteText text-center">{{item.title}} <small class="text-muted">  -{{item.category}}</small></h6>
 		</div>
 		<div class="card-footer text-sm">			
-			Credits: <i class="quoteText">{{item.orig_sharer}}</i>  <br> <small>(profile links to follow)</small>
+			Credits: <i class="quoteText">{{item.orig_sharer}}</i> <br>
 		</div>
 	</div>
 	{% endfor %}
