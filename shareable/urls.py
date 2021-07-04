@@ -15,7 +15,7 @@ urlpatterns = [
 	path('add-shareable/', ShareableCreateView.as_view(), name="add-shareable"),  
 	path('<int:pk>/', ShareableDetailView.as_view(), name="shareable-detail"),
 	path('<int:pk>/update/', ShareableUpdateView.as_view(), name="update-shareable"),  
-	path('delete-shareable/', ShareableDeleteView.as_view(), name="delete-shareable"),  
+	path('<int:pk>/delete/', ShareableDeleteView.as_view(), name="delete-shareable"),  
 	path('add-sharer/', Orig_SharerCreateView.as_view(), name="add-sharer"),  
 
 ]

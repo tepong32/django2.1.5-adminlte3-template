@@ -31,8 +31,9 @@
 		</div>
 
 		<!-- orig sharers col -->
-		<div class="col-lg-6 col-sm-12 overflow-auto">
+		<div class="col-lg-6 col-sm-12 overflow-auto border elevation-3" style="max-height: 150px">
 			<small>
+				HUGE THANKS to all these wonderful beings! <br>
 				Original Sharers' profiles: <br>
 				{% for i in credits %}
 					{{i.name}} - <a href="{{i.profile_link1}}" target="_blank">{{i.profile_link1}}</a> <br>
@@ -49,7 +50,12 @@
 			<h6 class="quoteText text-center"><a href="{% url 'shareable-detail' item.pk %} ">{{item.title}}</a> <small class="text-muted">  -{{item.category}}</small></h6>
 		</div>
 		<div class="card-footer text-sm">			
-			Credits: <i class="quoteText">{{item.orig_sharer}}</i> <br>
+			by <i class="quoteText">{{item.orig_sharer}}</i>
+			{% if item.author == request.user %}
+		      <a href="{% url 'update-shareable' item.pk %}">
+		        <i class="btn btn-sm btn-outline-success fa fa-edit" title="Edit this?"></i>
+		      </a>
+		    {% endif %}
 		</div>
 	</div>
 	{% endfor %}
