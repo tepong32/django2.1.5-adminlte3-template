@@ -22,15 +22,17 @@ from .views import (
 urlpatterns = [
     path('', ForumHomeView.as_view(), name="forum-home"),             # homepage for blog app
     path('new/', PostCreateView.as_view(), name='post-new'),
-    path('<int:pk>/add-comment/', PostCommentCreateView.as_view(), name='add-comment'), # not working yet
-    path('<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
-    path('<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
-    path('<int:pk>/', PostDetailView.as_view(), name='post-detail'),
+    path('<str:slug>/add-comment/', PostCommentCreateView.as_view(), name='add-comment'), # not working yet
+    path('<str:slug>/update/', PostUpdateView.as_view(), name='post-update'),
+    path('<str:slug>delete/', PostDeleteView.as_view(), name='post-delete'),
+    path('<str:slug>/', PostDetailView.as_view(), name='post-detail'),
     path('<str:username>/', UserPostFilter.as_view(), name='user-posts'),     # filters applied to posts
     path('add-category/', CategoryCreateView.as_view(), name='add-category'),
     path('category/<str:cats>/', CategoryView, name='category'),
-    path('<int:pk>/like/', LikeView, name='like_post'),
-    ]
+    path('<str:slug>/like/', LikeView, name='like_post'),
+    ] 
+
+    # replaced <int:pk> with <str:slug>
 
 
 from django.conf import settings
