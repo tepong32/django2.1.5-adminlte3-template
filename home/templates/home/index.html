@@ -7,6 +7,8 @@
     {% block title_outer %}
     <title>{% block title %}{{ site.name }}{% endblock %}</title>
     {% endblock %} {% block meta %}
+    <!-- OWN HEAD ICON -->
+    <link rel="icon" sizes="192x192" href="media/defaults/round.png">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge" />
     <meta
@@ -14,9 +16,6 @@
       name="viewport"
     />
     {% endblock %} {% block stylesheets %} {% include 'adminlte/lib/_styles.html' %}
-    
-    <!-- OWN HEAD ICON -->
-    <link rel="icon" sizes="192x192" href="media/defaults/round.png">
     <!-- Bootstrap Modal Forms -->
     <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
     <!-- Bootstrap 4 -->
@@ -58,7 +57,12 @@
 	{% block content %}
 		<!-- Feel free to create CSS as needed. I'll, mostly, just use Bootstrap classes. -->
 		<!-- Landing page (Home): -->
-		{% include 'home/home.html' %}
+    {% if user.is_authenticated %}
+      {% include 'home/home_authed.html' %}
+    {% else %}
+      {% include 'home/home_unauthed.html' %}
+    {% endif %}
+		
 	{% endblock content %}
 
 	</div>

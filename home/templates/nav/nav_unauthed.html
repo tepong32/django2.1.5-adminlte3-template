@@ -8,20 +8,7 @@
   <video src="/media/defaults/fiery.mp4" autoplay muted style="position: absolute; object-fit: cover; width: 100%;height: 100%; z-index: -1;"></video>
   <div class="container-fluid">
     <a class="navbar-brand" href="/"><img class="navLogo" src="/media/defaults/round.png">
-      <!-- <span class="quoteText"> teppy<small>.rocks</small></span> -->
-      <i class="titleFont">
-        <span>t</span>
-        <span>e</span>
-        <span>p</span>
-        <span>p</span>
-        <span>y</span>
-        <span>.</span>
-        <span>r</span>
-        <span>o</span>
-        <span>c</span>
-        <span>k</span>
-        <span>s</span>
-      </i>
+      <span class="quoteText"> <u>teppy<small>.rocks</small></u></span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -30,13 +17,10 @@
     <div class="collapse navbar-collapse text-center" id="mainNavbar">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link" href="/forum"><b class="headerFontLink p-2">Forum</b></a>
+          <a class="nav-link" href="#"><i class="fas fa-comments m-2"></i>Blogs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/shareable"><b class="headerFontLink p-2">Free!</b></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about"><b class="headerFontLink p-2">About</b></a>
+          <a class="nav-link" href="{% url 'about' %}"><i class="fa fa-info-circle m-2"></i>About</a>
         </li>
         
       </ul>
@@ -57,13 +41,3 @@
   </div>
 </nav>
 
-
-<!-- <script type="text/javascript">
-  function executeQuery() {
-    var query = ""
-    query = document.getElementById('nav-search-bar1').value;
-    window.location.replace("{% url 'user-search' %}?q=" + query)
-    return false
-  }
-
-</script> -->
