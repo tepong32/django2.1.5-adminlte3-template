@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Announcement, Quote
 from blog.models import Post
+from freebie.models import Freebie
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 
@@ -24,6 +25,7 @@ def home(request):
 		'users': User.objects.all()[:5],
 		'quotes': Quote.objects.all(),
 		'usercount': user.objects.count(),
+		'free': Freebie.objects.all().order_by("-date_posted"),
 	}
 
 	# template_folder/html_file

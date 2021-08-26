@@ -43,12 +43,12 @@ class Freebie(models.Model):
 	def __str__(self):
 		return self.title
 
-	# def get_absolute_url(self):
-	# 	return reverse('shareable-detail', kwargs={'pk': self.pk})
+	def get_absolute_url(self):
+		return reverse('freebie-detail', kwargs={'slug': self.slug})
 
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.title)
-		super(Shareable, self).save(*args, **kwargs)
+		super(Freebie, self).save(*args, **kwargs)
 		# downsizing header_image, if there's any
 		if self.header_image:
 			header_img = Image.open(self.header_image.path)			# open the image of the current instance

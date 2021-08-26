@@ -83,7 +83,7 @@
 			      		<h6 class="quoteText text-primary">Check-out these awesome stuffs! All for free!</h6>
 				        {% for item in free %}
 							<div class="col-10">
-								<a href="{% url 'freebie-detail' post.slug %}">
+								<a href="{% url 'freebie-detail' item.slug %}">
 									<strong><i>{{item.title|truncatechars:50}}</i></strong>
 								</a>
 							</div>
@@ -124,7 +124,7 @@
 		    <div class="card-body quoteText">
 		    	<h6>{{quote.title}}</h6>
 		    </div>
-		    <small style="float: right">--- {{quote.by}}</small>
+		    <small>--- {{quote.by}}</small>
 		  </div>
 		  {% endfor %}
 		</div>

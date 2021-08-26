@@ -56,8 +56,8 @@
               <span class="ml-5">
                 {% if post.author == user %}
                 <div style="float:right; font-size: 10px">
-                  <a class="fa fa-edit text-sm ml-2 mr-2" style="color: green" href="{% url 'post-update' post.id %}"></a>
-                  <a class="fa fa-trash text-sm ml-2 mr-2" href="{% url 'post-delete' post.id %}" style="color: red"></a>
+                  <a class="fa fa-edit text-sm ml-2 mr-2" style="color: green" href="{% url 'post-update' post.slug %}"></a>
+                  <a class="fa fa-trash text-sm ml-2 mr-2" href="{% url 'post-delete' post.slug %}" style="color: red"></a>
                   <!-- <a class="btn btn-outline-info btn-sm ml-2 mr-2" href="{% url 'user-posts' post.author %}" style="font-size: 10px">
                     All your posts
                   </a> -->

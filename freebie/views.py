@@ -35,7 +35,7 @@ class FreebieCreateView(LoginRequiredMixin, CreateView):
 
 class FreebieDetailView(DetailView):
 	model = Freebie
-	context_object_name = 'freebies'
+	context_object_name = 'freebie'
 	template_name = 'freebie/freebie_detail.html'
 
 

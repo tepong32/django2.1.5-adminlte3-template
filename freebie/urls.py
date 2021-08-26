@@ -13,9 +13,9 @@ from .views import (
 urlpatterns = [
 	path('', IndexView, name="freebies"),  
 	path('add-freebie/', FreebieCreateView.as_view(), name="add-freebie"),  
-	path('<int:pk>/', FreebieDetailView.as_view(), name="freebie-detail"),
-	path('<int:pk>/update/', FreebieUpdateView.as_view(), name="update-freebie"),  
-	path('<int:pk>/delete/', FreebieDeleteView.as_view(), name="delete-freebie"),  
+	path('<str:slug>/', FreebieDetailView.as_view(), name="freebie-detail"),
+	path('<str:slug>/update/', FreebieUpdateView.as_view(), name="update-freebie"),  
+	path('<str:slug>/delete/', FreebieDeleteView.as_view(), name="delete-freebie"),  
 	path('add-sharer/', Orig_SharerCreateView.as_view(), name="add-sharer"),  
 
 ]

@@ -49,7 +49,7 @@
 	{% for item in freebies %}
 	<div class="card bg-transparent">
 		<div class="card-header bg-dark">
-			<h6 class="quoteText text-center"><a href="{% url 'shareable-detail' item.pk %} ">{{item.title}}</a> <small class="text-muted">  -{{item.category}}</small></h6>
+			<h6 class="quoteText text-center"><a href="{% url 'freebie-detail' item.slug %} ">{{item.title}}</a> <small class="text-muted">  -{{item.category}}</small></h6>
 		</div>
 		<div class="card-footer text-sm">			
 			by <i class="quoteText">{{item.orig_sharer}}</i> <br>

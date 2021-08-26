@@ -3,15 +3,15 @@
 {% block content %}
 <div class="content-section" >
   <div class="card card-header text-center quoteText" style="display: flex;">
-    {{shareable.title.upper}}
+    {{freebie.title.upper}}
     {% if shareable.author == request.user %}
-      <a href="{% url 'update-shareable' shareable.pk %}">
+      <a href="{% url 'update-freebie' freebie.slug %}">
         <i class="btn btn-sm btn-outline-success fa fa-edit" title="Edit this?"></i>
       </a>
     {% endif %}
   </div>
   <div class="card card-body">
-    {{shareable.content|safe}}
+    {{freebie.content|safe}}
   </div>
 </div>
 {% endblock content %}
