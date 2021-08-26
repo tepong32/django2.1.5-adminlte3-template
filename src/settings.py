@@ -42,9 +42,9 @@ INSTALLED_APPS = [
 
     # custom
     'home.apps.HomeConfig',
-    'forum.apps.ForumConfig',
+    'blog.apps.BlogConfig',
     'user.apps.UserConfig',
-    'shareable.apps.ShareableConfig',
+    'freebie.apps.FreebieConfig',
 
 
     # django-allauth needs this

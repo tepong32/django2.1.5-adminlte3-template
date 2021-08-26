@@ -43,7 +43,9 @@
 						<div class="row">
 							{% for post in posts %}
 								<div class="col-10">
-									<strong><i>{{post.title|truncatechars:50}}</i></strong>
+									<a href="{% url 'post-detail' post.slug %}">
+										<strong><i>{{post.title|truncatechars:50}}</i></strong>
+									</a>
 								</div>
 								<div class="col">
 									<small>{{post.author}}</small>

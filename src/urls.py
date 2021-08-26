@@ -27,8 +27,8 @@ urlpatterns = [
     path('', include('home.urls')),
     path('about/', about, name="about"),
     path('u/', include('user.urls')),
-    path('forum/', include('forum.urls')),
-    path('shareable/', include('shareable.urls')),
+    path('blogs/', include('blog.urls')),
+    path('freebies/', include('freebie.urls')),
 
 
     # # django-allauth

@@ -27,9 +27,17 @@
     <div class="card-title quoteText text-danger text-center">
       <h6>Your Panel</h6>
       <hr>
-      <a class="btn btn-sm btn-primary mr-2" title="Yes. YOUR article." href="#">
+      <a class="btn btn-sm btn-primary mr-2" title="Yes. YOUR article." href="{% url 'post-new' %}">
         Create YOUR article</i>
       </a>
+
+      
+      {% if request.user.is_staff %}
+      <!-- This button is for staffs/admins to be able to share freebies. -->
+      <a class="btn btn-sm btn-primary mr-2" title="This is a test button. Don't mind this." href="{% url 'add-freebie' %}">
+        Add Freebie </i>
+      </a>
+      {% endif %}
       <a class="btn btn-sm btn-primary mr-2" title="This is a test button. Don't mind this." href="#">
         Share </i>
       </a>

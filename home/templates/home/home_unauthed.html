@@ -43,7 +43,9 @@
 						<div class="row">
 							{% for post in posts %}
 								<div class="col-10">
-									<strong><i>{{post.title|truncatechars:50}}</i></strong>
+									<a href="{% url 'post-detail' post.slug %}">
+										<strong><i>{{post.title|truncatechars:50}}</i></strong>
+									</a>
 								</div>
 								<div class="col">
 									<small>{{post.author}}</small>
@@ -81,7 +83,9 @@
 			      		<h6 class="quoteText text-primary">Check-out these awesome stuffs! All for free!</h6>
 				        {% for item in free %}
 							<div class="col-10">
-								<strong><i>{{item.title|truncatechars:50}}</i></strong>
+								<a href="{% url 'freebie-detail' post.slug %}">
+									<strong><i>{{item.title|truncatechars:50}}</i></strong>
+								</a>
 							</div>
 						{% endfor %}
 					</a>

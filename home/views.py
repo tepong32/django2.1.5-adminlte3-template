@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Announcement, Quote
+from blog.models import Post
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 
@@ -17,12 +18,10 @@ def home(request):
 		A bit messy but I was experimenting and didn't want to change it for future reference.
 	'''
 	user = User
-	user_list = User.objects.all()[:5]
-	announcements = Announcement.objects.all().order_by("-date_posted")
 	context = {
-
-		'announcements': announcements,
-		'users': user_list,
+		'posts': Post.objects.all().order_by("-date_posted"),
+		'announcements': Announcement.objects.all().order_by("-date_posted"),
+		'users': User.objects.all()[:5],
 		'quotes': Quote.objects.all(),
 		'usercount': user.objects.count(),
 	}
