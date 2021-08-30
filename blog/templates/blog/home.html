@@ -10,7 +10,7 @@
 
   <div class="row">
     <div class="col-sm-6 p-1" style="background-color: transparent">
-      <h5 class="text-white text-center">SALAMAT SHOPEE!</h5>
+      <h5 class="text-center"><b>SALAMAT SHOPEE!</b></h5>
       <small>
       {% if messages %}
         {% for message in messages %}
@@ -20,11 +20,12 @@
       </small>
     </div>
     
-      <a class="btn btn-outline-primary mb-1 mr-auto quoteText col-sm-6 headerFontLink" style="float: right;" href="/blog/post/new" title="Create a blog post!"> Voice your heart out! </a>
-      
-    
-      <a class="btn btn-primary quoteText" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Posting Reminders <small class="text-dark">(Click me!)</small><div><small class="ml-auto">Posts count: {{ page_obj.paginator.count }}</small> </div>
+      <a class="btn btn-outline-primary mb-1 mr-auto col-sm-6" style="float: right;" href="/blog/post/new" title="Create a blog post!"> Voice your heart out! </a>
+      <a class="btn bg-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <h5>Posting Reminders<small class="">(Click me!)</small></h5> 
+        <div>
+          <small class="ml-auto">Posts count: {{ page_obj.paginator.count }}</small>
+        </div>
       </a>
     <div class="collapse" id="collapseExample">
       <div class="card-body text-sm">
@@ -40,15 +41,17 @@
     <div class="col-md-8">
     <!-- first column for posts -->
     {% for post in posts %}
-    <div class="card p-2 col m-1" style="background-color: black"> 
+    <div class="card p-2 col m-1 bg-dark"> 
       <article class="media content-section m-1">
-        <img
+        <a href="{% url 'profile' post.author %}">
+          <img
           class="rounded-circle article-img"
           src="{{ post.author.profile.image.url }}"
           style="height: 25px; width: 25px">
+        </a>
         <div class="media-body">
             <div class="col" style="font-size: 12px">
-              <a class="ml-3 mr-5 quoteText" href="{% url 'profile' post.author %}">
+              <a class="ml-3 mr-5" href="{% url 'profile' post.author %}">
                   {{ post.author }}
               </a>
                 <small class="text-muted ml-2">
@@ -71,13 +74,6 @@
                 </div>             
                 {% else %}
                 <div style="float:right">
-                  <!-- <a class="btn btn-outline-info btn-sm" href="{% url 'user-posts' post.author %}" style="font-size: 10px">
-                    All posts by {{ post.author }}
-                  </a> -->
-                  <!-- displaying header_image sacrifices the title area -->
-                  <!-- {% if post.header_image %}
-                    <img src="{{post.header_image.url}}" style="right: 0px;height: 70px; width:120px; position: cover"; >
-                  {% endif %} -->
                   <i class="text-primary text-sm far fa-thumbs-up ml-1"> {{post.total_likes}}</i>
                   
                 </div>
@@ -117,12 +113,12 @@
   </div>
 
   <!-- second column for chats or something else -->
-  <div class="col-md-4 p-3 border border-success" style="max-height: 300px;">
+  <!-- <div class="col-md-4 p-3 border border-success" style="max-height: 300px;">
     Thinking about a Public Chatbox to be placed here ...or something else. <br>
     Still undecided. <br>
     Suggestions welcome. <br>
     Please email me: <b>teppy@teppy.rocks</b>
-  </div>
+  </div> -->
 
 
 

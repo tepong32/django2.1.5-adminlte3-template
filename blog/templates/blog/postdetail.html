@@ -9,13 +9,14 @@
 <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
 
 <div class="container">
-  <a class="btn btn-primary mr-1 fa fa-arrow-left" href="{% url 'blogs' %}" title="Back to Blogs">
-  </a>
+  
   <div class="row">
-      <h5 class="headerFontLink text-center mr-auto col-12 col-sm-12 elevation-3 p-2">
-        {{ object.title }}
-        <small class="col-4 col-sm-6"><a href="{% url 'category' object.category %}">{{object.category}}</a></small> 
-      </h5>
+    <h5 class="text-center mr-auto col-12 col-sm-12 elevation-3 p-2" style="font-family: 'Poppins';">
+      <a class="btn btn-primary mr-1 fa fa-arrow-left float-left" href="{% url 'blogs' %}" title="Back to Blogs">
+      </a>
+      {{ object.title }}
+      <small class="col-4 col-sm-6"><a href="{% url 'category' object.category %}">{{object.category}}</a></small> 
+    </h5>
     <div class="col-md-4 bg-gray" style="float: right; border-radius: 20px">
       {% if object.author == user %}
         <a class="btn btn-success btn-sm mr-1 fa fa-edit" href="{% url 'post-update' object.id %}" title="Edit Post">
@@ -23,21 +24,13 @@
         <a class="btn btn-danger btn-sm mr-1 fa fa-trash" href="{% url 'post-delete' object.id %}" title="Delete Post">
         </a>
       {% else %}
-        <a class="mr-1" href="{% url 'user-posts' object.author %}">
-          <u>{{ object.author }}'s posts</u>
-        </a>
+        {% if user.is_authenticated %}
+          <a class="mr-1" href="{% url 'user-posts' object.author %}">
+            <u>{{ object.author }}'s posts</u>
+          </a>
+        {% endif %}
       {% endif %}
 
-
-      <a class="col-md-2 mr-2" href="{% url 'profile' object.author %}">
-        <img
-          class="rounded-circle article-img ml-3 m-2"
-          src="{{ object.author.profile.image.url }}"
-          style="height: 40px; width: 40px;"
-          title="{{ object.author }}"
-          />
-        
-      </a>
       <!--post.date_posted|date:"F, d, Y" == format without timestamp. -->
       
       {% if object.author == user %}
@@ -60,6 +53,8 @@
           </form>
         {% endif %} <!-- if user.is_authenticated -->
       {% endif %}
+
+
     </div>
   </div>
   
@@ -68,59 +63,19 @@
 <!-- 1st column for post body -->
 <div class="row">
 <div class="card col-md-8 p-1">
-    <div class="article-content text-dark text-justify" style="padding: 2em; background: #fff;">{{ object.content|safe }}</div>
+    <div style=" padding: 2em; background: #fff;">{{ object.content|safe }}</div>
     {% if object.date_modified %}
       <small class="text-muted text-sm ml-auto"
         ><i>last modified: {{ object.date_modified }}</i>
       </small>
     {% endif %}
-
+    <!-- FB share button -->
+    <div class="fb-share-button ml-2" data-href="/blogs/{{object.slug}}/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flocalhost%2Fblogs%2F%257B%257Bobject.slug%257D%257D%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
 </div>
 
-<!-- 2nd column for comments -->
+<!-- 2nd column for FB comments -->
 <div class="card col p-1">
-  <div class="card-title">
-    <h6><i>Comments ({{ post.comments.count }})</i></h6>
-  </div> 
-
-    <blockquote class="text-justify">
-      Apologies...commenting is not working properly atm. Will be posting it on the announcements once it's ready. <br>
-      Unlike in WordPress websites, tho, you'll have to register an account to be able to comment on posts.
-    </blockquote>
-
-    {% for comment in post.comments.all %}
-    <!-- <blockquote class="blockquote bg-dark">
-        <p class="mb-0">{{ comment.content|linebreaks }}</p>
-        <small class="text-muted">{{comment.timestamp}}
-        by: <cite title="Source Title">{{ comment.user }}
-        </cite>
-        </small>
-    </blockquote> -->
-    {% endfor %}
-   
-      
-
-      <!-- Modal -->
-      <!-- <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-
-          </div>
-        </div>
-      </div> -->
-
-
-      <!-- <div class="modal fade" tabindex="-1" role="dialog" id="modal">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content"></div>
-        </div>
-      </div> -->
-
-      <!-- Button trigger modal -->
-      <!-- <button id="add-comment" class="btn btn-primary" type="button" name="button">Add comment</button>
-
-
-      <a href="{% url 'add-comment' object.pk %}">Add comment self page</a> -->
+    <div class="fb-comments" data-href="https://localhost/blogs/{{object.slug}}/" data-width="100%" data-numposts="5"></div>   
 </div>
 </div>
 

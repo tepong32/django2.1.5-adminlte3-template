@@ -23,7 +23,7 @@ class Orig_Sharer(models.Model):
 
 class Freebie(models.Model):
 	title = models.CharField(max_length=100)
-	slug = models.SlugField(default='', blank=True)	# work on slugifying titles as, currently, they show post IDs on url
+	slug = models.SlugField(default='', blank=True)
 	# header image
 	def shareable_header_directory(instance, filename):
 		return 'users/{}/shareable_images/{}/header/{}'.format(instance.author.username, instance.title, filename)
