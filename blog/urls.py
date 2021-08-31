@@ -12,8 +12,6 @@ from .views import (
     CategoryView,   # this is a function-based view
     CategoryCreateView,
     LikeView,
-    CommentCreateView,
-    PostCommentCreateView,
     )
 # alternatively, you can just use "from . import views".
 # however, importing views one-by-one seems to be a better option so you can remember which views you have already worked on.
@@ -22,7 +20,6 @@ from .views import (
 urlpatterns = [
     path('', BlogHomeView.as_view(), name="blogs"),             # homepage for blog app
     path('new/', PostCreateView.as_view(), name='post-new'),
-    path('<str:slug>/add-comment/', PostCommentCreateView.as_view(), name='add-comment'), # not working yet
     path('<str:slug>/update/', PostUpdateView.as_view(), name='post-update'),
     path('<str:slug>delete/', PostDeleteView.as_view(), name='post-delete'),
     path('<str:slug>/', PostDetailView.as_view(), name='post-detail'),

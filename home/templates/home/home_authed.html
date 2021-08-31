@@ -51,7 +51,7 @@
 									<small>{{post.author}}</small>
 								</div>
 							{% endfor %} <br>
-							<small>Total Post count: ({{postCount}})</small>
+							<small>Total Post count: ({{postcount}})</small>
 						</div>
 			      </div>
 
@@ -99,10 +99,11 @@
 	{% include 'home/authedUserPanel.html' %}
 
     <!-- Documentary -->
-    <div class="text-center mt-2">
-		<b>Must-watch Documentary</b>
-		<br>
-		Maybe a playlist here? Or a selection of informative videos you can watch? What do you, guys, think?
+    <div class="card col-lg-7 col-sm-12">
+	    <div class="text-center m-2">
+			<b>Must-watch Documentary</b>
+		</div>
+		<iframe src="https://www.youtube.com/embed/zpNlG3VtcBM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: center; height: 300px; width: 100%; border-radius: 12px;"></iframe>
 	</div>
 
 	<!-- <div class="card-body">

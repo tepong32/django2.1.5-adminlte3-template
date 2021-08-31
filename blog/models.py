@@ -71,8 +71,6 @@ class PostComment(models.Model):
 	# def get_absolute_url(self):
 	# 	return reverse('post-detail', kwargs={'pk': self.pk})
 
-# this has not been implemented on the ForumHomeView yet
-# items for reminders are hard-coded
 class BlogReminder(models.Model):
 	title = models.CharField(max_length=255)
 	body = models.TextField()

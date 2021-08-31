@@ -1,7 +1,15 @@
-<div class="card col text-sm text-justify p-2 border elevation-3 ml-2 mt-3" style="max-height: 500px" >
+<style type="text/css">
+  .devCard:hover {
+    height: 200px;
+    transition-delay: .7s; /*idk why this is not working*/
+  }
+</style>
+
+
+<div class="card col text-sm text-justify p-2 border elevation-3 ml-2" style="max-height: 450px" >
 
     <!-- Dev Profile + Cover -->
-    <div class="card card-widget widget-user" style="min-height: 150px;">
+    <div class="card card-widget widget-user devCard" style="min-height: 150px;">
       <div>
           <video autoplay="" muted="" loop="" style="object-fit: cover;position: absolute;width: 100%; height: 100%; border-radius:  15px;">
             <source src="/media/defaults/smile.mp4" type="video/mp4">
@@ -10,15 +18,13 @@
         <h1 class="widget-user-username text-right text-white" style="position: absolute; left: 60%">Teppy</h1>
         <br>
         <br>
-        <h6 class="widget-user-desc text-right text-white" style="position: absolute; left: 50%">Website Creator</h6>
+        <small class="widget-user-desc text-right text-white" style="position: absolute; left: 55%">Website Creator</small>
         <!-- like&share the site button -->
           <div class="fb-like float-right mr-2" data-href="http://localhost:8000/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-share="false" >
           </div>
       </div>
       <div class="widget-user-image">
         <img class="img-circle" src="/media/defaults/round.png" alt="User Avatar">
-      </div>
-      <div class="card-footer headerFontLink text-danger">
       </div>
     </div>
 

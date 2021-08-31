@@ -19,9 +19,9 @@
     </h5>
     <div class="col-md-4 bg-gray" style="float: right; border-radius: 20px">
       {% if object.author == user %}
-        <a class="btn btn-success btn-sm mr-1 fa fa-edit" href="{% url 'post-update' object.id %}" title="Edit Post">
+        <a class="btn btn-success btn-sm mr-1 fa fa-edit" href="{% url 'post-update' object.slug %}" title="Edit Post">
         </a>
-        <a class="btn btn-danger btn-sm mr-1 fa fa-trash" href="{% url 'post-delete' object.id %}" title="Delete Post">
+        <a class="btn btn-danger btn-sm mr-1 fa fa-trash" href="{% url 'post-delete' object.slug %}" title="Delete Post">
         </a>
       {% else %}
         {% if user.is_authenticated %}
@@ -63,14 +63,14 @@
 <!-- 1st column for post body -->
 <div class="row">
 <div class="card col-md-8 p-1">
-    <div style=" padding: 2em; background: #fff;">{{ object.content|safe }}</div>
+    <div style=" padding: 1em; background: #fbeee1;">{{ object.content|safe }}</div>
     {% if object.date_modified %}
       <small class="text-muted text-sm ml-auto"
         ><i>last modified: {{ object.date_modified }}</i>
       </small>
     {% endif %}
-    <!-- FB share button -->
-    <div class="fb-share-button ml-2" data-href="/blogs/{{object.slug}}/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flocalhost%2Fblogs%2F%257B%257Bobject.slug%257D%257D%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+    <!-- FB like&share button -->
+    <div class="fb-like" data-href="/blogs/{{object.slug}}/" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
 </div>
 
 <!-- 2nd column for FB comments -->

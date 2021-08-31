@@ -5,11 +5,11 @@
 <!-- CREATE logic for authed vs unauthed navbars -->
 {% block content %}
 
-<section class="container" style="min-height: 100vh;">
+<div class="container" style="min-height: 100vh;">
       
 
   <div class="row">
-    <div class="col-sm-6 p-1" style="background-color: transparent">
+    <div class="col-sm-6 p-1 text-center" style="background-color: transparent">
       <h5 class="text-center"><b>SALAMAT SHOPEE!</b></h5>
       <small>
       {% if messages %}
@@ -20,7 +20,7 @@
       </small>
     </div>
     
-      <a class="btn btn-outline-primary mb-1 mr-auto col-sm-6" style="float: right;" href="/blog/post/new" title="Create a blog post!"> Voice your heart out! </a>
+      <a class="btn btn-outline-primary mb-1 mr-auto col-sm-6" style="float: right;" href="/blog/post/new" title="Create a blog post!"> Share something </a>
       <a class="btn bg-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         <h5>Posting Reminders<small class="">(Click me!)</small></h5> 
         <div>
@@ -86,7 +86,7 @@
             </div>
           <div class="row">
             <h6>
-              <a class="article-title col-4 ml-3 text-secondary" href=" {% url 'post-detail' post.slug %}">
+              <a class="article-title col-4 ml-3 text-white" href=" {% url 'post-detail' post.slug %}">
                 {{ post.title|truncatechars:100 }}</a>
             </h6>
           </div>
@@ -111,18 +111,8 @@
     {% endif %}
     </div>
   </div>
-
-  <!-- second column for chats or something else -->
-  <!-- <div class="col-md-4 p-3 border border-success" style="max-height: 300px;">
-    Thinking about a Public Chatbox to be placed here ...or something else. <br>
-    Still undecided. <br>
-    Suggestions welcome. <br>
-    Please email me: <b>teppy@teppy.rocks</b>
-  </div> -->
-
-
-
 </div> <!-- row -->
-</section>
+</div>
+</div>
 
 {% endblock content %}

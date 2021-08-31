@@ -25,6 +25,7 @@ def home(request):
 		'users': User.objects.all()[:5],
 		'quotes': Quote.objects.all(),
 		'usercount': user.objects.count(),
+		'postcount': Post.objects.count(),
 		'free': Freebie.objects.all().order_by("-date_posted"),
 	}
 
