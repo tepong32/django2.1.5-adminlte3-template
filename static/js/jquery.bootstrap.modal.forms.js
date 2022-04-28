@@ -1,7 +1,7 @@
 /*
 django-bootstrap-modal-forms
-version : 2.0.0
-Copyright (c) 2020 Uros Trstenjak
+version : 2.1.0
+Copyright (c) 2021 Uros Trstenjak
 https://github.com/trco/django-bootstrap-modal-forms
 */
 
@@ -17,9 +17,12 @@ https://github.com/trco/django-bootstrap-modal-forms
     };
 
     var addEventHandlers = function (settings) {
-        // submitBtn click handler
-        $(settings.submitBtn).on("click", function (event) {
-            isFormValid(settings, submitForm);
+        $(settings.modalForm).on("submit", function (event) {
+            if (event.originalEvent !== undefined && settings.isDeleteForm === false) {
+                event.preventDefault();
+                isFormValid(settings, submitForm);
+                return false;
+            }
         });
         // Modal close handler
         $(settings.modalID).on("hidden.bs.modal", function (event) {
@@ -27,13 +30,14 @@ https://github.com/trco/django-bootstrap-modal-forms
         });
     };
 
-
     // Check if form.is_valid() & either show errors or submit it via callback
     var isFormValid = function (settings, callback) {
         $.ajax({
             type: $(settings.modalForm).attr("method"),
             url: $(settings.modalForm).attr("action"),
-            data: $(settings.modalForm).serialize(),
+            data: new FormData($(settings.modalForm)[0]),
+            contentType: false,
+            processData: false,
             beforeSend: function () {
                 $(settings.submitBtn).prop("disabled", true);
             },
@@ -58,14 +62,20 @@ https://github.com/trco/django-bootstrap-modal-forms
             $(settings.modalForm).submit();
         } else {          
             var asyncSettingsValid = validateAsyncSettings(settings.asyncSettings);
-            var asyncSettings = settings.asyncSettings;
-
+            
             if (asyncSettingsValid) {                
+                var asyncSettings = settings.asyncSettings;
+                // Serialize form data
+                var formdata = new FormData($(settings.modalForm)[0]);
+                // Add asyncUpdate and check for it in save method of CreateUpdateAjaxMixin
+                formdata.append("asyncUpdate", "True");
+                
                 $.ajax({
                     type: $(settings.modalForm).attr("method"),
                     url: $(settings.modalForm).attr("action"),
-                    // Add asyncUpdate and check for it in save method of CreateUpdateAjaxMixin
-                    data: $(settings.modalForm).serialize() + "&asyncUpdate=True",
+                    data: formdata,
+                    contentType: false,
+                    processData: false,
                     success: function (response) {
                         var body = $("body");
                         if (body.length === 0) {
@@ -142,8 +152,8 @@ https://github.com/trco/django-bootstrap-modal-forms
             modalContent: ".modal-content",
             modalForm: ".modal-content form",
             formURL: null,
+            isDeleteForm: false,
             errorClass: ".invalid",
-            submitBtn: ".submit-btn",
             asyncUpdate: false,
             asyncSettings: {
                 closeOnSubmit: false,
