@@ -11,7 +11,7 @@
 			  <div class="card-header p-0 pt-1">
 			    <ul class="nav nav-tabs" id="custom-tabs-tab" role="tablist">
 			      <li class="nav-item">
-			        <a class="nav-link active" id="custom-tabs-announcements-tab" data-toggle="pill" href="#custom-tabs-announcements" role="tab" aria-controls="custom-tabs-announcements" aria-selected="false">Only For You</a>
+			        <a class="nav-link active" id="custom-tabs-onlyforyou-tab" data-toggle="pill" href="#custom-tabs-onlyforyou" role="tab" aria-controls="custom-tabs-onlyforyou" aria-selected="false">Only For You</a>
 			      </li>
 			      <li class="nav-item">
 			        <a class="nav-link" id="custom-tabs-blogs-tab" data-toggle="pill" href="#custom-tabs-blogs" role="tab" aria-controls="custom-tabs-blogs" aria-selected="false">Latests</a>
@@ -20,18 +20,20 @@
 			        <a class="nav-link" id="custom-tabs-members-tab" data-toggle="pill" href="#custom-tabs-members" role="tab" aria-controls="custom-tabs-members" aria-selected="false">Site Members:</a>
 			      </li>
 			      <li class="nav-item">
-			        <a class="nav-link" id="custom-tabs-etc-tab" data-toggle="pill" href="#custom-tabs-etc" role="tab" aria-controls="custom-tabs-etc" aria-selected="true">Free Stuffs! <small>(preview)</small></a>
+			        <a class="nav-link" id="custom-tabs-etc-tab" data-toggle="pill" href="#custom-tabs-etc" role="tab" aria-controls="custom-tabs-etc" aria-selected="true">WoW <small>(Words of Wisdom)</small></a>
 			      </li>
 			    </ul>
 			  </div>
 			  <div class="card-body">
 			    <div class="tab-content" id="custom-tabs-tabContent">
 			    	
-			      <!-- Announcements -->
-			      <div class="tab-pane fade active show overflow-auto" id="custom-tabs-announcements" role="tabpanel" aria-labelledby="custom-tabs-announcements-tab">
+			      <!-- Only For You -->
+			      <div class="tab-pane fade active show overflow-auto" id="custom-tabs-onlyforyou" role="tabpanel" aria-labelledby="custom-tabs-onlyforyou-tab">
+			      	**here's the panel showing jessa-specific posts** <br>
+			      	**rename model: Announcement
 			        {% for a in announcements %}
-			            <div class="announcementBox overflow-auto">
-			                <h4 class="quoteText text-danger">
+			            <div class="onlyforyouBox overflow-auto">
+			                <h4 class="text-danger">
 			                	{{ a.title }}
 			                </h4> 
 			                <i><small>{{a.date_posted}}</small></i>
@@ -81,18 +83,39 @@
 					</div>
 			      </div>
 
-			      <!-- Free -->
+			      <!-- WoW area -->
 			      <div class="tab-pane fade" id="custom-tabs-etc" role="tabpanel" aria-labelledby="custom-tabs-etc-tab">
-			      	<a href="#" title="Check-out these awesome stuffs!">
-			      		
-				        {% for item in free %}
-							<div class="col-10">
-								<a href="{% url 'freebie-detail' item.slug %}">
-									<strong><i>{{item.title|truncatechars:50}}</i></strong>
-								</a>
-							</div>
-						{% endfor %}
-					</a>
+			    	<!-- Quotes CAROUSEL -->				
+					<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
+						<div class="carousel-inner" style="">
+						  <!-- Default/First item on the Quotes carousel with "active" class // this is a hard-coded quote -->
+						  <div class="carousel-item active p-5 text-center" style="align-items: center">
+						    <div class="card-body quoteText">
+						    	Fall seven times; Stand-up eight.
+						    </div>
+						  </div>
+
+						  <!-- actual Quotes created using the admin page -->
+						  {% for quote in quotes%}
+						  <div class="carousel-item p-5 text-center" style="align-items: center">
+						    <div class="card-body ">
+						    	<h6>{{quote.title}}</h6>
+						    </div>
+						    <small>--- {{quote.by}}</small>
+						  </div>
+						  {% endfor %}
+						</div>
+						<a class="carousel-control-prev mt-5" href="#carouselExampleIndicators" role="button" data-slide="prev">
+						  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						  <span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next mt-5" href="#carouselExampleIndicators" role="button" data-slide="next">
+						  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+						  <span class="sr-only">Next</span>
+						</a>
+
+					<!-- /CAROUSEL -->
+
 			      </div>
 			    </div>
 			  </div>
@@ -104,37 +127,7 @@
 	
 
 
-    <div class="col-lg-5 col-sm-12" style="min-height: 150px; border-radius: 12px;">
-    	<!-- Quotes CAROUSEL -->				
-		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
-			<div class="carousel-inner bg-black" style="height: 100%">
-			  <!-- Default/First item on the Quotes carousel // hard-coded quote -->
-			  <div class="carousel-item active p-5 text-center" style="align-items: center">
-			    <div class="card-body quoteText">
-			    	Fall seven times; Stand-up eight.
-			    </div>
-			  </div>
-
-			  <!-- actual Quotes created using the admin page -->
-			  {% for quote in quotes%}
-			  <div class="carousel-item p-5 text-center" style="align-items: center">
-			    <div class="card-body quoteText">
-			    	<h6>{{quote.title}}</h6>
-			    </div>
-			    <small>--- {{quote.by}}</small>
-			  </div>
-			  {% endfor %}
-			</div>
-			<a class="carousel-control-prev mt-5" href="#carouselExampleIndicators" role="button" data-slide="prev">
-			  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			  <span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next mt-5" href="#carouselExampleIndicators" role="button" data-slide="next">
-			  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-			  <span class="sr-only">Next</span>
-			</a>
-		</div>
-		<!-- /CAROUSEL -->
+    
 		<br>
     </div>
 

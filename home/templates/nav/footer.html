@@ -12,11 +12,10 @@
   footer span {
     color: #333;
     font-size: 20px;
-    font-family: sans-serif;
     font-weight: 300;
     justify-content: center;
     align-items: center;
-    animation: footerAnimation 1.2s linear infinite;
+    animation: footerAnimation 1.8s linear infinite;
   }
   footer span:nth-child(1) {
     animation-delay: 0s;
@@ -48,13 +47,11 @@
   footer span:nth-child(10) {
     animation-delay: 0.9s;
   }
-  footer span:nth-child(11) {
-    animation-delay: 1s;
-  }
+
 
 
     @keyframes footerAnimation {
-      0%, 80%
+      0%, 100%
       {
         color: #f2f2f2,
         box-shadow: none;
@@ -75,34 +72,38 @@
     small {
       font-size: 10px;
     }
-    .dev_social_link{
-    color: white;
-    text-decoration: none;
-  }
 </style>
 
-<footer class="bg-dark">
-    <div class="float-right d-none d-sm-block mr-3">
-       <!-- If you wish to join my old-school, Facebook-like, micro-community, please do. Let's help each other out! It's this actual link: -->
-      <i class="text-muted">
-          <small>Join my micro-community: <b><a href="https://fakebook.teppy.rocks" target="_blank">Fakebook</a></b> (a subdomain of): </small>
+<footer>
+  <img src="/media/defaults/bg03.jpg" style="position: relative; object-fit: cover; width: 100%; height: 100%;">
+  
+    <div class="text-center align-items-center p-2">
+      Indeed... <br>
+      Fate may have played a little part but I think loving someone is <strong><i>ALWAYS</i></strong> a choice <br>
+      ...and since that fateful weekend we spent together, <br>
+
+      <div class="d-none d-sm-block">
+        <i>
+          <strong>
+            <span>...</span>
+            <span>I</span>
+            <span></span>
+            <span>chose</span>
+            <span></span>
+            <span>to</span>
+            <span></span>
+            <span>love</span>
+            <span></span>
+            <span>you</span>
+
+          </strong>
         </i>
-        <a href="https://teppy.rocks" target="_blank">
-          <i>
-            <span>t</span>
-            <span>e</span>
-            <span>p</span>
-            <span>p</span>
-            <span>y</span>
-            <span>.</span>
-            <span>r</span>
-            <span>o</span>
-            <span>c</span>
-            <span>k</span>
-            <span>s</span>
-          </i>
-        </a>
+      </div>
     </div>
+    <div class="float-right d-sm-block text-danger mr-3">
+      <small>(view desktop site ;P)</small>
+    </div>
+    
 </footer>
 
 

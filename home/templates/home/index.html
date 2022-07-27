@@ -8,7 +8,7 @@
     <title>{% block title %}{{ site.name }}{% endblock %}</title>
     {% endblock %} {% block meta %}
     <!-- OWN HEAD ICON -->
-    <link rel="icon" sizes="192x192" href="media/defaults/round.png">
+    <link rel="icon" sizes="192x192" href="media/defaults/smile.png">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge" />
     <meta
@@ -41,10 +41,10 @@
     <!-- JAVASCRIPTS after body-tag -->
     <!-- FB likes plugin -->
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0" nonce="smTllhV8"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0" nonce="nqAQ8jaq"></script>
     <!-- FB comments plugin -->
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0" nonce="nguTQ8Lu"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0" nonce="kM3mtf9S"></script>
     <!-- FB share plugin -->
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0" nonce="IO6K7q2y"></script>
@@ -62,7 +62,7 @@
 
 	
   <!-- BG image -->
-  <img src="/media/defaults/bg01.jpg" style="position: fixed; object-fit: cover; height: 100%; width: 100%; margin-left: 0;"> <!-- src="https://drive.google.com/uc?id=18l1UxbNyXOSNDSkYhShmakWnH30UPgAH" -->
+  <img src="/media/defaults/bg03.jpg" style="position: fixed; object-fit: cover; height: 100%; width: 100%; margin-left: 0;"> <!-- src="https://drive.google.com/uc?id=18l1UxbNyXOSNDSkYhShmakWnH30UPgAH" -->
 
   <!-- This block will contain the dynamic area of the site -->
 	<div class="container" style="padding-top: 4em; min-height: 100vh">
@@ -96,6 +96,7 @@
   
 
     {% include 'adminlte/lib/_scripts.html' %}
+    {% include 'home/floating_hearts_script.html' %}
   </body>
   {% block footer %}
     {% include 'nav/footer.html' %}
