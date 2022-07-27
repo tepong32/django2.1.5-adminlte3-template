@@ -1,13 +1,17 @@
 {% load static %}
 <div class="row" >
-	
-	<div class="container overflow-auto col-lg-8 col-sm-12 mb-2" style="min-height: 400px; max-height:100%;margin-bottom: 5px; padding: 0;">
+	<style type="text/css">
+		.tab-pane {
+			min-height: 100vh;
+		}
+	</style>
+	<div class="container overflow-auto col-lg-12 col-sm-12 col-md-12 mb-2" style="margin-bottom: 5px; padding: 0;">
 		<div class="col-12 col-sm-6 col-lg-12">
-			<div class="card card-dark card-tabs">
+			<div class="card card-pink card-tabs">
 			  <div class="card-header p-0 pt-1">
 			    <ul class="nav nav-tabs" id="custom-tabs-tab" role="tablist">
 			      <li class="nav-item">
-			        <a class="nav-link active" id="custom-tabs-announcements-tab" data-toggle="pill" href="#custom-tabs-announcements" role="tab" aria-controls="custom-tabs-announcements" aria-selected="false">Announcements:</a>
+			        <a class="nav-link active" id="custom-tabs-announcements-tab" data-toggle="pill" href="#custom-tabs-announcements" role="tab" aria-controls="custom-tabs-announcements" aria-selected="false">Only For You</a>
 			      </li>
 			      <li class="nav-item">
 			        <a class="nav-link" id="custom-tabs-blogs-tab" data-toggle="pill" href="#custom-tabs-blogs" role="tab" aria-controls="custom-tabs-blogs" aria-selected="false">Latests</a>
@@ -97,16 +101,8 @@
 		</div>
 	</div>
 
-	<!-- dev profile -->
-	{% include 'home/teppyinfocard.html' %}
+	
 
-    <!-- Documentary -->
-    <div class="card col-lg-7 col-sm-12">
-	    <div class="text-center m-2">
-			<b>Must-watch Documentary</b>
-		</div>
-		<iframe src="https://www.youtube.com/embed/zpNlG3VtcBM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: center; height: 300px; width: 100%; border-radius: 12px;"></iframe>
-	</div>
 
     <div class="col-lg-5 col-sm-12" style="min-height: 150px; border-radius: 12px;">
     	<!-- Quotes CAROUSEL -->				
@@ -139,11 +135,7 @@
 			</a>
 		</div>
 		<!-- /CAROUSEL -->
-
-		<div class="card mt-2">
-			Other sites I am working/experimenting on: <br>
-
-		</div>
+		<br>
     </div>
 
 </div>

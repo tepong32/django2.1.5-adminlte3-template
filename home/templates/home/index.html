@@ -49,6 +49,7 @@
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0" nonce="IO6K7q2y"></script>
 
+
     {% include 'home/_css.html' %}
   	<!-- Site Navigation -->
   	{% block navbar %}
@@ -59,8 +60,13 @@
   		{% endif %}
   	{% endblock navbar %}
 
-	<!-- This block will contain the dynamic area of the site -->
-	<div class="container" style="padding-top: 4.8em; min-height: 100vh">
+	
+  <!-- BG image -->
+  <img src="/media/defaults/bg01.jpg" style="position: fixed; object-fit: cover; height: 100%; width: 100%; margin-left: 0;"> <!-- src="https://drive.google.com/uc?id=18l1UxbNyXOSNDSkYhShmakWnH30UPgAH" -->
+
+  <!-- This block will contain the dynamic area of the site -->
+	<div class="container" style="padding-top: 4em; min-height: 100vh">
+
 	{% block content %}
 		<!-- Feel free to create CSS as needed. I'll, mostly, just use Bootstrap classes. -->
 		<!-- Landing page (Home): -->

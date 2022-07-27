@@ -18,7 +18,7 @@ daphne==2.5.0
 defusedxml==0.6.0
 distlib==0.3.0
 distro==1.4.0
-Django==4.0.4
+Django==3.2
 django-adminlte3==0.1.6
 django-allauth==0.44.0
 django-bootstrap-modal-forms==2.1.0
